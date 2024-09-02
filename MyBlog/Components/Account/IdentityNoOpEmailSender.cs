@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
-using MyBlog.Data;
+using MyBlog.BusinessLogic.Entities;
 
 namespace MyBlog.Components.Account;
 
