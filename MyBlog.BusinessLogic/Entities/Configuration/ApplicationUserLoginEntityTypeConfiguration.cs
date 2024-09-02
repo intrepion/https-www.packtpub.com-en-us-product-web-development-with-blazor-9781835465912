@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace AppNamePlaceholder.BusinessLogic.Entities.Configuration;
+namespace MyBlog.BusinessLogic.Entities.Configuration;
 
 public class ApplicationUserLoginEntityTypeConfiguration : IEntityTypeConfiguration<ApplicationUserLogin>
 {
