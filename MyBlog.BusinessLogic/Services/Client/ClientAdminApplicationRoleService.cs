@@ -1,7 +1,7 @@
 ﻿using System.Net.Http.Json;
-using AppNamePlaceholder.BusinessLogic.Entities;
+using MyBlog.BusinessLogic.Entities;
 
-namespace AppNamePlaceholder.BusinessLogic.Services.Client;
+namespace MyBlog.BusinessLogic.Services.Client;
 
 public class ClientAdminApplicationRoleService(HttpClient httpClient) : IAdminApplicationRoleService
 {
