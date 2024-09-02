@@ -21,4 +21,8 @@
     <Using Include="NUnit.Framework" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MyBlog.BusinessLogic\MyBlog.BusinessLogic.csproj" />
+  </ItemGroup>
+
 </Project>
