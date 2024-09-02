@@ -1,9 +1,9 @@
-﻿using AppNamePlaceholder.BusinessLogic.Entities;
-using AppNamePlaceholder.BusinessLogic.Entities.Configuration;
+﻿using MyBlog.BusinessLogic.Entities;
+using MyBlog.BusinessLogic.Entities.Configuration;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace AppNamePlaceholder.BusinessLogic.Data;
+namespace MyBlog.BusinessLogic.Data;
 
 public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : IdentityDbContext<ApplicationUser, ApplicationRole, string, ApplicationUserClaim, ApplicationUserRole, ApplicationUserLogin, ApplicationRoleClaim, ApplicationUserToken>(options)
 {
