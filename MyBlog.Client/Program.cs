@@ -1,6 +1,6 @@
-﻿using AppNamePlaceholder.BusinessLogic.Services;
-using AppNamePlaceholder.BusinessLogic.Services.Client;
-using AppNamePlaceholder.Client;
+﻿using MyBlog.BusinessLogic.Services;
+using MyBlog.BusinessLogic.Services.Client;
+using MyBlog.Client;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 
