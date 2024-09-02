@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace AppNamePlaceholder.BusinessLogic.Entities;
+namespace MyBlog.BusinessLogic.Entities;
 
 public class ApplicationUser : IdentityUser
 {
