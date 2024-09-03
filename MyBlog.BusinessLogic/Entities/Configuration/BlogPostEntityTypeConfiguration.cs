@@ -9,6 +9,9 @@ public class BlogPostEntityTypeConfiguration : IEntityTypeConfiguration<BlogPost
     {
         builder.ToTable("BlogPosts", x => x.IsTemporal());
 
+        builder.Property(x => x.PublishDate)
+            .IsRequired();
+
         builder.Property(x => x.Text)
             .IsRequired();
 
