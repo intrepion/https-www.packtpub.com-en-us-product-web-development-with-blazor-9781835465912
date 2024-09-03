@@ -1,0 +1,23 @@
+@page "/"
+@inject IBlogPostService blogPostService
+
+@if (posts != null)
+{
+    <ul>
+        @foreach (var p in posts)
+        {
+            <li>@p.Title</li>
+        }
+    </ul>
+}
+
+@code {
+    protected List<BlogPost>? posts;
+
+    protected override async Task OnInitializedAsync()
+    {
+        posts = await blogPostService.GetAsync(10, 0);
+
+        await base.OnInitializedAsync();
+    }
+}
