@@ -1,0 +1,195 @@
+{
+  "entities": [
+    {
+      "class": "BlogPost",
+      "human": "Blog Post",
+      "keys": [
+        {
+          "column": "NormalizedTitle"
+        }
+      ],
+      "plural": "Blog Posts",
+      "properties": [
+        {
+          "hasOne": {
+            "foreignDisplay": "UserName",
+            "foreignEntity": "ApplicationUser",
+            "withMany": {
+              "list": "AuthoredBlogPosts"
+            }
+          },
+          "name": "Author",
+          "subhuman": "Author"
+        },
+        {
+          "foreignListItem": "BlogPostTag",
+          "name": "BlogPostTags",
+          "subhuman": "Blog Post Tag"
+        },
+        {
+          "hasOne": {
+            "foreignDisplay": "Name",
+            "foreignEntity": "Category",
+            "withMany": {
+              "list": "CategorizedBlogPosts"
+            }
+          },
+          "name": "Category",
+          "subhuman": "Category"
+        },
+        {
+          "foreignListItem": "Comment",
+          "name": "Comments",
+          "subhuman": "Comments"
+        },
+        {
+          "name": "PublishDate",
+          "type": "date",
+          "subhuman": "Publish Date"
+        },
+        {
+          "name": "Text",
+          "type": "string",
+          "subhuman": "Text"
+        },
+        {
+          "name": "Title",
+          "normalized": true,
+          "subhuman": "Title",
+          "type": "string"
+        }
+      ],
+      "table": "BlogPosts",
+      "url": "blog-post"
+    },
+    {
+      "class": "BlogPostTag",
+      "human": "Blog Post Tag",
+      "keys": [
+        {
+          "composite": ["BlogPostId", "TagId"]
+        }
+      ],
+      "plural": "Blog Post Tags",
+      "properties": [
+        {
+          "hasOne": {
+            "foreignDisplay": "Title",
+            "foreignEntity": "BlogPost",
+            "withMany": {
+              "foreignKey": "BlogPostId",
+              "list": "BlogPostTags"
+            }
+          },
+          "name": "BlogPost",
+          "subhuman": "Blog Post"
+        },
+        {
+          "hasOne": {
+            "foreignDisplay": "Name",
+            "foreignEntity": "Tag",
+            "withMany": {
+              "foreignKey": "TagId",
+              "list": "BlogPostTags"
+            }
+          },
+          "name": "Tag",
+          "subhuman": "Tag"
+        }
+      ],
+      "table": "BlogPostTags",
+      "url": "blog-post-tag"
+    },
+    {
+      "class": "Category",
+      "human": "Category",
+      "keys": [
+        {
+          "column": "NormalizedName"
+        }
+      ],
+      "plural": "Categories",
+      "properties": [
+        {
+          "foreignListItem": "BlogPost",
+          "name": "BlogPosts",
+          "subhuman": "Blog Post"
+        },
+        {
+          "name": "Name",
+          "normalized": true,
+          "subhuman": "Name",
+          "type": "string"
+        }
+      ],
+      "table": "Categories",
+      "url": "category"
+    },
+    {
+      "class": "Comment",
+      "human": "Comment",
+      "plural": "Comments",
+      "properties": [
+        {
+          "hasOne": {
+            "foreignDisplay": "Title",
+            "foreignEntity": "BlogPost",
+            "withMany": {
+              "list": "Comments"
+            }
+          },
+          "name": "BlogPost",
+          "subhuman": "Blog Post"
+        },
+        {
+          "hasOne": {
+            "foreignDisplay": "UserName",
+            "foreignEntity": "ApplicationUser",
+            "withMany": {
+              "list": "CommentedComments"
+            }
+          },
+          "name": "Commenter",
+          "subhuman": "Commenter"
+        },
+        {
+          "name": "Date",
+          "subhuman": "Date",
+          "type": "date"
+        },
+        {
+          "name": "Text",
+          "subhuman": true,
+          "type": "string"
+        }
+      ],
+      "table": "Comments",
+      "url": "comment"
+    },
+    {
+      "class": "Tag",
+      "human": "Tag",
+      "keys": [
+        {
+          "column": "NormalizedName"
+        }
+      ],
+      "plural": "Tags",
+      "properties": [
+        {
+          "foreignListItem": "BlogPostTag",
+          "name": "BlogPostTags",
+          "subhuman": "Blog Post Tag"
+        },
+        {
+          "name": "Name",
+          "normalized": true,
+          "subhuman": "Name",
+          "type": "string"
+        }
+      ],
+      "table": "Tags",
+      "url": "tag"
+    }
+  ]
+}
