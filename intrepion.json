@@ -1,0 +1,182 @@
+{
+  "entities": [
+    {
+      "class": "BlogPost",
+      "human": "Blog Post",
+      "keys": [
+        {
+          "column": "NormalizedTitle"
+        }
+      ],
+      "plural": "Blog Posts",
+      "properties": [
+        {
+          "hasOne": {
+            "foreignEntity": "ApplicationUser",
+            "withMany": {
+              "list": "AuthoredBlogPosts",
+              "required": true
+            }
+          },
+          "name": "Author"
+        },
+        {
+          "foreignItem": "BlogPostTag",
+          "name": "BlogPostTags"
+        },
+        {
+          "hasOne": {
+            "foreignEntity": "Category",
+            "withMany": {
+              "list": "CategorizedBlogPosts"
+            }
+          },
+          "name": "Category"
+        },
+        {
+          "foreignItem": "Comment",
+          "name": "Comments"
+        },
+        {
+          "name": "PublishDate",
+          "required": true,
+          "type": "DateTime"
+        },
+        {
+          "name": "Text",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "Title",
+          "normalized": true,
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "table": "BlogPosts",
+      "url": "blog-post"
+    },
+    {
+      "class": "BlogPostTag",
+      "human": "Blog Post Tag",
+      "keys": [
+        {
+          "composite": ["BlogPostId", "TagId"]
+        }
+      ],
+      "plural": "Blog Post Tags",
+      "properties": [
+        {
+          "hasOne": {
+            "foreignEntity": "BlogPost",
+            "withMany": {
+              "foreignKey": "BlogPostId",
+              "list": "BlogPostTags",
+              "required": true
+            }
+          },
+          "name": "BlogPost"
+        },
+        {
+          "hasOne": {
+            "foreignEntity": "Tag",
+            "withMany": {
+              "foreignKey": "TagId",
+              "list": "BlogPostTags",
+              "required": true
+            }
+          },
+          "name": "Tag"
+        }
+      ],
+      "table": "BlogPostTags"
+    },
+    {
+      "class": "Category",
+      "human": "Category",
+      "keys": [
+        {
+          "column": "NormalizedName"
+        }
+      ],
+      "plural": "Categories",
+      "properties": [
+        {
+          "foreignItem": "BlogPost",
+          "name": "BlogPosts"
+        },
+        {
+          "name": "Name",
+          "normalized": true,
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "table": "Categories",
+      "url": "category"
+    },
+    {
+      "class": "Comment",
+      "human": "Comment",
+      "plural": "Comments",
+      "properties": [
+        {
+          "hasOne": {
+            "foreignEntity": "BlogPost",
+            "withMany": {
+              "list": "Comments"
+            }
+          },
+          "name": "BlogPost"
+        },
+        {
+          "hasOne": {
+            "foreignEntity": "ApplicationUser",
+            "withMany": {
+              "list": "CommentedComments",
+              "required": true
+            }
+          },
+          "name": "Commenter"
+        },
+        {
+          "name": "Date",
+          "required": true,
+          "type": "DateTime"
+        },
+        {
+          "name": "Text",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "table": "Comments",
+      "url": "comment"
+    },
+    {
+      "class": "Tag",
+      "human": "Tag",
+      "keys": [
+        {
+          "column": "NormalizedName"
+        }
+      ],
+      "plural": "Tags",
+      "properties": [
+        {
+          "foreignItem": "BlogPostTag",
+          "name": "BlogPostTags"
+        },
+        {
+          "name": "Name",
+          "normalized": true,
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "table": "Tags",
+      "url": "tag"
+    }
+  ]
+}
