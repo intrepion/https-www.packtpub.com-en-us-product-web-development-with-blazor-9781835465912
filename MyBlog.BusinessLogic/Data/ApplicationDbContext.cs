@@ -29,6 +29,7 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
         new BlogPostTagEntityTypeConfiguration().Configure(builder.Entity<BlogPostTag>());
         new CategoryEntityTypeConfiguration().Configure(builder.Entity<Category>());
         new CommentEntityTypeConfiguration().Configure(builder.Entity<Comment>());
+        new TagEntityTypeConfiguration().Configure(builder.Entity<Tag>());
         // EntityTypeCfgCodePlaceholder
     }
 }
