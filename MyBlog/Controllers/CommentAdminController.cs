@@ -65,9 +65,9 @@ public class CommentAdminController(ICommentAdminService LowercaseNamePlaceholde
             return Ok(null);
         }
 
-        var LowercaseTableNamePlaceholder = await _LowercaseNamePlaceholderAdminService.GetAllAsync();
+        var comments = await _LowercaseNamePlaceholderAdminService.GetAllAsync();
 
-        return Ok(LowercaseTableNamePlaceholder);
+        return Ok(comments);
     }
 
     [HttpGet("{id}")]
