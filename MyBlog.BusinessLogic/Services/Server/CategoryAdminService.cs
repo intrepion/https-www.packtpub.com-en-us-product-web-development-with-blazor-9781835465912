@@ -8,7 +8,7 @@ public class CategoryAdminService(ApplicationDbContext applicationDbContext) : I
 {
     private readonly ApplicationDbContext _applicationDbContext = applicationDbContext;
 
-    public async Task<Category?> AddAsync(string userName, Category LowercaseNamePlaceholder)
+    public async Task<Category?> AddAsync(string userName, Category category)
     {
         if (string.IsNullOrWhiteSpace(userName))
         {
@@ -22,19 +22,19 @@ public class CategoryAdminService(ApplicationDbContext applicationDbContext) : I
             throw new Exception("Authentication required.");
         }
 
-        // if (string.IsNullOrWhiteSpace(LowercaseNamePlaceholder.PropertyNamePlaceholder))
+        // if (string.IsNullOrWhiteSpace(category.PropertyNamePlaceholder))
         // {
         //     throw new Exception("Name required.");
         // }
 
-        LowercaseNamePlaceholder.ApplicationUserUpdatedBy = user;
-        // LowercaseNamePlaceholder.NormalizedPropertyNamePlaceholder = LowercaseNamePlaceholder.PropertyNamePlaceholder?.ToUpper();
+        category.ApplicationUserUpdatedBy = user;
+        // category.NormalizedPropertyNamePlaceholder = category.PropertyNamePlaceholder?.ToUpper();
 
-        _applicationDbContext.Categories.Add(LowercaseNamePlaceholder);
+        _applicationDbContext.Categories.Add(category);
 
         await _applicationDbContext.SaveChangesAsync();
 
-        return LowercaseNamePlaceholder;
+        return category;
     }
 
     public async Task<bool> DeleteAsync(string userName, Guid id)
@@ -68,7 +68,7 @@ public class CategoryAdminService(ApplicationDbContext applicationDbContext) : I
         return true;
     }
 
-    public async Task<Category?> EditAsync(string userName, Guid id, Category LowercaseNamePlaceholder)
+    public async Task<Category?> EditAsync(string userName, Guid id, Category category)
     {
         if (string.IsNullOrWhiteSpace(userName))
         {
@@ -89,14 +89,14 @@ public class CategoryAdminService(ApplicationDbContext applicationDbContext) : I
             throw new Exception("Application role not found.");
         }
 
-        // if (string.IsNullOrWhiteSpace(LowercaseNamePlaceholder.PropertyNamePlaceholder))
+        // if (string.IsNullOrWhiteSpace(category.PropertyNamePlaceholder))
         // {
         //     throw new Exception("PropertyNamePlaceholder required.");
         // }
 
         dbCategory.ApplicationUserUpdatedBy = user;
-        // dbCategory.PropertyNamePlaceholder = LowercaseNamePlaceholder.PropertyNamePlaceholder;
-        // dbCategory.NormalizedPropertyNamePlaceholder = LowercaseNamePlaceholder.PropertyNamePlaceholder?.ToUpper();
+        // dbCategory.PropertyNamePlaceholder = category.PropertyNamePlaceholder;
+        // dbCategory.NormalizedPropertyNamePlaceholder = category.PropertyNamePlaceholder?.ToUpper();
 
         await _applicationDbContext.SaveChangesAsync();
 
