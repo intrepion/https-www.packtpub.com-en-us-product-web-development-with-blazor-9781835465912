@@ -1,5 +1,5 @@
 @page "/admin/UrlNamePlaceholder-list"
-@inject IEntityNamePlaceholderAdminService EntityNamePlaceholderAdminService
+@inject ICategoryAdminService CategoryAdminService
 @attribute [StreamRendering]
 
 <section>
@@ -47,10 +47,10 @@
 </section>
 
 @code {
-    List<EntityNamePlaceholder>? TableNamePlaceholder = null;
+    List<Category>? TableNamePlaceholder = null;
 
     protected override async Task OnInitializedAsync()
     {
-        TableNamePlaceholder = await EntityNamePlaceholderAdminService.GetAllAsync();
+        TableNamePlaceholder = await CategoryAdminService.GetAllAsync();
     }
 }
