@@ -15,12 +15,12 @@
         <h1>Edit Category</h1>
     }
     <article>
-        <EditForm class="container" Model="LowercaseNamePlaceholder" OnSubmit="HandleSubmit">
+        <EditForm class="container" Model="category" OnSubmit="HandleSubmit">
             @* <div class="row">
                 <div class="col">
                     <label>
                         PropertyNamePlaceholder:
-                        <InputText @bind-Value="LowercaseNamePlaceholder.PropertyNamePlaceholder">@LowercaseNamePlaceholder.PropertyNamePlaceholder</InputText>
+                        <InputText @bind-Value="category.PropertyNamePlaceholder">@category.PropertyNamePlaceholder</InputText>
                     </label>
                 </div>
             </div> *@
@@ -40,7 +40,7 @@
 @code {
     [Parameter]
     public Guid Id { get; set; }
-    Category LowercaseNamePlaceholder { get; set; } = new Category();
+    Category category { get; set; } = new Category();
 
     protected override async Task OnParametersSetAsync()
     {
@@ -53,11 +53,11 @@
 
         if (result == null)
         {
-            LowercaseNamePlaceholder = new Category();
+            category = new Category();
         }
         else
         {
-            LowercaseNamePlaceholder = result;
+            category = result;
         }
     }
 
@@ -76,14 +76,14 @@
             return;
         }
 
-        if (LowercaseNamePlaceholder == null)
+        if (category == null)
         {
             return;
         }
 
         if (Id.Equals(Guid.Empty))
         {
-            var dbCategory = await CategoryAdminService.AddAsync(userName, LowercaseNamePlaceholder);
+            var dbCategory = await CategoryAdminService.AddAsync(userName, category);
 
             if (dbCategory == null)
             {
@@ -94,7 +94,7 @@
         }
         else
         {
-            await CategoryAdminService.EditAsync(userName, Id, LowercaseNamePlaceholder);
+            await CategoryAdminService.EditAsync(userName, Id, category);
         }
     }
 
