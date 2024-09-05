@@ -6,12 +6,12 @@ namespace ApplicationNamePlaceholder.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class CategoryAdminController(ICategoryAdminService LowercaseNamePlaceholderAdminService) : ControllerBase
+public class CategoryAdminController(ICategoryAdminService categoryAdminService) : ControllerBase
 {
-    private readonly ICategoryAdminService _LowercaseNamePlaceholderAdminService = LowercaseNamePlaceholderAdminService;
+    private readonly ICategoryAdminService _categoryAdminService = categoryAdminService;
 
     [HttpPost]
-    public async Task<ActionResult<Category?>> Add(Category LowercaseNamePlaceholder)
+    public async Task<ActionResult<Category?>> Add(Category category)
     {
         var userName = User.Identity?.Name;
 
@@ -20,7 +20,7 @@ public class CategoryAdminController(ICategoryAdminService LowercaseNamePlacehol
             return Ok(null);
         }
 
-        var addedCategory = await _LowercaseNamePlaceholderAdminService.AddAsync(userName, LowercaseNamePlaceholder);
+        var addedCategory = await _categoryAdminService.AddAsync(userName, category);
 
         return Ok(addedCategory);
     }
@@ -35,13 +35,13 @@ public class CategoryAdminController(ICategoryAdminService LowercaseNamePlacehol
             return Ok(null);
         }
 
-        var result = await _LowercaseNamePlaceholderAdminService.DeleteAsync(userName, id);
+        var result = await _categoryAdminService.DeleteAsync(userName, id);
 
         return Ok(result);
     }
 
     [HttpPut("{id}")]
-    public async Task<ActionResult<Category?>> Edit(Guid id, Category LowercaseNamePlaceholder)
+    public async Task<ActionResult<Category?>> Edit(Guid id, Category category)
     {
         var userName = User.Identity?.Name;
 
@@ -50,7 +50,7 @@ public class CategoryAdminController(ICategoryAdminService LowercaseNamePlacehol
             return Ok(null);
         }
 
-        var updatedCategory = await _LowercaseNamePlaceholderAdminService.EditAsync(userName, id, LowercaseNamePlaceholder);
+        var updatedCategory = await _categoryAdminService.EditAsync(userName, id, category);
 
         return Ok(updatedCategory);
     }
@@ -65,7 +65,7 @@ public class CategoryAdminController(ICategoryAdminService LowercaseNamePlacehol
             return Ok(null);
         }
 
-        var categories = await _LowercaseNamePlaceholderAdminService.GetAllAsync();
+        var categories = await _categoryAdminService.GetAllAsync();
 
         return Ok(categories);
     }
@@ -80,8 +80,8 @@ public class CategoryAdminController(ICategoryAdminService LowercaseNamePlacehol
             return Ok(null);
         }
 
-        var LowercaseNamePlaceholder = await _LowercaseNamePlaceholderAdminService.GetByIdAsync(id);
+        var category = await _categoryAdminService.GetByIdAsync(id);
 
-        return Ok(LowercaseNamePlaceholder);
+        return Ok(category);
     }
 }
