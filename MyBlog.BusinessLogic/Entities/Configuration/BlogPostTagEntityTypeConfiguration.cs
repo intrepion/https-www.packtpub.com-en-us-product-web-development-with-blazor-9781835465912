@@ -7,12 +7,12 @@ public class BlogPostTagEntityTypeConfiguration : IEntityTypeConfiguration<BlogP
 {
     public void Configure(EntityTypeBuilder<BlogPostTag> builder)
     {
-        builder.ToTable("TableNamePlaceholder", x => x.IsTemporal());
+        builder.ToTable("BlogPostTags", x => x.IsTemporal());
 
         // builder.Property(x => x.PropertyNamePlaceholder);
 
         builder.HasOne(x => x.ApplicationUserUpdatedBy)
-            .WithMany(x => x.UpdatedTableNamePlaceholder)
+            .WithMany(x => x.UpdatedBlogPostTags)
             .IsRequired()
             .OnDelete(DeleteBehavior.Restrict);
     }
