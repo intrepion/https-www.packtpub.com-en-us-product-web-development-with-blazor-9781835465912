@@ -1,4 +1,4 @@
-@page "/admin/UrlNamePlaceholder-list"
+@page "/admin/tag-list"
 @inject ITagAdminService TagAdminService
 @attribute [StreamRendering]
 
@@ -35,14 +35,14 @@
                             <td>@LowercaseNamePlaceholder.Id</td>
                             @* <td>@LowercaseNamePlaceholder.PropertyNamePlaceholder</td> *@
                             <td>
-                                <NavButton Href="@("/admin/UrlNamePlaceholder-edit/" + LowercaseNamePlaceholder.Id)" Name="Edit" />
+                                <NavButton Href="@("/admin/tag-edit/" + LowercaseNamePlaceholder.Id)" Name="Edit" />
                             </td>
                         </tr>
                     }
                 }
             </tbody>
         </table>
-        <NavButton Href="/admin/UrlNamePlaceholder-edit" Name="Create" />
+        <NavButton Href="/admin/tag-edit" Name="Create" />
     </article>
 </section>
 
