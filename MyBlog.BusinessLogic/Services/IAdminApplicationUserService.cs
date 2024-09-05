@@ -1,6 +1,6 @@
-﻿using ApplicationNamePlaceholder.BusinessLogic.Entities;
+﻿using MyBlog.BusinessLogic.Entities;
 
-namespace ApplicationNamePlaceholder.BusinessLogic.Services;
+namespace MyBlog.BusinessLogic.Services;
 
 public interface IAdminApplicationUserService
 {
