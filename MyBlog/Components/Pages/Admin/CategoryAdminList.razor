@@ -29,13 +29,13 @@
                 }
                 else
                 {
-                    @foreach (var LowercaseNamePlaceholder in Categories)
+                    @foreach (var category in Categories)
                     {
                         <tr>
-                            <td>@LowercaseNamePlaceholder.Id</td>
-                            @* <td>@LowercaseNamePlaceholder.PropertyNamePlaceholder</td> *@
+                            <td>@category.Id</td>
+                            @* <td>@category.PropertyNamePlaceholder</td> *@
                             <td>
-                                <NavButton Href="@("/admin/category-edit/" + LowercaseNamePlaceholder.Id)" Name="Edit" />
+                                <NavButton Href="@("/admin/category-edit/" + category.Id)" Name="Edit" />
                             </td>
                         </tr>
                     }
