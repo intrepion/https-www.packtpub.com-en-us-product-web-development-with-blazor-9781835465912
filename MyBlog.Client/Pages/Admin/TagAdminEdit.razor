@@ -15,12 +15,12 @@
         <h1>Edit Tag</h1>
     }
     <article>
-        <EditForm class="container" Model="LowercaseNamePlaceholder" OnSubmit="HandleSubmit">
+        <EditForm class="container" Model="tag" OnSubmit="HandleSubmit">
             @* <div class="row">
                 <div class="col">
                     <label>
                         PropertyNamePlaceholder:
-                        <InputText @bind-Value="LowercaseNamePlaceholder.PropertyNamePlaceholder">@LowercaseNamePlaceholder.PropertyNamePlaceholder</InputText>
+                        <InputText @bind-Value="tag.PropertyNamePlaceholder">@tag.PropertyNamePlaceholder</InputText>
                     </label>
                 </div>
             </div> *@
@@ -40,7 +40,7 @@
 @code {
     [Parameter]
     public Guid Id { get; set; }
-    Tag LowercaseNamePlaceholder { get; set; } = new Tag();
+    Tag tag { get; set; } = new Tag();
 
     protected override async Task OnParametersSetAsync()
     {
@@ -53,11 +53,11 @@
 
         if (result == null)
         {
-            LowercaseNamePlaceholder = new Tag();
+            tag = new Tag();
         }
         else
         {
-            LowercaseNamePlaceholder = result;
+            tag = result;
         }
     }
 
@@ -76,14 +76,14 @@
             return;
         }
 
-        if (LowercaseNamePlaceholder == null)
+        if (tag == null)
         {
             return;
         }
 
         if (Id.Equals(Guid.Empty))
         {
-            var dbTag = await TagAdminService.AddAsync(userName, LowercaseNamePlaceholder);
+            var dbTag = await TagAdminService.AddAsync(userName, tag);
 
             if (dbTag == null)
             {
@@ -94,7 +94,7 @@
         }
         else
         {
-            await TagAdminService.EditAsync(userName, Id, LowercaseNamePlaceholder);
+            await TagAdminService.EditAsync(userName, Id, tag);
         }
     }
 
