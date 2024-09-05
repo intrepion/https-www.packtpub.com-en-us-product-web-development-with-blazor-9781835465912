@@ -1,4 +1,4 @@
-@page "/admin/UrlNamePlaceholder-list"
+@page "/admin/comment-list"
 @inject ICommentAdminService CommentAdminService
 @attribute [StreamRendering]
 
@@ -35,14 +35,14 @@
                             <td>@LowercaseNamePlaceholder.Id</td>
                             @* <td>@LowercaseNamePlaceholder.PropertyNamePlaceholder</td> *@
                             <td>
-                                <NavButton Href="@("/admin/UrlNamePlaceholder-edit/" + LowercaseNamePlaceholder.Id)" Name="Edit" />
+                                <NavButton Href="@("/admin/comment-edit/" + LowercaseNamePlaceholder.Id)" Name="Edit" />
                             </td>
                         </tr>
                     }
                 }
             </tbody>
         </table>
-        <NavButton Href="/admin/UrlNamePlaceholder-edit" Name="Create" />
+        <NavButton Href="/admin/comment-edit" Name="Create" />
     </article>
 </section>
 
