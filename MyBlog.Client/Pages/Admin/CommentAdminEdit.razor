@@ -1,6 +1,6 @@
 @page "/admin/UrlNamePlaceholder-edit"
 @page "/admin/UrlNamePlaceholder-edit/{id:guid}"
-@inject IEntityNamePlaceholderAdminService EntityNamePlaceholderAdminService
+@inject ICommentAdminService CommentAdminService
 @inject AuthenticationStateProvider GetAuthenticationStateAsync
 @inject NavigationManager NavigationManager
 @rendermode InteractiveAuto
@@ -40,7 +40,7 @@
 @code {
     [Parameter]
     public Guid Id { get; set; }
-    EntityNamePlaceholder LowercaseNamePlaceholder { get; set; } = new EntityNamePlaceholder();
+    Comment LowercaseNamePlaceholder { get; set; } = new Comment();
 
     protected override async Task OnParametersSetAsync()
     {
@@ -49,11 +49,11 @@
             return;
         }
 
-        var result = await EntityNamePlaceholderAdminService.GetByIdAsync(Id);
+        var result = await CommentAdminService.GetByIdAsync(Id);
 
         if (result == null)
         {
-            LowercaseNamePlaceholder = new EntityNamePlaceholder();
+            LowercaseNamePlaceholder = new Comment();
         }
         else
         {
@@ -83,18 +83,18 @@
 
         if (Id.Equals(Guid.Empty))
         {
-            var dbEntityNamePlaceholder = await EntityNamePlaceholderAdminService.AddAsync(userName, LowercaseNamePlaceholder);
+            var dbComment = await CommentAdminService.AddAsync(userName, LowercaseNamePlaceholder);
 
-            if (dbEntityNamePlaceholder == null)
+            if (dbComment == null)
             {
                 return;
             }
 
-            NavigationManager.NavigateTo($"/admin/UrlNamePlaceholder-edit/{dbEntityNamePlaceholder.Id}");
+            NavigationManager.NavigateTo($"/admin/UrlNamePlaceholder-edit/{dbComment.Id}");
         }
         else
         {
-            await EntityNamePlaceholderAdminService.EditAsync(userName, Id, LowercaseNamePlaceholder);
+            await CommentAdminService.EditAsync(userName, Id, LowercaseNamePlaceholder);
         }
     }
 
@@ -113,7 +113,7 @@
             return;
         }
 
-        await EntityNamePlaceholderAdminService.DeleteAsync(userName, Id);
+        await CommentAdminService.DeleteAsync(userName, Id);
         NavigationManager.NavigateTo($"/admin/UrlNamePlaceholder-list");
     }
 }
