@@ -30,7 +30,7 @@ public class TagAdminService(ApplicationDbContext applicationDbContext) : ITagAd
         LowercaseNamePlaceholder.ApplicationUserUpdatedBy = user;
         // LowercaseNamePlaceholder.NormalizedPropertyNamePlaceholder = LowercaseNamePlaceholder.PropertyNamePlaceholder?.ToUpper();
 
-        _applicationDbContext.TableNamePlaceholder.Add(LowercaseNamePlaceholder);
+        _applicationDbContext.Tags.Add(LowercaseNamePlaceholder);
 
         await _applicationDbContext.SaveChangesAsync();
 
@@ -51,7 +51,7 @@ public class TagAdminService(ApplicationDbContext applicationDbContext) : ITagAd
             throw new Exception("Authentication required.");
         }
 
-        var dbTag = await _applicationDbContext.TableNamePlaceholder.FindAsync(id);
+        var dbTag = await _applicationDbContext.Tags.FindAsync(id);
 
         if (dbTag == null)
         {
@@ -82,7 +82,7 @@ public class TagAdminService(ApplicationDbContext applicationDbContext) : ITagAd
             throw new Exception("Authentication required.");
         }
 
-        var dbTag = await _applicationDbContext.TableNamePlaceholder.FindAsync(id);
+        var dbTag = await _applicationDbContext.Tags.FindAsync(id);
 
         if (dbTag == null)
         {
@@ -105,11 +105,11 @@ public class TagAdminService(ApplicationDbContext applicationDbContext) : ITagAd
 
     public async Task<List<Tag>?> GetAllAsync()
     {
-        return await _applicationDbContext.TableNamePlaceholder.Include(x => x.ApplicationUserUpdatedBy).ToListAsync();
+        return await _applicationDbContext.Tags.Include(x => x.ApplicationUserUpdatedBy).ToListAsync();
     }
 
     public async Task<Tag?> GetByIdAsync(Guid id)
     {
-        return await _applicationDbContext.TableNamePlaceholder.FindAsync(id);
+        return await _applicationDbContext.Tags.FindAsync(id);
     }
 }
