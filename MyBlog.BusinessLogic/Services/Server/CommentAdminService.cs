@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ApplicationNamePlaceholder.BusinessLogic.Services.Server;
 
-public class EntityNamePlaceholderAdminService(ApplicationDbContext applicationDbContext) : IEntityNamePlaceholderAdminService
+public class CommentAdminService(ApplicationDbContext applicationDbContext) : ICommentAdminService
 {
     private readonly ApplicationDbContext _applicationDbContext = applicationDbContext;
 
-    public async Task<EntityNamePlaceholder?> AddAsync(string userName, EntityNamePlaceholder LowercaseNamePlaceholder)
+    public async Task<Comment?> AddAsync(string userName, Comment LowercaseNamePlaceholder)
     {
         if (string.IsNullOrWhiteSpace(userName))
         {
@@ -51,24 +51,24 @@ public class EntityNamePlaceholderAdminService(ApplicationDbContext applicationD
             throw new Exception("Authentication required.");
         }
 
-        var dbEntityNamePlaceholder = await _applicationDbContext.TableNamePlaceholder.FindAsync(id);
+        var dbComment = await _applicationDbContext.TableNamePlaceholder.FindAsync(id);
 
-        if (dbEntityNamePlaceholder == null)
+        if (dbComment == null)
         {
             return false;
         }
 
-        dbEntityNamePlaceholder.ApplicationUserUpdatedBy = user;
+        dbComment.ApplicationUserUpdatedBy = user;
         await _applicationDbContext.SaveChangesAsync();
 
-        _applicationDbContext.Remove(dbEntityNamePlaceholder);
+        _applicationDbContext.Remove(dbComment);
 
         await _applicationDbContext.SaveChangesAsync();
 
         return true;
     }
 
-    public async Task<EntityNamePlaceholder?> EditAsync(string userName, Guid id, EntityNamePlaceholder LowercaseNamePlaceholder)
+    public async Task<Comment?> EditAsync(string userName, Guid id, Comment LowercaseNamePlaceholder)
     {
         if (string.IsNullOrWhiteSpace(userName))
         {
@@ -82,9 +82,9 @@ public class EntityNamePlaceholderAdminService(ApplicationDbContext applicationD
             throw new Exception("Authentication required.");
         }
 
-        var dbEntityNamePlaceholder = await _applicationDbContext.TableNamePlaceholder.FindAsync(id);
+        var dbComment = await _applicationDbContext.TableNamePlaceholder.FindAsync(id);
 
-        if (dbEntityNamePlaceholder == null)
+        if (dbComment == null)
         {
             throw new Exception("Application role not found.");
         }
@@ -94,21 +94,21 @@ public class EntityNamePlaceholderAdminService(ApplicationDbContext applicationD
         //     throw new Exception("PropertyNamePlaceholder required.");
         // }
 
-        dbEntityNamePlaceholder.ApplicationUserUpdatedBy = user;
-        // dbEntityNamePlaceholder.PropertyNamePlaceholder = LowercaseNamePlaceholder.PropertyNamePlaceholder;
-        // dbEntityNamePlaceholder.NormalizedPropertyNamePlaceholder = LowercaseNamePlaceholder.PropertyNamePlaceholder?.ToUpper();
+        dbComment.ApplicationUserUpdatedBy = user;
+        // dbComment.PropertyNamePlaceholder = LowercaseNamePlaceholder.PropertyNamePlaceholder;
+        // dbComment.NormalizedPropertyNamePlaceholder = LowercaseNamePlaceholder.PropertyNamePlaceholder?.ToUpper();
 
         await _applicationDbContext.SaveChangesAsync();
 
-        return dbEntityNamePlaceholder;
+        return dbComment;
     }
 
-    public async Task<List<EntityNamePlaceholder>?> GetAllAsync()
+    public async Task<List<Comment>?> GetAllAsync()
     {
         return await _applicationDbContext.TableNamePlaceholder.Include(x => x.ApplicationUserUpdatedBy).ToListAsync();
     }
 
-    public async Task<EntityNamePlaceholder?> GetByIdAsync(Guid id)
+    public async Task<Comment?> GetByIdAsync(Guid id)
     {
         return await _applicationDbContext.TableNamePlaceholder.FindAsync(id);
     }
