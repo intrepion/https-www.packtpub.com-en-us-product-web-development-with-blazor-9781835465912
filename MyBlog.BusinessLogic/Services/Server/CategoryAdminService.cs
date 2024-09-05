@@ -30,7 +30,7 @@ public class CategoryAdminService(ApplicationDbContext applicationDbContext) : I
         LowercaseNamePlaceholder.ApplicationUserUpdatedBy = user;
         // LowercaseNamePlaceholder.NormalizedPropertyNamePlaceholder = LowercaseNamePlaceholder.PropertyNamePlaceholder?.ToUpper();
 
-        _applicationDbContext.TableNamePlaceholder.Add(LowercaseNamePlaceholder);
+        _applicationDbContext.Categories.Add(LowercaseNamePlaceholder);
 
         await _applicationDbContext.SaveChangesAsync();
 
@@ -51,7 +51,7 @@ public class CategoryAdminService(ApplicationDbContext applicationDbContext) : I
             throw new Exception("Authentication required.");
         }
 
-        var dbCategory = await _applicationDbContext.TableNamePlaceholder.FindAsync(id);
+        var dbCategory = await _applicationDbContext.Categories.FindAsync(id);
 
         if (dbCategory == null)
         {
@@ -82,7 +82,7 @@ public class CategoryAdminService(ApplicationDbContext applicationDbContext) : I
             throw new Exception("Authentication required.");
         }
 
-        var dbCategory = await _applicationDbContext.TableNamePlaceholder.FindAsync(id);
+        var dbCategory = await _applicationDbContext.Categories.FindAsync(id);
 
         if (dbCategory == null)
         {
@@ -105,11 +105,11 @@ public class CategoryAdminService(ApplicationDbContext applicationDbContext) : I
 
     public async Task<List<Category>?> GetAllAsync()
     {
-        return await _applicationDbContext.TableNamePlaceholder.Include(x => x.ApplicationUserUpdatedBy).ToListAsync();
+        return await _applicationDbContext.Categories.Include(x => x.ApplicationUserUpdatedBy).ToListAsync();
     }
 
     public async Task<Category?> GetByIdAsync(Guid id)
     {
-        return await _applicationDbContext.TableNamePlaceholder.FindAsync(id);
+        return await _applicationDbContext.Categories.FindAsync(id);
     }
 }
