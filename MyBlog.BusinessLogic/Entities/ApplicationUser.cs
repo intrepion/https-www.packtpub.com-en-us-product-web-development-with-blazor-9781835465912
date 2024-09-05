@@ -17,5 +17,6 @@ public class ApplicationUser : IdentityUser
     public ICollection<BlogPostTag> UpdatedBlogPostTags { get; set; } = [];
     public ICollection<Category> UpdatedCategories { get; set; } = [];
     public ICollection<Comment> UpdatedComments { get; set; } = [];
+    public ICollection<EntityNamePlaceholder> UpdatedTableNamePlaceholder { get; set; } = [];
     // AppUserUpdatedCodePlaceholder
 }
