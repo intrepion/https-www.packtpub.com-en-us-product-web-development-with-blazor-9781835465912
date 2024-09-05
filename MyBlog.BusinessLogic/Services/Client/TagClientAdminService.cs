@@ -7,9 +7,9 @@ public class TagClientAdminService(HttpClient httpClient) : ITagAdminService
 {
     private readonly HttpClient _httpClient = httpClient;
 
-    public async Task<Tag?> AddAsync(string userName, Tag LowercaseNamePlaceholder)
+    public async Task<Tag?> AddAsync(string userName, Tag tag)
     {
-        var result = await _httpClient.PostAsJsonAsync("/api/Tag", LowercaseNamePlaceholder);
+        var result = await _httpClient.PostAsJsonAsync("/api/Tag", tag);
 
         return await result.Content.ReadFromJsonAsync<Tag>();
     }
@@ -21,9 +21,9 @@ public class TagClientAdminService(HttpClient httpClient) : ITagAdminService
         return await result.Content.ReadFromJsonAsync<bool>();
     }
 
-    public async Task<Tag?> EditAsync(string userName, Guid id, Tag LowercaseNamePlaceholder)
+    public async Task<Tag?> EditAsync(string userName, Guid id, Tag tag)
     {
-        var result = await _httpClient.PutAsJsonAsync($"/api/Tag/{id}", LowercaseNamePlaceholder);
+        var result = await _httpClient.PutAsJsonAsync($"/api/Tag/{id}", tag);
 
         return await result.Content.ReadFromJsonAsync<Tag>();
     }
