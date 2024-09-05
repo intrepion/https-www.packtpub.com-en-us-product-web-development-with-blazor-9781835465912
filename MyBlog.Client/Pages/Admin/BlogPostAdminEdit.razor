@@ -15,12 +15,12 @@
         <h1>Edit Blog Post</h1>
     }
     <article>
-        <EditForm class="container" Model="LowercaseNamePlaceholder" OnSubmit="HandleSubmit">
+        <EditForm class="container" Model="blogPost" OnSubmit="HandleSubmit">
             @* <div class="row">
                 <div class="col">
                     <label>
                         PropertyNamePlaceholder:
-                        <InputText @bind-Value="LowercaseNamePlaceholder.PropertyNamePlaceholder">@LowercaseNamePlaceholder.PropertyNamePlaceholder</InputText>
+                        <InputText @bind-Value="blogPost.PropertyNamePlaceholder">@blogPost.PropertyNamePlaceholder</InputText>
                     </label>
                 </div>
             </div> *@
@@ -40,7 +40,7 @@
 @code {
     [Parameter]
     public Guid Id { get; set; }
-    BlogPost LowercaseNamePlaceholder { get; set; } = new BlogPost();
+    BlogPost blogPost { get; set; } = new BlogPost();
 
     protected override async Task OnParametersSetAsync()
     {
@@ -53,11 +53,11 @@
 
         if (result == null)
         {
-            LowercaseNamePlaceholder = new BlogPost();
+            blogPost = new BlogPost();
         }
         else
         {
-            LowercaseNamePlaceholder = result;
+            blogPost = result;
         }
     }
 
@@ -76,14 +76,14 @@
             return;
         }
 
-        if (LowercaseNamePlaceholder == null)
+        if (blogPost == null)
         {
             return;
         }
 
         if (Id.Equals(Guid.Empty))
         {
-            var dbBlogPost = await BlogPostAdminService.AddAsync(userName, LowercaseNamePlaceholder);
+            var dbBlogPost = await BlogPostAdminService.AddAsync(userName, blogPost);
 
             if (dbBlogPost == null)
             {
@@ -94,7 +94,7 @@
         }
         else
         {
-            await BlogPostAdminService.EditAsync(userName, Id, LowercaseNamePlaceholder);
+            await BlogPostAdminService.EditAsync(userName, Id, blogPost);
         }
     }
 
