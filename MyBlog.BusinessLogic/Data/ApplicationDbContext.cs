@@ -8,6 +8,7 @@ namespace ApplicationNamePlaceholder.BusinessLogic.Data;
 public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : IdentityDbContext<ApplicationUser, ApplicationRole, string, ApplicationUserClaim, ApplicationUserRole, ApplicationUserLogin, ApplicationRoleClaim, ApplicationUserToken>(options)
 {
     public DbSet<BlogPost> BlogPosts { get; set; }
+    public DbSet<BlogPostTag> BlogPostTags { get; set; }
     // DbSetCodePlaceholder
 
     protected override void OnModelCreating(ModelBuilder builder)
