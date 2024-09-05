@@ -29,13 +29,13 @@
                 }
                 else
                 {
-                    @foreach (var LowercaseNamePlaceholder in Tags)
+                    @foreach (var tag in Tags)
                     {
                         <tr>
-                            <td>@LowercaseNamePlaceholder.Id</td>
-                            @* <td>@LowercaseNamePlaceholder.PropertyNamePlaceholder</td> *@
+                            <td>@tag.Id</td>
+                            @* <td>@tag.PropertyNamePlaceholder</td> *@
                             <td>
-                                <NavButton Href="@("/admin/tag-edit/" + LowercaseNamePlaceholder.Id)" Name="Edit" />
+                                <NavButton Href="@("/admin/tag-edit/" + tag.Id)" Name="Edit" />
                             </td>
                         </tr>
                     }
