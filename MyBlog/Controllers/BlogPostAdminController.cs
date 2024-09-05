@@ -65,9 +65,9 @@ public class BlogPostAdminController(IBlogPostAdminService LowercaseNamePlacehol
             return Ok(null);
         }
 
-        var LowercaseTableNamePlaceholder = await _LowercaseNamePlaceholderAdminService.GetAllAsync();
+        var blogPosts = await _LowercaseNamePlaceholderAdminService.GetAllAsync();
 
-        return Ok(LowercaseTableNamePlaceholder);
+        return Ok(blogPosts);
     }
 
     [HttpGet("{id}")]
