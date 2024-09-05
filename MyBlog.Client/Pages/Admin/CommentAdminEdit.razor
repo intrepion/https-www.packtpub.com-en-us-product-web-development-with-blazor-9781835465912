@@ -15,12 +15,12 @@
         <h1>Edit Comment</h1>
     }
     <article>
-        <EditForm class="container" Model="LowercaseNamePlaceholder" OnSubmit="HandleSubmit">
+        <EditForm class="container" Model="comment" OnSubmit="HandleSubmit">
             @* <div class="row">
                 <div class="col">
                     <label>
                         PropertyNamePlaceholder:
-                        <InputText @bind-Value="LowercaseNamePlaceholder.PropertyNamePlaceholder">@LowercaseNamePlaceholder.PropertyNamePlaceholder</InputText>
+                        <InputText @bind-Value="comment.PropertyNamePlaceholder">@comment.PropertyNamePlaceholder</InputText>
                     </label>
                 </div>
             </div> *@
@@ -40,7 +40,7 @@
 @code {
     [Parameter]
     public Guid Id { get; set; }
-    Comment LowercaseNamePlaceholder { get; set; } = new Comment();
+    Comment comment { get; set; } = new Comment();
 
     protected override async Task OnParametersSetAsync()
     {
@@ -53,11 +53,11 @@
 
         if (result == null)
         {
-            LowercaseNamePlaceholder = new Comment();
+            comment = new Comment();
         }
         else
         {
-            LowercaseNamePlaceholder = result;
+            comment = result;
         }
     }
 
@@ -76,14 +76,14 @@
             return;
         }
 
-        if (LowercaseNamePlaceholder == null)
+        if (comment == null)
         {
             return;
         }
 
         if (Id.Equals(Guid.Empty))
         {
-            var dbComment = await CommentAdminService.AddAsync(userName, LowercaseNamePlaceholder);
+            var dbComment = await CommentAdminService.AddAsync(userName, comment);
 
             if (dbComment == null)
             {
@@ -94,7 +94,7 @@
         }
         else
         {
-            await CommentAdminService.EditAsync(userName, Id, LowercaseNamePlaceholder);
+            await CommentAdminService.EditAsync(userName, Id, comment);
         }
     }
 
