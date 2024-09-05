@@ -1,6 +1,6 @@
 @page "/admin/UrlNamePlaceholder-edit"
 @page "/admin/UrlNamePlaceholder-edit/{id:guid}"
-@inject IEntityNamePlaceholderAdminService EntityNamePlaceholderAdminService
+@inject ICategoryAdminService CategoryAdminService
 @inject AuthenticationStateProvider GetAuthenticationStateAsync
 @inject NavigationManager NavigationManager
 @rendermode InteractiveAuto
@@ -40,7 +40,7 @@
 @code {
     [Parameter]
     public Guid Id { get; set; }
-    EntityNamePlaceholder LowercaseNamePlaceholder { get; set; } = new EntityNamePlaceholder();
+    Category LowercaseNamePlaceholder { get; set; } = new Category();
 
     protected override async Task OnParametersSetAsync()
     {
@@ -49,11 +49,11 @@
             return;
         }
 
-        var result = await EntityNamePlaceholderAdminService.GetByIdAsync(Id);
+        var result = await CategoryAdminService.GetByIdAsync(Id);
 
         if (result == null)
         {
-            LowercaseNamePlaceholder = new EntityNamePlaceholder();
+            LowercaseNamePlaceholder = new Category();
         }
         else
         {
@@ -83,18 +83,18 @@
 
         if (Id.Equals(Guid.Empty))
         {
-            var dbEntityNamePlaceholder = await EntityNamePlaceholderAdminService.AddAsync(userName, LowercaseNamePlaceholder);
+            var dbCategory = await CategoryAdminService.AddAsync(userName, LowercaseNamePlaceholder);
 
-            if (dbEntityNamePlaceholder == null)
+            if (dbCategory == null)
             {
                 return;
             }
 
-            NavigationManager.NavigateTo($"/admin/UrlNamePlaceholder-edit/{dbEntityNamePlaceholder.Id}");
+            NavigationManager.NavigateTo($"/admin/UrlNamePlaceholder-edit/{dbCategory.Id}");
         }
         else
         {
-            await EntityNamePlaceholderAdminService.EditAsync(userName, Id, LowercaseNamePlaceholder);
+            await CategoryAdminService.EditAsync(userName, Id, LowercaseNamePlaceholder);
         }
     }
 
@@ -113,7 +113,7 @@
             return;
         }
 
-        await EntityNamePlaceholderAdminService.DeleteAsync(userName, Id);
+        await CategoryAdminService.DeleteAsync(userName, Id);
         NavigationManager.NavigateTo($"/admin/UrlNamePlaceholder-list");
     }
 }
