@@ -6,12 +6,12 @@ namespace ApplicationNamePlaceholder.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class EntityNamePlaceholderAdminController(IEntityNamePlaceholderAdminService LowercaseNamePlaceholderAdminService) : ControllerBase
+public class CommentAdminController(ICommentAdminService LowercaseNamePlaceholderAdminService) : ControllerBase
 {
-    private readonly IEntityNamePlaceholderAdminService _LowercaseNamePlaceholderAdminService = LowercaseNamePlaceholderAdminService;
+    private readonly ICommentAdminService _LowercaseNamePlaceholderAdminService = LowercaseNamePlaceholderAdminService;
 
     [HttpPost]
-    public async Task<ActionResult<EntityNamePlaceholder?>> Add(EntityNamePlaceholder LowercaseNamePlaceholder)
+    public async Task<ActionResult<Comment?>> Add(Comment LowercaseNamePlaceholder)
     {
         var userName = User.Identity?.Name;
 
@@ -20,13 +20,13 @@ public class EntityNamePlaceholderAdminController(IEntityNamePlaceholderAdminSer
             return Ok(null);
         }
 
-        var addedEntityNamePlaceholder = await _LowercaseNamePlaceholderAdminService.AddAsync(userName, LowercaseNamePlaceholder);
+        var addedComment = await _LowercaseNamePlaceholderAdminService.AddAsync(userName, LowercaseNamePlaceholder);
 
-        return Ok(addedEntityNamePlaceholder);
+        return Ok(addedComment);
     }
 
     [HttpDelete("{id}")]
-    public async Task<ActionResult<EntityNamePlaceholder?>> Delete(Guid id)
+    public async Task<ActionResult<Comment?>> Delete(Guid id)
     {
         var userName = User.Identity?.Name;
 
@@ -41,7 +41,7 @@ public class EntityNamePlaceholderAdminController(IEntityNamePlaceholderAdminSer
     }
 
     [HttpPut("{id}")]
-    public async Task<ActionResult<EntityNamePlaceholder?>> Edit(Guid id, EntityNamePlaceholder LowercaseNamePlaceholder)
+    public async Task<ActionResult<Comment?>> Edit(Guid id, Comment LowercaseNamePlaceholder)
     {
         var userName = User.Identity?.Name;
 
@@ -50,13 +50,13 @@ public class EntityNamePlaceholderAdminController(IEntityNamePlaceholderAdminSer
             return Ok(null);
         }
 
-        var updatedEntityNamePlaceholder = await _LowercaseNamePlaceholderAdminService.EditAsync(userName, id, LowercaseNamePlaceholder);
+        var updatedComment = await _LowercaseNamePlaceholderAdminService.EditAsync(userName, id, LowercaseNamePlaceholder);
 
-        return Ok(updatedEntityNamePlaceholder);
+        return Ok(updatedComment);
     }
 
     [HttpGet]
-    public async Task<ActionResult<EntityNamePlaceholder>?> GetAll()
+    public async Task<ActionResult<Comment>?> GetAll()
     {
         var userName = User.Identity?.Name;
 
@@ -71,7 +71,7 @@ public class EntityNamePlaceholderAdminController(IEntityNamePlaceholderAdminSer
     }
 
     [HttpGet("{id}")]
-    public async Task<ActionResult<EntityNamePlaceholder?>> GetById(Guid id)
+    public async Task<ActionResult<Comment?>> GetById(Guid id)
     {
         var userName = User.Identity?.Name;
 
