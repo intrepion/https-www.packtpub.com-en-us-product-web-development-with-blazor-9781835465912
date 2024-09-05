@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using MyBlog.Data;
+using MyBlog.BusinessLogic.Entities;
 
 namespace MyBlog.Components.Account;
 
