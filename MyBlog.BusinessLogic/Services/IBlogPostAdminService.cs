@@ -2,11 +2,11 @@
 
 namespace ApplicationNamePlaceholder.BusinessLogic.Services;
 
-public interface IEntityNamePlaceholderAdminService
+public interface IBlogPostAdminService
 {
-    Task<EntityNamePlaceholder?> AddAsync(string userName, EntityNamePlaceholder LowercaseNamePlaceholder);
+    Task<BlogPost?> AddAsync(string userName, BlogPost LowercaseNamePlaceholder);
     Task<bool> DeleteAsync(string userName, Guid id);
-    Task<EntityNamePlaceholder?> EditAsync(string userName, Guid id, EntityNamePlaceholder LowercaseNamePlaceholder);
-    Task<List<EntityNamePlaceholder>?> GetAllAsync();
-    Task<EntityNamePlaceholder?> GetByIdAsync(Guid id);
+    Task<BlogPost?> EditAsync(string userName, Guid id, BlogPost LowercaseNamePlaceholder);
+    Task<List<BlogPost>?> GetAllAsync();
+    Task<BlogPost?> GetByIdAsync(Guid id);
 }
