@@ -53,6 +53,7 @@ builder.Services.AddScoped<IApplicationRoleAdminService, ApplicationRoleAdminSer
 builder.Services.AddScoped<IApplicationUserAdminService, ApplicationUserAdminService>();
 builder.Services.AddScoped<IBlogPostAdminService, BlogPostAdminService>();
 builder.Services.AddScoped<ICategoryAdminService, CategoryAdminService>();
+builder.Services.AddScoped<ICommentAdminService, CommentAdminService>();
 // RegisterServerServiceCodePlaceholder
 
 var app = builder.Build();
