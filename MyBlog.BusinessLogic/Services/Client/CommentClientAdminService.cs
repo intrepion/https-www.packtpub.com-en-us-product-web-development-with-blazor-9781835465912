@@ -7,9 +7,9 @@ public class CommentClientAdminService(HttpClient httpClient) : ICommentAdminSer
 {
     private readonly HttpClient _httpClient = httpClient;
 
-    public async Task<Comment?> AddAsync(string userName, Comment EntityLowercaseNamePlaceholder)
+    public async Task<Comment?> AddAsync(string userName, Comment comment)
     {
-        var result = await _httpClient.PostAsJsonAsync("/api/CommentAdmin", EntityLowercaseNamePlaceholder);
+        var result = await _httpClient.PostAsJsonAsync("/api/CommentAdmin", comment);
 
         return await result.Content.ReadFromJsonAsync<Comment>();
     }
@@ -21,9 +21,9 @@ public class CommentClientAdminService(HttpClient httpClient) : ICommentAdminSer
         return await result.Content.ReadFromJsonAsync<bool>();
     }
 
-    public async Task<Comment?> EditAsync(string userName, Guid id, Comment EntityLowercaseNamePlaceholder)
+    public async Task<Comment?> EditAsync(string userName, Guid id, Comment comment)
     {
-        var result = await _httpClient.PutAsJsonAsync($"/api/CommentAdmin/{id}", EntityLowercaseNamePlaceholder);
+        var result = await _httpClient.PutAsJsonAsync($"/api/CommentAdmin/{id}", comment);
 
         return await result.Content.ReadFromJsonAsync<Comment>();
     }
