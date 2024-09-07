@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace ApplicationNamePlaceholder.BusinessLogic.Entities.Configuration;
 
-public class EntityNamePlaceholderEntityTypeConfiguration : IEntityTypeConfiguration<EntityNamePlaceholder>
+public class TagEntityTypeConfiguration : IEntityTypeConfiguration<Tag>
 {
-    public void Configure(EntityTypeBuilder<EntityNamePlaceholder> builder)
+    public void Configure(EntityTypeBuilder<Tag> builder)
     {
         builder.ToTable("TableNamePlaceholder", x => x.IsTemporal());
 
