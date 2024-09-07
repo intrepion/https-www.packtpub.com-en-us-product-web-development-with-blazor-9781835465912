@@ -1,8 +1,8 @@
-﻿using ApplicationNamePlaceholder.BusinessLogic.Entities;
-using ApplicationNamePlaceholder.BusinessLogic.Services;
+﻿using MyBlog.BusinessLogic.Entities;
+using MyBlog.BusinessLogic.Services;
 using Microsoft.AspNetCore.Mvc;
 
-namespace ApplicationNamePlaceholder.Controllers;
+namespace MyBlog.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
