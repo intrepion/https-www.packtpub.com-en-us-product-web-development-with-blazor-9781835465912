@@ -1,7 +1,7 @@
 ﻿using System.Net.Http.Json;
-using ApplicationNamePlaceholder.BusinessLogic.Entities;
+using MyBlog.BusinessLogic.Entities;
 
-namespace ApplicationNamePlaceholder.BusinessLogic.Services.Client;
+namespace MyBlog.BusinessLogic.Services.Client;
 
 public class CommentClientAdminService(HttpClient httpClient) : ICommentAdminService
 {
