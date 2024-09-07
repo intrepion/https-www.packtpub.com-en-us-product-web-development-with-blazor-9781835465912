@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Primitives;
 using MyBlog.Components.Account.Pages;
 using MyBlog.Components.Account.Pages.Manage;
-using MyBlog.Data;
+using MyBlog.BusinessLogic.Entities;
 
 namespace Microsoft.AspNetCore.Routing;
 

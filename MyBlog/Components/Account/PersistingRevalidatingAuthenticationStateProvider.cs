@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using MyBlog.Client;
-using MyBlog.Data;
+using MyBlog.BusinessLogic.Entities;
 
 namespace MyBlog.Components.Account;
 
