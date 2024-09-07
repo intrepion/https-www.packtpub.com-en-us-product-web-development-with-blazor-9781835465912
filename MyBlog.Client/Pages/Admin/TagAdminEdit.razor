@@ -1,5 +1,5 @@
-@page "/admin/UrlNamePlaceholder-edit"
-@page "/admin/UrlNamePlaceholder-edit/{id:guid}"
+@page "/admin/tag-edit"
+@page "/admin/tag-edit/{id:guid}"
 @inject AuthenticationStateProvider GetAuthenticationStateAsync
 @inject NavigationManager NavigationManager
 @inject ITagAdminService TagAdminService
@@ -26,7 +26,7 @@
                     }
                 </div>
                 <div class="col">
-                    <a href="/admin/UrlNamePlaceholder-list">Cancel</a>
+                    <a href="/admin/tag-list">Cancel</a>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
             </div>
@@ -95,7 +95,7 @@
                 return;
             }
 
-            NavigationManager.NavigateTo($"/admin/UrlNamePlaceholder-edit/{dbTag.Id}");
+            NavigationManager.NavigateTo($"/admin/tag-edit/{dbTag.Id}");
         }
         else
         {
@@ -119,7 +119,7 @@
         }
 
         await TagAdminService.DeleteAsync(userName, Id);
-        NavigationManager.NavigateTo($"/admin/UrlNamePlaceholder-list");
+        NavigationManager.NavigateTo($"/admin/tag-list");
     }
 
     @* OnChangeCodePlaceholder *@
