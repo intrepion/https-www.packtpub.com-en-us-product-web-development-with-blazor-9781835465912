@@ -1,4 +1,4 @@
-namespace MyBlog.AcceptanceTests;
+﻿namespace MyBlog.AcceptanceTests;
 
 public class Tests
 {
