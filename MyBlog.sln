@@ -20,6 +20,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyBlog.UnitTests", "MyBlog.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyBlog.ConsoleProject", "MyBlog.ConsoleProject\MyBlog.ConsoleProject.csproj", "{F7B633C6-98EA-4D7E-9472-37A6818BF5A0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyBlog.AcceptanceTests", "MyBlog.AcceptanceTests\MyBlog.AcceptanceTests.csproj", "{BD2D770D-5F51-47FE-9712-744C72575684}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -138,6 +140,18 @@ Global
 		{F7B633C6-98EA-4D7E-9472-37A6818BF5A0}.Release|x64.Build.0 = Release|Any CPU
 		{F7B633C6-98EA-4D7E-9472-37A6818BF5A0}.Release|x86.ActiveCfg = Release|Any CPU
 		{F7B633C6-98EA-4D7E-9472-37A6818BF5A0}.Release|x86.Build.0 = Release|Any CPU
+		{BD2D770D-5F51-47FE-9712-744C72575684}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD2D770D-5F51-47FE-9712-744C72575684}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD2D770D-5F51-47FE-9712-744C72575684}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{BD2D770D-5F51-47FE-9712-744C72575684}.Debug|x64.Build.0 = Debug|Any CPU
+		{BD2D770D-5F51-47FE-9712-744C72575684}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{BD2D770D-5F51-47FE-9712-744C72575684}.Debug|x86.Build.0 = Debug|Any CPU
+		{BD2D770D-5F51-47FE-9712-744C72575684}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD2D770D-5F51-47FE-9712-744C72575684}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD2D770D-5F51-47FE-9712-744C72575684}.Release|x64.ActiveCfg = Release|Any CPU
+		{BD2D770D-5F51-47FE-9712-744C72575684}.Release|x64.Build.0 = Release|Any CPU
+		{BD2D770D-5F51-47FE-9712-744C72575684}.Release|x86.ActiveCfg = Release|Any CPU
+		{BD2D770D-5F51-47FE-9712-744C72575684}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
