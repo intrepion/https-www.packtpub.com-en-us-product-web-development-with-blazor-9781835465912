@@ -83,6 +83,7 @@
     public Guid Id { get; set; }
     Comment comment { get; set; } = new Comment();
     List<BlogPost> blogPostList { get; set; } = [];
+    List<ApplicationUser> commenterList { get; set; } = [];
     @* ListDeclarationCodePlaceholder *@
 
     protected override async Task OnInitializedAsync()
