@@ -7,9 +7,9 @@ public class BlogPostClientAdminService(HttpClient httpClient) : IBlogPostAdminS
 {
     private readonly HttpClient _httpClient = httpClient;
 
-    public async Task<BlogPost?> AddAsync(string userName, BlogPost EntityLowercaseNamePlaceholder)
+    public async Task<BlogPost?> AddAsync(string userName, BlogPost blogPost)
     {
-        var result = await _httpClient.PostAsJsonAsync("/api/BlogPostAdmin", EntityLowercaseNamePlaceholder);
+        var result = await _httpClient.PostAsJsonAsync("/api/BlogPostAdmin", blogPost);
 
         return await result.Content.ReadFromJsonAsync<BlogPost>();
     }
@@ -21,9 +21,9 @@ public class BlogPostClientAdminService(HttpClient httpClient) : IBlogPostAdminS
         return await result.Content.ReadFromJsonAsync<bool>();
     }
 
-    public async Task<BlogPost?> EditAsync(string userName, Guid id, BlogPost EntityLowercaseNamePlaceholder)
+    public async Task<BlogPost?> EditAsync(string userName, Guid id, BlogPost blogPost)
     {
-        var result = await _httpClient.PutAsJsonAsync($"/api/BlogPostAdmin/{id}", EntityLowercaseNamePlaceholder);
+        var result = await _httpClient.PutAsJsonAsync($"/api/BlogPostAdmin/{id}", blogPost);
 
         return await result.Content.ReadFromJsonAsync<BlogPost>();
     }
