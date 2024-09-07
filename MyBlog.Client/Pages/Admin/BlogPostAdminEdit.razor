@@ -83,6 +83,7 @@
     public Guid Id { get; set; }
     BlogPost blogPost { get; set; } = new BlogPost();
     List<ApplicationUser> authorList { get; set; } = [];
+    List<Category> categoryList { get; set; } = [];
     @* ListDeclarationCodePlaceholder *@
 
     protected override async Task OnInitializedAsync()
