@@ -60,6 +60,7 @@
     [Parameter]
     public Guid Id { get; set; }
     Comment comment { get; set; } = new Comment();
+    List<BlogPost> blogPostList { get; set; } = [];
     @* ListDeclarationCodePlaceholder *@
 
     protected override async Task OnInitializedAsync()
