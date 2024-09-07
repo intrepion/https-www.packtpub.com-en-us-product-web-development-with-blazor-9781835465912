@@ -65,9 +65,9 @@ public class BlogPostAdminController(IBlogPostAdminService EntityLowercaseNamePl
             return Ok(null);
         }
 
-        var TableLowercaseNamePlaceholder = await _EntityLowercaseNamePlaceholderAdminService.GetAllAsync();
+        var blogPosts = await _EntityLowercaseNamePlaceholderAdminService.GetAllAsync();
 
-        return Ok(TableLowercaseNamePlaceholder);
+        return Ok(blogPosts);
     }
 
     [HttpGet("{id}")]
