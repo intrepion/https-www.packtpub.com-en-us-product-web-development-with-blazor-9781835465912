@@ -1,4 +1,4 @@
-namespace MyBlog.UnitTests;
+﻿namespace MyBlog.UnitTests;
 
 public class Tests
 {
