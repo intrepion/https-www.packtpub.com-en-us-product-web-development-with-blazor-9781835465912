@@ -65,9 +65,9 @@ public class CategoryAdminController(ICategoryAdminService EntityLowercaseNamePl
             return Ok(null);
         }
 
-        var TableLowercaseNamePlaceholder = await _EntityLowercaseNamePlaceholderAdminService.GetAllAsync();
+        var categories = await _EntityLowercaseNamePlaceholderAdminService.GetAllAsync();
 
-        return Ok(TableLowercaseNamePlaceholder);
+        return Ok(categories);
     }
 
     [HttpGet("{id}")]
