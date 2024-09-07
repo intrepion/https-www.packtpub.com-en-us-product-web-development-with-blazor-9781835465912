@@ -1,11 +1,11 @@
 ﻿using System.Text.Json.Serialization;
-using ApplicationNamePlaceholder.BusinessLogic.Data;
-using ApplicationNamePlaceholder.BusinessLogic.Entities;
-using ApplicationNamePlaceholder.BusinessLogic.Services;
-using ApplicationNamePlaceholder.BusinessLogic.Services.Server;
-using ApplicationNamePlaceholder.Client.Pages;
-using ApplicationNamePlaceholder.Components;
-using ApplicationNamePlaceholder.Components.Account;
+using MyBlog.BusinessLogic.Data;
+using MyBlog.BusinessLogic.Entities;
+using MyBlog.BusinessLogic.Services;
+using MyBlog.BusinessLogic.Services.Server;
+using MyBlog.Client.Pages;
+using MyBlog.Components;
+using MyBlog.Components.Account;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -82,7 +82,7 @@ app.UseAntiforgery();
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode()
     .AddInteractiveWebAssemblyRenderMode()
-    .AddAdditionalAssemblies(typeof(ApplicationNamePlaceholder.Client._Imports).Assembly);
+    .AddAdditionalAssemblies(typeof(MyBlog.Client._Imports).Assembly);
 
 // Add additional endpoints required by the Identity /Account Razor components.
 app.MapAdditionalIdentityEndpoints();
