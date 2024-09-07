@@ -1,4 +1,4 @@
-﻿namespace ApplicationNamePlaceholder.BusinessLogic.Entities;
+﻿namespace MyBlog.BusinessLogic.Entities;
 
 public class Category
 {
