@@ -189,5 +189,16 @@
         blogPost.Author = authorList.Where(x => x.Id.ToString().Equals(id)).FirstOrDefault();
     }
 
+    void CategoryOnChange(ChangeEventArgs args)
+    {
+        if (args.Value == null)
+        {
+            return;
+        }
+
+        var id = (string)args.Value;
+        blogPost.Category = categoryList.Where(x => x.Id.ToString().Equals(id)).FirstOrDefault();
+    }
+
     @* OnChangeCodePlaceholder *@
 }
