@@ -16,7 +16,7 @@
         <h1>Edit Comment</h1>
     }
     <article>
-        <EditForm class="container" Model="EntityLowercaseNamePlaceholder" OnSubmit="HandleSubmit">
+        <EditForm class="container" Model="comment" OnSubmit="HandleSubmit">
             @* EditRowCodePlaceholder *@
             <div class="row">
                 <div class="col">
@@ -37,7 +37,7 @@
 @code {
     [Parameter]
     public Guid Id { get; set; }
-    Comment EntityLowercaseNamePlaceholder { get; set; } = new Comment();
+    Comment comment { get; set; } = new Comment();
     @* ListDeclarationCodePlaceholder *@
 
     protected override async Task OnInitializedAsync()
@@ -58,11 +58,11 @@
 
         if (result == null)
         {
-            EntityLowercaseNamePlaceholder = new Comment();
+            comment = new Comment();
         }
         else
         {
-            EntityLowercaseNamePlaceholder = result;
+            comment = result;
         }
     }
 
@@ -81,14 +81,14 @@
             return;
         }
 
-        if (EntityLowercaseNamePlaceholder == null)
+        if (comment == null)
         {
             return;
         }
 
         if (Id.Equals(Guid.Empty))
         {
-            var dbComment = await CommentAdminService.AddAsync(userName, EntityLowercaseNamePlaceholder);
+            var dbComment = await CommentAdminService.AddAsync(userName, comment);
 
             if (dbComment == null)
             {
@@ -99,7 +99,7 @@
         }
         else
         {
-            await CommentAdminService.EditAsync(userName, Id, EntityLowercaseNamePlaceholder);
+            await CommentAdminService.EditAsync(userName, Id, comment);
         }
     }
 
