@@ -150,5 +150,16 @@
         NavigationManager.NavigateTo($"/admin/comment-list");
     }
 
+    void BlogPostOnChange(ChangeEventArgs args)
+    {
+        if (args.Value == null)
+        {
+            return;
+        }
+
+        var id = (string)args.Value;
+        comment.BlogPost = blogPostList.Where(x => x.Id.ToString().Equals(id)).FirstOrDefault();
+    }
+
     @* OnChangeCodePlaceholder *@
 }
