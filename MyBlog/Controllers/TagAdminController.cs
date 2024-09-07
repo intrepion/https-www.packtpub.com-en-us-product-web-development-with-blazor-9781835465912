@@ -6,12 +6,12 @@ namespace ApplicationNamePlaceholder.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class EntityNamePlaceholderAdminController(IEntityNamePlaceholderAdminService EntityLowercaseNamePlaceholderAdminService) : ControllerBase
+public class TagAdminController(ITagAdminService EntityLowercaseNamePlaceholderAdminService) : ControllerBase
 {
-    private readonly IEntityNamePlaceholderAdminService _EntityLowercaseNamePlaceholderAdminService = EntityLowercaseNamePlaceholderAdminService;
+    private readonly ITagAdminService _EntityLowercaseNamePlaceholderAdminService = EntityLowercaseNamePlaceholderAdminService;
 
     [HttpPost]
-    public async Task<ActionResult<EntityNamePlaceholder?>> Add(EntityNamePlaceholder EntityLowercaseNamePlaceholder)
+    public async Task<ActionResult<Tag?>> Add(Tag EntityLowercaseNamePlaceholder)
     {
         var userName = User.Identity?.Name;
 
@@ -20,13 +20,13 @@ public class EntityNamePlaceholderAdminController(IEntityNamePlaceholderAdminSer
             return Ok(null);
         }
 
-        var addedEntityNamePlaceholder = await _EntityLowercaseNamePlaceholderAdminService.AddAsync(userName, EntityLowercaseNamePlaceholder);
+        var addedTag = await _EntityLowercaseNamePlaceholderAdminService.AddAsync(userName, EntityLowercaseNamePlaceholder);
 
-        return Ok(addedEntityNamePlaceholder);
+        return Ok(addedTag);
     }
 
     [HttpDelete("{id}")]
-    public async Task<ActionResult<EntityNamePlaceholder?>> Delete(Guid id)
+    public async Task<ActionResult<Tag?>> Delete(Guid id)
     {
         var userName = User.Identity?.Name;
 
@@ -41,7 +41,7 @@ public class EntityNamePlaceholderAdminController(IEntityNamePlaceholderAdminSer
     }
 
     [HttpPut("{id}")]
-    public async Task<ActionResult<EntityNamePlaceholder?>> Edit(Guid id, EntityNamePlaceholder EntityLowercaseNamePlaceholder)
+    public async Task<ActionResult<Tag?>> Edit(Guid id, Tag EntityLowercaseNamePlaceholder)
     {
         var userName = User.Identity?.Name;
 
@@ -50,13 +50,13 @@ public class EntityNamePlaceholderAdminController(IEntityNamePlaceholderAdminSer
             return Ok(null);
         }
 
-        var updatedEntityNamePlaceholder = await _EntityLowercaseNamePlaceholderAdminService.EditAsync(userName, id, EntityLowercaseNamePlaceholder);
+        var updatedTag = await _EntityLowercaseNamePlaceholderAdminService.EditAsync(userName, id, EntityLowercaseNamePlaceholder);
 
-        return Ok(updatedEntityNamePlaceholder);
+        return Ok(updatedTag);
     }
 
     [HttpGet]
-    public async Task<ActionResult<EntityNamePlaceholder>?> GetAll()
+    public async Task<ActionResult<Tag>?> GetAll()
     {
         var userName = User.Identity?.Name;
 
@@ -71,7 +71,7 @@ public class EntityNamePlaceholderAdminController(IEntityNamePlaceholderAdminSer
     }
 
     [HttpGet("{id}")]
-    public async Task<ActionResult<EntityNamePlaceholder?>> GetById(Guid id)
+    public async Task<ActionResult<Tag?>> GetById(Guid id)
     {
         var userName = User.Identity?.Name;
 
