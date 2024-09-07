@@ -30,7 +30,7 @@ public class CommentAdminService(ApplicationDbContext applicationDbContext) : IC
         EntityLowercaseNamePlaceholder.ApplicationUserUpdatedBy = user;
         // EntityLowercaseNamePlaceholder.NormalizedPropertyNamePlaceholder = EntityLowercaseNamePlaceholder.PropertyNamePlaceholder?.ToUpper();
 
-        _applicationDbContext.TableNamePlaceholder.Add(EntityLowercaseNamePlaceholder);
+        _applicationDbContext.Comments.Add(EntityLowercaseNamePlaceholder);
 
         await _applicationDbContext.SaveChangesAsync();
 
@@ -51,7 +51,7 @@ public class CommentAdminService(ApplicationDbContext applicationDbContext) : IC
             throw new Exception("Authentication required.");
         }
 
-        var dbComment = await _applicationDbContext.TableNamePlaceholder.FindAsync(id);
+        var dbComment = await _applicationDbContext.Comments.FindAsync(id);
 
         if (dbComment == null)
         {
@@ -82,7 +82,7 @@ public class CommentAdminService(ApplicationDbContext applicationDbContext) : IC
             throw new Exception("Authentication required.");
         }
 
-        var dbComment = await _applicationDbContext.TableNamePlaceholder.FindAsync(id);
+        var dbComment = await _applicationDbContext.Comments.FindAsync(id);
 
         if (dbComment == null)
         {
@@ -105,11 +105,11 @@ public class CommentAdminService(ApplicationDbContext applicationDbContext) : IC
 
     public async Task<List<Comment>?> GetAllAsync()
     {
-        return await _applicationDbContext.TableNamePlaceholder.Include(x => x.ApplicationUserUpdatedBy).ToListAsync();
+        return await _applicationDbContext.Comments.Include(x => x.ApplicationUserUpdatedBy).ToListAsync();
     }
 
     public async Task<Comment?> GetByIdAsync(Guid id)
     {
-        return await _applicationDbContext.TableNamePlaceholder.FindAsync(id);
+        return await _applicationDbContext.Comments.FindAsync(id);
     }
 }
