@@ -16,6 +16,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyBlog.SharedComponentTests
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyBlog.BusinessLogic", "MyBlog.BusinessLogic\MyBlog.BusinessLogic.csproj", "{E4C73F59-B3AC-4F03-8E10-9092224BBED8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyBlog.UnitTests", "MyBlog.UnitTests\MyBlog.UnitTests.csproj", "{9175F915-0789-412D-B506-54E14547EFE5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -110,6 +112,18 @@ Global
 		{E4C73F59-B3AC-4F03-8E10-9092224BBED8}.Release|x64.Build.0 = Release|Any CPU
 		{E4C73F59-B3AC-4F03-8E10-9092224BBED8}.Release|x86.ActiveCfg = Release|Any CPU
 		{E4C73F59-B3AC-4F03-8E10-9092224BBED8}.Release|x86.Build.0 = Release|Any CPU
+		{9175F915-0789-412D-B506-54E14547EFE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9175F915-0789-412D-B506-54E14547EFE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9175F915-0789-412D-B506-54E14547EFE5}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{9175F915-0789-412D-B506-54E14547EFE5}.Debug|x64.Build.0 = Debug|Any CPU
+		{9175F915-0789-412D-B506-54E14547EFE5}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{9175F915-0789-412D-B506-54E14547EFE5}.Debug|x86.Build.0 = Debug|Any CPU
+		{9175F915-0789-412D-B506-54E14547EFE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9175F915-0789-412D-B506-54E14547EFE5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9175F915-0789-412D-B506-54E14547EFE5}.Release|x64.ActiveCfg = Release|Any CPU
+		{9175F915-0789-412D-B506-54E14547EFE5}.Release|x64.Build.0 = Release|Any CPU
+		{9175F915-0789-412D-B506-54E14547EFE5}.Release|x86.ActiveCfg = Release|Any CPU
+		{9175F915-0789-412D-B506-54E14547EFE5}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
