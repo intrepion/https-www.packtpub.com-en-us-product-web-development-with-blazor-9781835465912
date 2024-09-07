@@ -16,7 +16,7 @@
         <h1>Edit Blog Post</h1>
     }
     <article>
-        <EditForm class="container" Model="EntityLowercaseNamePlaceholder" OnSubmit="HandleSubmit">
+        <EditForm class="container" Model="blogPost" OnSubmit="HandleSubmit">
             @* EditRowCodePlaceholder *@
             <div class="row">
                 <div class="col">
@@ -37,7 +37,7 @@
 @code {
     [Parameter]
     public Guid Id { get; set; }
-    BlogPost EntityLowercaseNamePlaceholder { get; set; } = new BlogPost();
+    BlogPost blogPost { get; set; } = new BlogPost();
     @* ListDeclarationCodePlaceholder *@
 
     protected override async Task OnInitializedAsync()
@@ -58,11 +58,11 @@
 
         if (result == null)
         {
-            EntityLowercaseNamePlaceholder = new BlogPost();
+            blogPost = new BlogPost();
         }
         else
         {
-            EntityLowercaseNamePlaceholder = result;
+            blogPost = result;
         }
     }
 
@@ -81,14 +81,14 @@
             return;
         }
 
-        if (EntityLowercaseNamePlaceholder == null)
+        if (blogPost == null)
         {
             return;
         }
 
         if (Id.Equals(Guid.Empty))
         {
-            var dbBlogPost = await BlogPostAdminService.AddAsync(userName, EntityLowercaseNamePlaceholder);
+            var dbBlogPost = await BlogPostAdminService.AddAsync(userName, blogPost);
 
             if (dbBlogPost == null)
             {
@@ -99,7 +99,7 @@
         }
         else
         {
-            await BlogPostAdminService.EditAsync(userName, Id, EntityLowercaseNamePlaceholder);
+            await BlogPostAdminService.EditAsync(userName, Id, blogPost);
         }
     }
 
