@@ -67,6 +67,11 @@
     {
         await base.OnInitializedAsync();
 
+        var authorListResult = await ApplicationUserAdminService.GetAllAsync();
+        if (authorListResult != null)
+        {
+            authorList = authorListResult;
+        }
         @* OnInitializedCodePlaceholder *@
     }
 
