@@ -67,6 +67,11 @@
     {
         await base.OnInitializedAsync();
 
+        var blogPostListResult = await BlogPostAdminService.GetAllAsync();
+        if (blogPostListResult != null)
+        {
+            blogPostList = blogPostListResult;
+        }
         @* OnInitializedCodePlaceholder *@
     }
 
