@@ -6,12 +6,12 @@ namespace ApplicationNamePlaceholder.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class BlogPostAdminController(IBlogPostAdminService EntityLowercaseNamePlaceholderAdminService) : ControllerBase
+public class BlogPostAdminController(IBlogPostAdminService blogPostAdminService) : ControllerBase
 {
-    private readonly IBlogPostAdminService _EntityLowercaseNamePlaceholderAdminService = EntityLowercaseNamePlaceholderAdminService;
+    private readonly IBlogPostAdminService _blogPostAdminService = blogPostAdminService;
 
     [HttpPost]
-    public async Task<ActionResult<BlogPost?>> Add(BlogPost EntityLowercaseNamePlaceholder)
+    public async Task<ActionResult<BlogPost?>> Add(BlogPost blogPost)
     {
         var userName = User.Identity?.Name;
 
@@ -20,7 +20,7 @@ public class BlogPostAdminController(IBlogPostAdminService EntityLowercaseNamePl
             return Ok(null);
         }
 
-        var addedBlogPost = await _EntityLowercaseNamePlaceholderAdminService.AddAsync(userName, EntityLowercaseNamePlaceholder);
+        var addedBlogPost = await _blogPostAdminService.AddAsync(userName, blogPost);
 
         return Ok(addedBlogPost);
     }
@@ -35,13 +35,13 @@ public class BlogPostAdminController(IBlogPostAdminService EntityLowercaseNamePl
             return Ok(null);
         }
 
-        var result = await _EntityLowercaseNamePlaceholderAdminService.DeleteAsync(userName, id);
+        var result = await _blogPostAdminService.DeleteAsync(userName, id);
 
         return Ok(result);
     }
 
     [HttpPut("{id}")]
-    public async Task<ActionResult<BlogPost?>> Edit(Guid id, BlogPost EntityLowercaseNamePlaceholder)
+    public async Task<ActionResult<BlogPost?>> Edit(Guid id, BlogPost blogPost)
     {
         var userName = User.Identity?.Name;
 
@@ -50,7 +50,7 @@ public class BlogPostAdminController(IBlogPostAdminService EntityLowercaseNamePl
             return Ok(null);
         }
 
-        var updatedBlogPost = await _EntityLowercaseNamePlaceholderAdminService.EditAsync(userName, id, EntityLowercaseNamePlaceholder);
+        var updatedBlogPost = await _blogPostAdminService.EditAsync(userName, id, blogPost);
 
         return Ok(updatedBlogPost);
     }
@@ -65,7 +65,7 @@ public class BlogPostAdminController(IBlogPostAdminService EntityLowercaseNamePl
             return Ok(null);
         }
 
-        var blogPosts = await _EntityLowercaseNamePlaceholderAdminService.GetAllAsync();
+        var blogPosts = await _blogPostAdminService.GetAllAsync();
 
         return Ok(blogPosts);
     }
@@ -80,8 +80,8 @@ public class BlogPostAdminController(IBlogPostAdminService EntityLowercaseNamePl
             return Ok(null);
         }
 
-        var EntityLowercaseNamePlaceholder = await _EntityLowercaseNamePlaceholderAdminService.GetByIdAsync(id);
+        var blogPost = await _blogPostAdminService.GetByIdAsync(id);
 
-        return Ok(EntityLowercaseNamePlaceholder);
+        return Ok(blogPost);
     }
 }
