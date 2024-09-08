@@ -18,6 +18,7 @@ builder.Services.AddScoped(http => new HttpClient
 builder.Services.AddScoped<IApplicationRoleAdminService, ApplicationRoleClientAdminService>();
 builder.Services.AddScoped<IApplicationUserAdminService, ApplicationUserClientAdminService>();
 
+builder.Services.AddScoped<IBlogPostAdminService, BlogPostClientAdminService>();
 // RegisterClientServiceCodePlaceholder
 
 await builder.Build().RunAsync();
