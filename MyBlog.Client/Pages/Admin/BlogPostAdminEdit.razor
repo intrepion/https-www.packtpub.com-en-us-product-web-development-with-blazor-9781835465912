@@ -60,6 +60,7 @@
     [Parameter]
     public Guid Id { get; set; }
     BlogPost blogPost { get; set; } = new BlogPost();
+    List<ApplicationUser> authorList { get; set; } = [];
     @* ListDeclarationCodePlaceholder *@
 
     protected override async Task OnInitializedAsync()
