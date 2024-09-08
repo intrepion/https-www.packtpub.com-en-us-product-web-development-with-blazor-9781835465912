@@ -3,41 +3,41 @@ using ApplicationNamePlaceholder.BusinessLogic.Entities;
 
 namespace ApplicationNamePlaceholder.BusinessLogic.Services.Client;
 
-public class EntityNamePlaceholderClientAdminService(HttpClient httpClient) : IEntityNamePlaceholderAdminService
+public class TagClientAdminService(HttpClient httpClient) : ITagAdminService
 {
     private readonly HttpClient _httpClient = httpClient;
 
-    public async Task<EntityNamePlaceholder?> AddAsync(string userName, EntityNamePlaceholder EntityLowercaseNamePlaceholder)
+    public async Task<Tag?> AddAsync(string userName, Tag EntityLowercaseNamePlaceholder)
     {
-        var result = await _httpClient.PostAsJsonAsync("/api/EntityNamePlaceholderAdmin", EntityLowercaseNamePlaceholder);
+        var result = await _httpClient.PostAsJsonAsync("/api/TagAdmin", EntityLowercaseNamePlaceholder);
 
-        return await result.Content.ReadFromJsonAsync<EntityNamePlaceholder>();
+        return await result.Content.ReadFromJsonAsync<Tag>();
     }
 
     public async Task<bool> DeleteAsync(string userName, Guid id)
     {
-        var result = await _httpClient.DeleteAsync($"/api/EntityNamePlaceholderAdmin/{id}");
+        var result = await _httpClient.DeleteAsync($"/api/TagAdmin/{id}");
 
         return await result.Content.ReadFromJsonAsync<bool>();
     }
 
-    public async Task<EntityNamePlaceholder?> EditAsync(string userName, Guid id, EntityNamePlaceholder EntityLowercaseNamePlaceholder)
+    public async Task<Tag?> EditAsync(string userName, Guid id, Tag EntityLowercaseNamePlaceholder)
     {
-        var result = await _httpClient.PutAsJsonAsync($"/api/EntityNamePlaceholderAdmin/{id}", EntityLowercaseNamePlaceholder);
+        var result = await _httpClient.PutAsJsonAsync($"/api/TagAdmin/{id}", EntityLowercaseNamePlaceholder);
 
-        return await result.Content.ReadFromJsonAsync<EntityNamePlaceholder>();
+        return await result.Content.ReadFromJsonAsync<Tag>();
     }
 
-    public async Task<List<EntityNamePlaceholder>?> GetAllAsync()
+    public async Task<List<Tag>?> GetAllAsync()
     {
-        var result = await _httpClient.GetFromJsonAsync<List<EntityNamePlaceholder>>("/api/EntityNamePlaceholderAdmin");
+        var result = await _httpClient.GetFromJsonAsync<List<Tag>>("/api/TagAdmin");
 
         return result;
     }
 
-    public async Task<EntityNamePlaceholder?> GetByIdAsync(Guid id)
+    public async Task<Tag?> GetByIdAsync(Guid id)
     {
-        var result = await _httpClient.GetFromJsonAsync<EntityNamePlaceholder>($"/api/EntityNamePlaceholderAdmin/{id}");
+        var result = await _httpClient.GetFromJsonAsync<Tag>($"/api/TagAdmin/{id}");
 
         return result;
     }
