@@ -16,7 +16,7 @@
         <h1>Edit Tag</h1>
     }
     <article>
-        <EditForm class="container" Model="EntityLowercaseNamePlaceholder" OnSubmit="HandleSubmit">
+        <EditForm class="container" Model="tag" OnSubmit="HandleSubmit">
             @* EditRowCodePlaceholder *@
             <div class="row">
                 <div class="col">
@@ -37,7 +37,7 @@
 @code {
     [Parameter]
     public Guid Id { get; set; }
-    Tag EntityLowercaseNamePlaceholder { get; set; } = new Tag();
+    Tag tag { get; set; } = new Tag();
     @* ListDeclarationCodePlaceholder *@
 
     protected override async Task OnInitializedAsync()
@@ -58,11 +58,11 @@
 
         if (result == null)
         {
-            EntityLowercaseNamePlaceholder = new Tag();
+            tag = new Tag();
         }
         else
         {
-            EntityLowercaseNamePlaceholder = result;
+            tag = result;
         }
     }
 
@@ -81,14 +81,14 @@
             return;
         }
 
-        if (EntityLowercaseNamePlaceholder == null)
+        if (tag == null)
         {
             return;
         }
 
         if (Id.Equals(Guid.Empty))
         {
-            var dbTag = await TagAdminService.AddAsync(userName, EntityLowercaseNamePlaceholder);
+            var dbTag = await TagAdminService.AddAsync(userName, tag);
 
             if (dbTag == null)
             {
@@ -99,7 +99,7 @@
         }
         else
         {
-            await TagAdminService.EditAsync(userName, Id, EntityLowercaseNamePlaceholder);
+            await TagAdminService.EditAsync(userName, Id, tag);
         }
     }
 
