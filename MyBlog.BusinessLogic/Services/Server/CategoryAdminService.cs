@@ -8,7 +8,7 @@ public class CategoryAdminService(ApplicationDbContext applicationDbContext) : I
 {
     private readonly ApplicationDbContext _applicationDbContext = applicationDbContext;
 
-    public async Task<Category?> AddAsync(string userName, Category EntityLowercaseNamePlaceholder)
+    public async Task<Category?> AddAsync(string userName, Category category)
     {
         if (string.IsNullOrWhiteSpace(userName))
         {
@@ -22,19 +22,19 @@ public class CategoryAdminService(ApplicationDbContext applicationDbContext) : I
             throw new Exception("Authentication required.");
         }
 
-        // if (string.IsNullOrWhiteSpace(EntityLowercaseNamePlaceholder.PropertyNamePlaceholder))
+        // if (string.IsNullOrWhiteSpace(category.PropertyNamePlaceholder))
         // {
         //     throw new Exception("Name required.");
         // }
 
-        EntityLowercaseNamePlaceholder.ApplicationUserUpdatedBy = user;
-        // EntityLowercaseNamePlaceholder.NormalizedPropertyNamePlaceholder = EntityLowercaseNamePlaceholder.PropertyNamePlaceholder?.ToUpper();
+        category.ApplicationUserUpdatedBy = user;
+        // category.NormalizedPropertyNamePlaceholder = category.PropertyNamePlaceholder?.ToUpper();
 
-        _applicationDbContext.Categories.Add(EntityLowercaseNamePlaceholder);
+        _applicationDbContext.Categories.Add(category);
 
         await _applicationDbContext.SaveChangesAsync();
 
-        return EntityLowercaseNamePlaceholder;
+        return category;
     }
 
     public async Task<bool> DeleteAsync(string userName, Guid id)
@@ -68,7 +68,7 @@ public class CategoryAdminService(ApplicationDbContext applicationDbContext) : I
         return true;
     }
 
-    public async Task<Category?> EditAsync(string userName, Guid id, Category EntityLowercaseNamePlaceholder)
+    public async Task<Category?> EditAsync(string userName, Guid id, Category category)
     {
         if (string.IsNullOrWhiteSpace(userName))
         {
@@ -89,14 +89,14 @@ public class CategoryAdminService(ApplicationDbContext applicationDbContext) : I
             throw new Exception("Application role not found.");
         }
 
-        // if (string.IsNullOrWhiteSpace(EntityLowercaseNamePlaceholder.PropertyNamePlaceholder))
+        // if (string.IsNullOrWhiteSpace(category.PropertyNamePlaceholder))
         // {
         //     throw new Exception("PropertyNamePlaceholder required.");
         // }
 
         dbCategory.ApplicationUserUpdatedBy = user;
-        // dbCategory.PropertyNamePlaceholder = EntityLowercaseNamePlaceholder.PropertyNamePlaceholder;
-        // dbCategory.NormalizedPropertyNamePlaceholder = EntityLowercaseNamePlaceholder.PropertyNamePlaceholder?.ToUpper();
+        // dbCategory.PropertyNamePlaceholder = category.PropertyNamePlaceholder;
+        // dbCategory.NormalizedPropertyNamePlaceholder = category.PropertyNamePlaceholder?.ToUpper();
 
         await _applicationDbContext.SaveChangesAsync();
 
