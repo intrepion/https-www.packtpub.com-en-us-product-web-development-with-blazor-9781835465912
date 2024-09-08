@@ -1,8 +1,8 @@
-﻿using ApplicationNamePlaceholder.BusinessLogic.Data;
-using ApplicationNamePlaceholder.BusinessLogic.Entities;
+﻿using MyBlog.BusinessLogic.Data;
+using MyBlog.BusinessLogic.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace ApplicationNamePlaceholder.BusinessLogic.Services.Server;
+namespace MyBlog.BusinessLogic.Services.Server;
 
 public class CategoryAdminService(ApplicationDbContext applicationDbContext) : ICategoryAdminService
 {
