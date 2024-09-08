@@ -8,7 +8,7 @@ public class CommentAdminService(ApplicationDbContext applicationDbContext) : IC
 {
     private readonly ApplicationDbContext _applicationDbContext = applicationDbContext;
 
-    public async Task<Comment?> AddAsync(string userName, Comment EntityLowercaseNamePlaceholder)
+    public async Task<Comment?> AddAsync(string userName, Comment comment)
     {
         if (string.IsNullOrWhiteSpace(userName))
         {
@@ -22,19 +22,19 @@ public class CommentAdminService(ApplicationDbContext applicationDbContext) : IC
             throw new Exception("Authentication required.");
         }
 
-        // if (string.IsNullOrWhiteSpace(EntityLowercaseNamePlaceholder.PropertyNamePlaceholder))
+        // if (string.IsNullOrWhiteSpace(comment.PropertyNamePlaceholder))
         // {
         //     throw new Exception("Name required.");
         // }
 
-        EntityLowercaseNamePlaceholder.ApplicationUserUpdatedBy = user;
-        // EntityLowercaseNamePlaceholder.NormalizedPropertyNamePlaceholder = EntityLowercaseNamePlaceholder.PropertyNamePlaceholder?.ToUpper();
+        comment.ApplicationUserUpdatedBy = user;
+        // comment.NormalizedPropertyNamePlaceholder = comment.PropertyNamePlaceholder?.ToUpper();
 
-        _applicationDbContext.Comments.Add(EntityLowercaseNamePlaceholder);
+        _applicationDbContext.Comments.Add(comment);
 
         await _applicationDbContext.SaveChangesAsync();
 
-        return EntityLowercaseNamePlaceholder;
+        return comment;
     }
 
     public async Task<bool> DeleteAsync(string userName, Guid id)
@@ -68,7 +68,7 @@ public class CommentAdminService(ApplicationDbContext applicationDbContext) : IC
         return true;
     }
 
-    public async Task<Comment?> EditAsync(string userName, Guid id, Comment EntityLowercaseNamePlaceholder)
+    public async Task<Comment?> EditAsync(string userName, Guid id, Comment comment)
     {
         if (string.IsNullOrWhiteSpace(userName))
         {
@@ -89,14 +89,14 @@ public class CommentAdminService(ApplicationDbContext applicationDbContext) : IC
             throw new Exception("Application role not found.");
         }
 
-        // if (string.IsNullOrWhiteSpace(EntityLowercaseNamePlaceholder.PropertyNamePlaceholder))
+        // if (string.IsNullOrWhiteSpace(comment.PropertyNamePlaceholder))
         // {
         //     throw new Exception("PropertyNamePlaceholder required.");
         // }
 
         dbComment.ApplicationUserUpdatedBy = user;
-        // dbComment.PropertyNamePlaceholder = EntityLowercaseNamePlaceholder.PropertyNamePlaceholder;
-        // dbComment.NormalizedPropertyNamePlaceholder = EntityLowercaseNamePlaceholder.PropertyNamePlaceholder?.ToUpper();
+        // dbComment.PropertyNamePlaceholder = comment.PropertyNamePlaceholder;
+        // dbComment.NormalizedPropertyNamePlaceholder = comment.PropertyNamePlaceholder?.ToUpper();
 
         await _applicationDbContext.SaveChangesAsync();
 
