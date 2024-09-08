@@ -95,6 +95,11 @@
         {
             authorList = authorListResult;
         }
+        var categoryListResult = await CategoryAdminService.GetAllAsync();
+        if (categoryListResult != null)
+        {
+            categoryList = categoryListResult;
+        }
         @* OnInitializedCodePlaceholder *@
     }
 
