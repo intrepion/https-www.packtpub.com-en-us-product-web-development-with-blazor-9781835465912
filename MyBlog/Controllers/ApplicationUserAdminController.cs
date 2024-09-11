@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MyBlog.BusinessLogic.Entities;
+using MyBlog.BusinessLogic.Entities.DataTransferObjects;
 using MyBlog.BusinessLogic.Services;
 
 namespace MyBlog.Controllers;
@@ -11,7 +12,7 @@ public class ApplicationUserController(IApplicationUserAdminService adminApplica
     private readonly IApplicationUserAdminService _adminApplicationUserService = adminApplicationUserService;
 
     [HttpPost]
-    public async Task<ActionResult<ApplicationUser?>> Add(ApplicationUser applicationUser)
+    public async Task<ActionResult<ApplicationUserAdminDataTransferObject?>> Add(ApplicationUserAdminDataTransferObject applicationUserAdminDataTransferObject)
     {
         var userName = User.Identity?.Name;
 
@@ -20,9 +21,9 @@ public class ApplicationUserController(IApplicationUserAdminService adminApplica
             return Ok(null);
         }
 
-        var addedApplicationUser = await _adminApplicationUserService.AddAsync(userName, applicationUser);
+        var databaseApplicationUserAdminDataTransferObject = await _adminApplicationUserService.AddAsync(userName, applicationUserAdminDataTransferObject);
 
-        return Ok(addedApplicationUser);
+        return Ok(databaseApplicationUserAdminDataTransferObject);
     }
 
     [HttpDelete("{id}")]
@@ -41,7 +42,7 @@ public class ApplicationUserController(IApplicationUserAdminService adminApplica
     }
 
     [HttpPut("{id}")]
-    public async Task<ActionResult<ApplicationUser?>> Edit(Guid id, ApplicationUser applicationUser)
+    public async Task<ActionResult<ApplicationUserAdminDataTransferObject?>> Edit(Guid id, ApplicationUserAdminDataTransferObject applicationUserAdminDataTransferObject)
     {
         var userName = User.Identity?.Name;
 
@@ -50,13 +51,13 @@ public class ApplicationUserController(IApplicationUserAdminService adminApplica
             return Ok(null);
         }
 
-        var updatedApplicationUser = await _adminApplicationUserService.EditAsync(userName, id, applicationUser);
+        var databaseApplicationUserAdminDataTransferObject = await _adminApplicationUserService.EditAsync(userName, id, applicationUserAdminDataTransferObject);
 
-        return Ok(updatedApplicationUser);
+        return Ok(databaseApplicationUserAdminDataTransferObject);
     }
 
     [HttpGet]
-    public async Task<ActionResult<List<ApplicationUser>?>> GetAll()
+    public async Task<ActionResult<List<ApplicationUserAdminDataTransferObject>?>> GetAll()
     {
         var userName = User.Identity?.Name;
 
@@ -65,13 +66,13 @@ public class ApplicationUserController(IApplicationUserAdminService adminApplica
             return Ok(null);
         }
 
-        var applicationUsers = await _adminApplicationUserService.GetAllAsync();
+        var applicationUserAdminDataTransferObjects = await _adminApplicationUserService.GetAllAsync();
 
-        return Ok(applicationUsers);
+        return Ok(applicationUserAdminDataTransferObjects);
     }
 
     [HttpGet("{id}")]
-    public async Task<ActionResult<ApplicationUser?>> GetById(Guid id)
+    public async Task<ActionResult<ApplicationUserAdminDataTransferObject?>> GetById(Guid id)
     {
         var userName = User.Identity?.Name;
 
@@ -80,8 +81,8 @@ public class ApplicationUserController(IApplicationUserAdminService adminApplica
             return Ok(null);
         }
 
-        var applicationUser = await _adminApplicationUserService.GetByIdAsync(id);
+        var applicationUserAdminDataTransferObject = await _adminApplicationUserService.GetByIdAsync(id);
 
-        return Ok(applicationUser);
+        return Ok(applicationUserAdminDataTransferObject);
     }
 }

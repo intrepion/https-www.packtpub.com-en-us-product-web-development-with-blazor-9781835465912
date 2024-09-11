@@ -14,13 +14,13 @@
                 </tr>
             </thead>
             <tbody>
-                @if (applicationRoles == null)
+                @if (applicationRoleAdminDataTransferObjects == null)
                 {
                     <tr>
                         <td colspan="3">Loading...</td>
                     </tr>
                 }
-                else if (applicationRoles.Count == 0)
+                else if (applicationRoleAdminDataTransferObjects.Count == 0)
                 {
                     <tr>
                         <td colspan="3">No application roles found.</td>
@@ -28,13 +28,13 @@
                 }
                 else
                 {
-                    @foreach (var applicationRole in applicationRoles)
+                    @foreach (var applicationRoleAdminDataTransferObject in applicationRoleAdminDataTransferObjects)
                     {
                         <tr>
-                            <td>@applicationRole.Id</td>
-                            <td>@applicationRole.Name</td>
+                            <td>@applicationRoleAdminDataTransferObject.Id</td>
+                            <td>@applicationRoleAdminDataTransferObject.Name</td>
                             <td>
-                                <NavButton Href="@("/admin/application-role-edit/" + applicationRole.Id)" Name="Edit" />
+                                <NavButton Href="@("/admin/application-role-edit/" + applicationRoleAdminDataTransferObject.Id)" Name="Edit" />
                             </td>
                         </tr>
                     }
@@ -46,10 +46,10 @@
 </section>
 
 @code {
-    List<ApplicationRole>? applicationRoles = null;
+    List<ApplicationRoleAdminDataTransferObject>? applicationRoleAdminDataTransferObjects = null;
 
     protected override async Task OnInitializedAsync()
     {
-        applicationRoles = await ApplicationRoleAdminService.GetAllAsync();
+        applicationRoleAdminDataTransferObjects = await ApplicationRoleAdminService.GetAllAsync();
     }
 }

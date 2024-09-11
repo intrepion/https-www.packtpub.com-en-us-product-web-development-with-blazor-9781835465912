@@ -17,13 +17,13 @@
                 </tr>
             </thead>
             <tbody>
-                @if (ApplicationUsers == null)
+                @if (applicationUserAdminDataTransferObjects == null)
                 {
                     <tr>
                         <td colspan="6">Loading...</td>
                     </tr>
                 }
-                else if (ApplicationUsers.Count == 0)
+                else if (applicationUserAdminDataTransferObjects.Count == 0)
                 {
                     <tr>
                         <td colspan="6">No application users found.</td>
@@ -31,34 +31,34 @@
                 }
                 else
                 {
-                    @foreach (var ApplicationUser in ApplicationUsers)
+                    @foreach (var applicationUserAdminDataTransferObject in applicationUserAdminDataTransferObjects)
                     {
                         <tr>
-                            @if (ApplicationUser == null)
+                            @if (applicationUserAdminDataTransferObject == null)
                             {
                                 <td colspan="6">Application user is null.</td>
                             }
                             else
                             {
                                 <td>
-                                    @if (ApplicationUser.ApplicationUserRoles != null)
+                                    @if (applicationUserAdminDataTransferObject.ApplicationRoles != null)
                                     {
-                                        @for (var i = 0; i < ApplicationUser.ApplicationUserRoles.Count; i += 1)
+                                        @for (var i = 0; i < applicationUserAdminDataTransferObject.ApplicationRoles.Count; i += 1)
                                         {
                                             if (i > 0)
                                             {
                                                 <span>, </span>
                                             }
-                                            <span>@ApplicationUser.ApplicationUserRoles.ToList()[i].ApplicationRole?.Name</span>
+                                            <span>@applicationUserAdminDataTransferObject.ApplicationRoles.ToList()[i].Name</span>
                                         }
                                     }
                                 </td>
-                                <td>@ApplicationUser.Email</td>
-                                <td>@ApplicationUser.Id</td>
-                                <td>@ApplicationUser.PhoneNumber</td>
-                                <td>@ApplicationUser.UserName</td>
+                                <td>@applicationUserAdminDataTransferObject.Email</td>
+                                <td>@applicationUserAdminDataTransferObject.Id</td>
+                                <td>@applicationUserAdminDataTransferObject.PhoneNumber</td>
+                                <td>@applicationUserAdminDataTransferObject.UserName</td>
                                 <td>
-                                    <NavButton Href="@("/admin/application-user-edit/" + ApplicationUser.Id)" Name="Edit" />
+                                    <NavButton Href="@("/admin/application-user-edit/" + applicationUserAdminDataTransferObject.Id)" Name="Edit" />
                                 </td>
                             }
                         </tr>
@@ -71,10 +71,10 @@
 </section>
 
 @code {
-    List<ApplicationUser>? ApplicationUsers;
+    List<ApplicationUserAdminDataTransferObject>? applicationUserAdminDataTransferObjects;
 
     protected override async Task OnInitializedAsync()
     {
-        ApplicationUsers = await ApplicationUserAdminService.GetAllAsync();
+        applicationUserAdminDataTransferObjects = await ApplicationUserAdminService.GetAllAsync();
     }
 }

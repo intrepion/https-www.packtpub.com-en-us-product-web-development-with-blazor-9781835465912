@@ -1,5 +1,5 @@
 ﻿using System.Net.Http.Json;
-using MyBlog.BusinessLogic.Entities;
+using MyBlog.BusinessLogic.Entities.DataTransferObjects;
 
 namespace MyBlog.BusinessLogic.Services.Client;
 
@@ -7,37 +7,37 @@ public class ApplicationUserClientAdminService(HttpClient httpClient) : IApplica
 {
     private readonly HttpClient _httpClient = httpClient;
 
-    public async Task<ApplicationUser?> AddAsync(string userName, ApplicationUser applicationUser)
+    public async Task<ApplicationUserAdminDataTransferObject?> AddAsync(string userName, ApplicationUserAdminDataTransferObject applicationUserAdminDataTransferObject)
     {
-        var result = await _httpClient.PostAsJsonAsync("/api/ApplicationUser", applicationUser);
+        var result = await _httpClient.PostAsJsonAsync("/api/applicationUserAdmin", applicationUserAdminDataTransferObject);
 
-        return await result.Content.ReadFromJsonAsync<ApplicationUser>();
+        return await result.Content.ReadFromJsonAsync<ApplicationUserAdminDataTransferObject>();
     }
 
     public async Task<bool> DeleteAsync(string userName, Guid id)
     {
-        var result = await _httpClient.DeleteAsync($"/api/ApplicationUser/{id}");
+        var result = await _httpClient.DeleteAsync($"/api/applicationUserAdmin/{id}");
 
         return await result.Content.ReadFromJsonAsync<bool>();
     }
 
-    public async Task<ApplicationUser?> EditAsync(string userName, Guid id, ApplicationUser applicationUser)
+    public async Task<ApplicationUserAdminDataTransferObject?> EditAsync(string userName, Guid id, ApplicationUserAdminDataTransferObject applicationUserAdminDataTransferObject)
     {
-        var result = await _httpClient.PutAsJsonAsync($"/api/ApplicationUser/{id}", applicationUser);
+        var result = await _httpClient.PutAsJsonAsync($"/api/applicationUserAdmin/{id}", applicationUserAdminDataTransferObject);
 
-        return await result.Content.ReadFromJsonAsync<ApplicationUser>();
+        return await result.Content.ReadFromJsonAsync<ApplicationUserAdminDataTransferObject>();
     }
 
-    public async Task<List<ApplicationUser>?> GetAllAsync()
+    public async Task<List<ApplicationUserAdminDataTransferObject>?> GetAllAsync()
     {
-        var result = await _httpClient.GetFromJsonAsync<List<ApplicationUser>>("/api/ApplicationUser");
+        var result = await _httpClient.GetFromJsonAsync<List<ApplicationUserAdminDataTransferObject>>("/api/applicationUserAdmin");
 
         return result;
     }
 
-    public async Task<ApplicationUser?> GetByIdAsync(Guid id)
+    public async Task<ApplicationUserAdminDataTransferObject?> GetByIdAsync(Guid id)
     {
-        var result = await _httpClient.GetFromJsonAsync<ApplicationUser>($"/api/ApplicationUser/{id}");
+        var result = await _httpClient.GetFromJsonAsync<ApplicationUserAdminDataTransferObject>($"/api/applicationUserAdmin/{id}");
 
         return result;
     }

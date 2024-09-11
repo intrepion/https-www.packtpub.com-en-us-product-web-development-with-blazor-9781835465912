@@ -40,7 +40,7 @@
                     </label>
                 </div>
             </div>
-            <div class="row">
+            @* <div class="row">
                 <div class="col">
                     <label>
                         Commenter:
@@ -60,7 +60,7 @@
                         </select>
                     </label>
                 </div>
-            </div>
+            </div> *@
             <div class="row">
                 <div class="col">
                     <label>
@@ -99,7 +99,7 @@
     public Guid Id { get; set; }
     Comment comment { get; set; } = new Comment();
     List<BlogPost> blogPostList { get; set; } = [];
-    List<ApplicationUser> commenterList { get; set; } = [];
+    @* List<ApplicationUserAdminDataTransferObject> commenterList { get; set; } = []; *@
     @* ListDeclarationCodePlaceholder *@
 
     protected override async Task OnInitializedAsync()
@@ -111,11 +111,13 @@
         {
             blogPostList = blogPostListResult;
         }
-        var commenterListResult = await ApplicationUserAdminService.GetAllAsync();
+
+        @* var commenterListResult = await ApplicationUserAdminService.GetAllAsync();
         if (commenterListResult != null)
         {
             commenterList = commenterListResult;
-        }
+        } *@
+
         @* OnInitializedCodePlaceholder *@
     }
 
@@ -205,7 +207,7 @@
         comment.BlogPost = blogPostList.Where(x => x.Id.ToString().Equals(id)).FirstOrDefault();
     }
 
-    void CommenterOnChange(ChangeEventArgs args)
+    @* void CommenterOnChange(ChangeEventArgs args)
     {
         if (args.Value == null)
         {
@@ -214,7 +216,7 @@
 
         var id = (string)args.Value;
         comment.Commenter = commenterList.Where(x => x.Id.ToString().Equals(id)).FirstOrDefault();
-    }
+    } *@
 
     @* OnChangeCodePlaceholder *@
 }

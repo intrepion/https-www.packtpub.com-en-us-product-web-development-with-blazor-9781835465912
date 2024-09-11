@@ -1,12 +1,12 @@
-﻿using MyBlog.BusinessLogic.Entities;
+﻿using MyBlog.BusinessLogic.Entities.DataTransferObjects;
 
 namespace MyBlog.BusinessLogic.Services;
 
 public interface IApplicationRoleAdminService
 {
-    Task<ApplicationRole?> AddAsync(string userName, ApplicationRole applicationRole);
+    Task<ApplicationRoleAdminDataTransferObject?> AddAsync(string userName, ApplicationRoleAdminDataTransferObject applicationRoleAdminDataTransferObject);
     Task<bool> DeleteAsync(string userName, Guid id);
-    Task<ApplicationRole?> EditAsync(string userName, Guid id, ApplicationRole applicationRole);
-    Task<List<ApplicationRole>?> GetAllAsync();
-    Task<ApplicationRole?> GetByIdAsync(Guid id);
+    Task<ApplicationRoleAdminDataTransferObject?> EditAsync(string userName, Guid id, ApplicationRoleAdminDataTransferObject applicationRoleAdminDataTransferObject);
+    Task<List<ApplicationRoleAdminDataTransferObject>?> GetAllAsync();
+    Task<ApplicationRoleAdminDataTransferObject?> GetByIdAsync(Guid id);
 }

@@ -1,5 +1,5 @@
 ﻿using System.Net.Http.Json;
-using MyBlog.BusinessLogic.Entities;
+using MyBlog.BusinessLogic.Entities.DataTransferObjects;
 
 namespace MyBlog.BusinessLogic.Services.Client;
 
@@ -7,37 +7,37 @@ public class ApplicationRoleClientAdminService(HttpClient httpClient) : IApplica
 {
     private readonly HttpClient _httpClient = httpClient;
 
-    public async Task<ApplicationRole?> AddAsync(string userName, ApplicationRole applicationRole)
+    public async Task<ApplicationRoleAdminDataTransferObject?> AddAsync(string userName, ApplicationRoleAdminDataTransferObject applicationRoleAdminDataTransferObject)
     {
-        var result = await _httpClient.PostAsJsonAsync("/api/ApplicationRole", applicationRole);
+        var result = await _httpClient.PostAsJsonAsync("/api/applicationRoleAdmin", applicationRoleAdminDataTransferObject);
 
-        return await result.Content.ReadFromJsonAsync<ApplicationRole>();
+        return await result.Content.ReadFromJsonAsync<ApplicationRoleAdminDataTransferObject>();
     }
 
     public async Task<bool> DeleteAsync(string userName, Guid id)
     {
-        var result = await _httpClient.DeleteAsync($"/api/ApplicationRole/{id}");
+        var result = await _httpClient.DeleteAsync($"/api/applicationRoleAdmin/{id}");
 
         return await result.Content.ReadFromJsonAsync<bool>();
     }
 
-    public async Task<ApplicationRole?> EditAsync(string userName, Guid id, ApplicationRole applicationRole)
+    public async Task<ApplicationRoleAdminDataTransferObject?> EditAsync(string userName, Guid id, ApplicationRoleAdminDataTransferObject applicationRoleAdminDataTransferObject)
     {
-        var result = await _httpClient.PutAsJsonAsync($"/api/ApplicationRole/{id}", applicationRole);
+        var result = await _httpClient.PutAsJsonAsync($"/api/applicationRoleAdmin/{id}", applicationRoleAdminDataTransferObject);
 
-        return await result.Content.ReadFromJsonAsync<ApplicationRole>();
+        return await result.Content.ReadFromJsonAsync<ApplicationRoleAdminDataTransferObject>();
     }
 
-    public async Task<List<ApplicationRole>?> GetAllAsync()
+    public async Task<List<ApplicationRoleAdminDataTransferObject>?> GetAllAsync()
     {
-        var result = await _httpClient.GetFromJsonAsync<List<ApplicationRole>>("/api/ApplicationRole");
+        var result = await _httpClient.GetFromJsonAsync<List<ApplicationRoleAdminDataTransferObject>>("/api/applicationRoleAdmin");
 
         return result;
     }
 
-    public async Task<ApplicationRole?> GetByIdAsync(Guid id)
+    public async Task<ApplicationRoleAdminDataTransferObject?> GetByIdAsync(Guid id)
     {
-        var result = await _httpClient.GetFromJsonAsync<ApplicationRole>($"/api/ApplicationRole/{id}");
+        var result = await _httpClient.GetFromJsonAsync<ApplicationRoleAdminDataTransferObject>($"/api/applicationRoleAdmin/{id}");
 
         return result;
     }

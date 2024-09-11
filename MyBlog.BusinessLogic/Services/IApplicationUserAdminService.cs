@@ -1,12 +1,12 @@
-﻿using MyBlog.BusinessLogic.Entities;
+﻿using MyBlog.BusinessLogic.Entities.DataTransferObjects;
 
 namespace MyBlog.BusinessLogic.Services;
 
 public interface IApplicationUserAdminService
 {
-    Task<ApplicationUser?> AddAsync(string userName, ApplicationUser applicationUser);
+    Task<ApplicationUserAdminDataTransferObject?> AddAsync(string userName, ApplicationUserAdminDataTransferObject applicationUserAdminDataTransferObject);
     Task<bool> DeleteAsync(string userName, Guid id);
-    Task<ApplicationUser?> EditAsync(string userName, Guid id, ApplicationUser applicationUser);
-    Task<List<ApplicationUser>?> GetAllAsync();
-    Task<ApplicationUser?> GetByIdAsync(Guid id);
+    Task<ApplicationUserAdminDataTransferObject?> EditAsync(string userName, Guid id, ApplicationUserAdminDataTransferObject applicationUserAdminDataTransferObject);
+    Task<List<ApplicationUserAdminDataTransferObject>?> GetAllAsync();
+    Task<ApplicationUserAdminDataTransferObject?> GetByIdAsync(Guid id);
 }

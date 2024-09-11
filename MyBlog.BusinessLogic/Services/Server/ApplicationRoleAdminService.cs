@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MyBlog.BusinessLogic.Data;
 using MyBlog.BusinessLogic.Entities;
+using MyBlog.BusinessLogic.Entities.DataTransferObjects;
 
 namespace MyBlog.BusinessLogic.Services.Server;
 
@@ -8,33 +9,39 @@ public class ApplicationRoleAdminService(ApplicationDbContext applicationDbConte
 {
     private readonly ApplicationDbContext _applicationDbContext = applicationDbContext;
 
-    public async Task<ApplicationRole?> AddAsync(string userName, ApplicationRole applicationRole)
+    public async Task<ApplicationRoleAdminDataTransferObject?> AddAsync(string userName, ApplicationRoleAdminDataTransferObject applicationRoleAdminDataTransferObject)
     {
         if (string.IsNullOrWhiteSpace(userName))
         {
             throw new Exception("UserName is required.");
         }
 
-        var user = await _applicationDbContext.Users.FirstOrDefaultAsync(x => userName.ToUpper().Equals(x.NormalizedUserName));
+        var user = await _applicationDbContext.Users.FirstOrDefaultAsync(x => userName.ToUpperInvariant().Equals(x.NormalizedUserName));
 
         if (user == null)
         {
             throw new Exception("Authentication required.");
         }
 
-        if (string.IsNullOrWhiteSpace(applicationRole.Name))
+        if (string.IsNullOrWhiteSpace(applicationRoleAdminDataTransferObject.Name))
         {
             throw new Exception("Name required.");
         }
 
-        applicationRole.ApplicationUserUpdatedBy = user;
-        applicationRole.NormalizedName = applicationRole.Name?.ToUpper();
+        var databaseApplicationRole = new ApplicationRole
+        {
+            ApplicationUserUpdatedBy = user,
+            Name = applicationRoleAdminDataTransferObject.Name,
+            NormalizedName = applicationRoleAdminDataTransferObject.Name?.ToUpperInvariant()
+        };
 
-        _applicationDbContext.Roles.Add(applicationRole);
+        var result = await _applicationDbContext.Roles.AddAsync(databaseApplicationRole);
+
+        var newDatabaseApplicationRoleAdminDataTransferObject = ApplicationRoleAdminDataTransferObject.FromApplicationRole(result.Entity);
 
         await _applicationDbContext.SaveChangesAsync();
 
-        return applicationRole;
+        return newDatabaseApplicationRoleAdminDataTransferObject;
     }
 
     public async Task<bool> DeleteAsync(string userName, Guid id)
@@ -44,72 +51,89 @@ public class ApplicationRoleAdminService(ApplicationDbContext applicationDbConte
             throw new Exception("UserName is required.");
         }
 
-        var user = await _applicationDbContext.Users.FirstOrDefaultAsync(x => userName.ToUpper().Equals(x.NormalizedUserName));
+        var user = await _applicationDbContext.Users.FirstOrDefaultAsync(x => userName.ToUpperInvariant().Equals(x.NormalizedUserName));
 
         if (user == null)
         {
             throw new Exception("Authentication required.");
         }
 
-        var dbApplicationRole = await _applicationDbContext.Roles.FindAsync(id);
+        var databaseApplicationRole = await _applicationDbContext.Roles.FindAsync(id);
 
-        if (dbApplicationRole == null)
+        if (databaseApplicationRole == null)
         {
             return false;
         }
 
-        dbApplicationRole.ApplicationUserUpdatedBy = user;
+        databaseApplicationRole.ApplicationUserUpdatedBy = user;
+
         await _applicationDbContext.SaveChangesAsync();
 
-        _applicationDbContext.Remove(dbApplicationRole);
+        _applicationDbContext.Remove(databaseApplicationRole);
 
         await _applicationDbContext.SaveChangesAsync();
 
         return true;
     }
 
-    public async Task<ApplicationRole?> EditAsync(string userName, Guid id, ApplicationRole applicationRole)
+    public async Task<ApplicationRoleAdminDataTransferObject?> EditAsync(string userName, Guid id, ApplicationRoleAdminDataTransferObject applicationRoleAdminDataTransferObject)
     {
         if (string.IsNullOrWhiteSpace(userName))
         {
             throw new Exception("UserName is required.");
         }
 
-        var user = await _applicationDbContext.Users.FirstOrDefaultAsync(x => userName.ToUpper().Equals(x.NormalizedUserName));
+        var user = await _applicationDbContext.Users.FirstOrDefaultAsync(x => userName.ToUpperInvariant().Equals(x.NormalizedUserName));
 
         if (user == null)
         {
             throw new Exception("Authentication required.");
         }
 
-        var dbApplicationRole = await _applicationDbContext.Roles.FindAsync(id);
+        var databaseApplicationRole = await _applicationDbContext.Roles.FindAsync(id);
 
-        if (dbApplicationRole == null)
+        if (databaseApplicationRole == null)
         {
             throw new Exception("Application role not found.");
         }
 
-        if (string.IsNullOrWhiteSpace(applicationRole.Name))
+        if (string.IsNullOrWhiteSpace(applicationRoleAdminDataTransferObject.Name))
         {
             throw new Exception("Name required.");
         }
 
-        dbApplicationRole.ApplicationUserUpdatedBy = user;
-        dbApplicationRole.Name = applicationRole.Name;
-        dbApplicationRole.NormalizedName = applicationRole.Name?.ToUpper();
+        databaseApplicationRole.ApplicationUserUpdatedBy = user;
+        databaseApplicationRole.Name = applicationRoleAdminDataTransferObject.Name;
+        databaseApplicationRole.NormalizedName = applicationRoleAdminDataTransferObject.Name?.ToUpperInvariant();
 
         await _applicationDbContext.SaveChangesAsync();
 
-        return dbApplicationRole;
+        return applicationRoleAdminDataTransferObject;
     }
 
-    public async Task<List<ApplicationRole>?> GetAllAsync()
+    public async Task<List<ApplicationRoleAdminDataTransferObject>?> GetAllAsync()
     {
-        return await _applicationDbContext.Roles.ToListAsync();
+        var result = await _applicationDbContext.Roles.ToListAsync();
+
+        if (result == null)
+        {
+            return null;
+        }
+
+        var applicationRoleAdminDataTransferObject = new ApplicationRoleAdminDataTransferObject();
+
+        return result.Select(x => ApplicationRoleAdminDataTransferObject.FromApplicationRole(x)).ToList();
     }
 
-    public async Task<ApplicationRole?> GetByIdAsync(Guid id)
+    public async Task<ApplicationRoleAdminDataTransferObject?> GetByIdAsync(Guid id)
     {
-        return await _applicationDbContext.Roles.FindAsync(id);
+        var result = await _applicationDbContext.Roles.FindAsync(id);
+
+        if (result == null)
+        {
+            return null;
+        }
+
+        return ApplicationRoleAdminDataTransferObject.FromApplicationRole(result);
     }
 }

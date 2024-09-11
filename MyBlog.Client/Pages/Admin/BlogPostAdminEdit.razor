@@ -19,27 +19,27 @@
     }
     <article>
         <EditForm class="container" Model="blogPost" OnSubmit="HandleSubmit">
-            <div class="row">
+            @* <div class="row">
                 <div class="col">
                     <label>
                         Author:
                         <select @onchange="AuthorOnChange">
                             <option>Select author...</option>
-                            @foreach (var author in authorList)
+                            @foreach (var authorItem in authorList)
                             {
-                                if (blogPost.Author == null ? false : blogPost.Author.Id.Equals(author.Id))
+                                if (blogPost.Author == null ? false : blogPost.Author.Id.Equals(authorItem.Id))
                                 {
-                                    <option value="@author.Id" selected>@author.UserName</option>
+                                    <option value="@authorItem.Id" selected>@authorItem.UserName</option>
                                 }
                                 else
                                 {
-                                    <option value="@author.Id">@author.UserName</option>
+                                    <option value="@authorItem.Id">@authorItem.UserName</option>
                                 }
                             }
                         </select>
                     </label>
                 </div>
-            </div>
+            </div> *@
             <div class="row">
                 <div class="col">
                     <label>
@@ -114,16 +114,18 @@
     {
         await base.OnInitializedAsync();
 
-        var authorListResult = await ApplicationUserAdminService.GetAllAsync();
+        @* var authorListResult = await ApplicationUserAdminService.GetAllAsync();
         if (authorListResult != null)
         {
             authorList = authorListResult;
-        }
+        } *@
+
         var categoryListResult = await CategoryAdminService.GetAllAsync();
         if (categoryListResult != null)
         {
             categoryList = categoryListResult;
         }
+
         @* OnInitializedCodePlaceholder *@
     }
 
@@ -202,7 +204,11 @@
         NavigationManager.NavigateTo($"/admin/blog-post-list");
     }
 
-    void AuthorOnChange(ChangeEventArgs args)
+    @* ManyAddCodePlaceholder *@
+
+    @* ManyChangeCodePlaceholder *@
+
+    @* void AuthorOnChange(ChangeEventArgs args)
     {
         if (args.Value == null)
         {
@@ -211,7 +217,7 @@
 
         var id = (string)args.Value;
         blogPost.Author = authorList.Where(x => x.Id.ToString().Equals(id)).FirstOrDefault();
-    }
+    } *@
 
     void CategoryOnChange(ChangeEventArgs args)
     {
