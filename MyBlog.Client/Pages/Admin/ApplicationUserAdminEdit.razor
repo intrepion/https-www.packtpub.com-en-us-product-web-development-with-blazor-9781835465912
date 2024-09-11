@@ -198,9 +198,6 @@
 
     void ApplicationRoleChange(ChangeEventArgs e, int index)
     {
-        Console.WriteLine("e.Value: " + e.Value);
-        Console.WriteLine("i: " + index);
-
         if (e == null)
         {
             return;
@@ -213,12 +210,6 @@
 
         var applicationRoleAdminDataTransferObject = applicationRoleAdminDataTransferObjectList?.Where(x => x.Id.ToString().Equals(e.Value)).FirstOrDefault();
 
-        Console.WriteLine("applicationRoleAdminDataTransferObject.Id: " + applicationRoleAdminDataTransferObject?.Id);
-        Console.WriteLine("applicationRoleAdminDataTransferObject.Name: " + applicationRoleAdminDataTransferObject?.Name);
-
         applicationUserAdminEditModel.ApplicationRoles[index] = ApplicationRoleAdminEditModel.FromApplicationRoleAdminDataTransferObject(applicationRoleAdminDataTransferObject);
-
-        Console.WriteLine("applicationUserAdminEditModel.ApplicationRoles[index].Id: " + applicationUserAdminEditModel.ApplicationRoles[index].Id);
-        Console.WriteLine("applicationUserAdminEditModel.ApplicationRoles[index].Name: " + applicationUserAdminEditModel.ApplicationRoles[index].Name);
     }
 }

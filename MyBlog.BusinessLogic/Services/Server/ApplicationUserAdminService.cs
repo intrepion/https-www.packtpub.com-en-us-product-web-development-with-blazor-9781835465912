@@ -136,6 +136,30 @@ public class ApplicationUserAdminService(ApplicationDbContext applicationDbConte
         databaseApplicationUser.UserName = applicationUserAdminDataTransferObject.UserName;
         databaseApplicationUser.NormalizedUserName = applicationUserAdminDataTransferObject.UserName?.ToUpper();
 
+        var applicationRoleIds = applicationUserAdminDataTransferObject.ApplicationRoles.Select(x => x.Id);
+        var deletedRoles = databaseApplicationUser.ApplicationUserRoles.Where(x => !(x.ApplicationRole != null && applicationRoleIds.Contains(x.ApplicationRole.Id)));
+        applicationUserAdminDataTransferObject.ApplicationRoles = applicationUserAdminDataTransferObject.ApplicationRoles.Where(x => !applicationRoleIds.Contains(x.Id)).ToList();
+        var additionalApplicationRoleIds = applicationRoleIds.Where(x => !databaseApplicationUser.ApplicationUserRoles.Select(x => x.RoleId).Contains(x)).ToList();
+        var additionalApplicationRoles = await _applicationDbContext.Roles.Where(x => additionalApplicationRoleIds.Contains(x.Id)).ToListAsync();
+
+        foreach (var deletedRole in deletedRoles)
+        {
+            _applicationDbContext.Remove(deletedRole);
+        }
+
+        foreach (var additionalApplicationRole in additionalApplicationRoles)
+        {
+            var applicationUserRole = new ApplicationUserRole
+            {
+                ApplicationRole = additionalApplicationRole,
+                ApplicationUser = databaseApplicationUser,
+                ApplicationUserUpdatedBy = user,
+            };
+
+            await _applicationDbContext.UserRoles.AddAsync(applicationUserRole);
+            applicationUserAdminDataTransferObject.ApplicationRoles.Add(ApplicationRoleAdminDataTransferObject.FromApplicationRole(additionalApplicationRole));
+        }
+
         await _applicationDbContext.SaveChangesAsync();
 
         return applicationUserAdminDataTransferObject;
@@ -143,7 +167,7 @@ public class ApplicationUserAdminService(ApplicationDbContext applicationDbConte
 
     public async Task<List<ApplicationUserAdminDataTransferObject>?> GetAllAsync()
     {
-        var result = await _applicationDbContext.Users.ToListAsync();
+        var result = await _applicationDbContext.Users.Include(x => x.ApplicationUserRoles).ThenInclude(x => x.ApplicationRole).ToListAsync();
 
         if (result == null)
         {
@@ -157,7 +181,7 @@ public class ApplicationUserAdminService(ApplicationDbContext applicationDbConte
 
     public async Task<ApplicationUserAdminDataTransferObject?> GetByIdAsync(Guid id)
     {
-        var result = await _applicationDbContext.Users.FindAsync(id);
+        var result = await _applicationDbContext.Users.Include(x => x.ApplicationUserRoles).ThenInclude(x => x.ApplicationRole).Where(x => x.Id.Equals(id)).FirstOrDefaultAsync();
 
         if (result == null)
         {

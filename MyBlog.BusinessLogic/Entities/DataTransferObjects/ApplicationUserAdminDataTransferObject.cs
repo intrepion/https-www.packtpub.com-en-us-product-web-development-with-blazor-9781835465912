@@ -15,9 +15,11 @@ public class ApplicationUserAdminDataTransferObject
             return new ApplicationUserAdminDataTransferObject();
         }
 
+        var applicationRoleAdminDataTransferObjects = applicationUser.ApplicationUserRoles.Select(x => ApplicationRoleAdminDataTransferObject.FromApplicationRole(x.ApplicationRole)).ToList();
+
         return new ApplicationUserAdminDataTransferObject
         {
-            ApplicationRoles = applicationUser.ApplicationUserRoles.Select(x => ApplicationRoleAdminDataTransferObject.FromApplicationRole(x.ApplicationRole)).ToList(),
+            ApplicationRoles = applicationRoleAdminDataTransferObjects,
             Email = applicationUser.Email ?? string.Empty,
             Id = applicationUser.Id,
             PhoneNumber = applicationUser.PhoneNumber ?? string.Empty,
