@@ -150,5 +150,16 @@
         NavigationManager.NavigateTo($"/admin/blog-post-list");
     }
 
+    void AuthorOnChange(ChangeEventArgs args)
+    {
+        if (args.Value == null)
+        {
+            return;
+        }
+
+        var id = (string)args.Value;
+        blogPost.Author = authorList.Where(x => x.Id.ToString().Equals(id)).FirstOrDefault();
+    }
+
     @* OnChangeCodePlaceholder *@
 }
