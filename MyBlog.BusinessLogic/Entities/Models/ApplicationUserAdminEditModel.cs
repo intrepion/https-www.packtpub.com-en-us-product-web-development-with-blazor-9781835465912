@@ -1,6 +1,6 @@
-﻿using ApplicationNamePlaceholder.BusinessLogic.Entities.DataTransferObjects;
+﻿using MyBlog.BusinessLogic.Entities.DataTransferObjects;
 
-namespace ApplicationNamePlaceholder.BusinessLogic.Entities.Models;
+namespace MyBlog.BusinessLogic.Entities.Models;
 
 public class ApplicationUserAdminEditModel
 {
