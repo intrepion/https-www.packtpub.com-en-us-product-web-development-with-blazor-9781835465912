@@ -16,7 +16,7 @@
         <h1>Edit Category</h1>
     }
     <article>
-        <EditForm class="container" Model="EntityLowercaseNamePlaceholder" OnSubmit="HandleSubmit">
+        <EditForm class="container" Model="category" OnSubmit="HandleSubmit">
             @* EditRowCodePlaceholder *@
             <div class="row">
                 <div class="col">
@@ -37,7 +37,7 @@
 @code {
     [Parameter]
     public Guid Id { get; set; }
-    Category EntityLowercaseNamePlaceholder { get; set; } = new Category();
+    Category category { get; set; } = new Category();
     @* ListDeclarationCodePlaceholder *@
 
     protected override async Task OnInitializedAsync()
@@ -58,11 +58,11 @@
 
         if (result == null)
         {
-            EntityLowercaseNamePlaceholder = new Category();
+            category = new Category();
         }
         else
         {
-            EntityLowercaseNamePlaceholder = result;
+            category = result;
         }
     }
 
@@ -81,14 +81,14 @@
             return;
         }
 
-        if (EntityLowercaseNamePlaceholder == null)
+        if (category == null)
         {
             return;
         }
 
         if (Id.Equals(Guid.Empty))
         {
-            var dbCategory = await CategoryAdminService.AddAsync(userName, EntityLowercaseNamePlaceholder);
+            var dbCategory = await CategoryAdminService.AddAsync(userName, category);
 
             if (dbCategory == null)
             {
@@ -99,7 +99,7 @@
         }
         else
         {
-            await CategoryAdminService.EditAsync(userName, Id, EntityLowercaseNamePlaceholder);
+            await CategoryAdminService.EditAsync(userName, Id, category);
         }
     }
 
