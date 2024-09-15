@@ -1,4 +1,4 @@
-﻿namespace ApplicationNamePlaceholder.BusinessLogic.Entities.DataTransferObjects;
+﻿namespace MyBlog.BusinessLogic.Entities.DataTransferObjects;
 
 public class ApplicationRoleAdminDataTransferObject
 {
