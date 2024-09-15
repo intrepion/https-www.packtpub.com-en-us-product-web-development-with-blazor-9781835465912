@@ -1,6 +1,6 @@
-﻿using ApplicationNamePlaceholder.BusinessLogic.Entities.DataTransferObjects;
+﻿using MyBlog.BusinessLogic.Entities.DataTransferObjects;
 
-namespace ApplicationNamePlaceholder.BusinessLogic.Services;
+namespace MyBlog.BusinessLogic.Services;
 
 public interface IApplicationRoleAdminService
 {
