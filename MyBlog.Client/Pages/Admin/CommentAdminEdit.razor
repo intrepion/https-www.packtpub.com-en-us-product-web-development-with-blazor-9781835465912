@@ -18,6 +18,27 @@
     }
     <article>
         <EditForm class="container" Model="comment" OnSubmit="HandleSubmit">
+            <div class="row">
+                <div class="col">
+                    <label>
+                        Blog Post:
+                        <select @onchange="BlogPostOnChange">
+                            <option>Select blog Post...</option>
+                            @foreach (var blogPost in blogPostList)
+                            {
+                                if (comment.BlogPost == null ? false : comment.BlogPost.Id.Equals(blogPost.Id))
+                                {
+                                    <option value="@blogPost.Id" selected>@blogPost.Title</option>
+                                }
+                                else
+                                {
+                                    <option value="@blogPost.Id">@blogPost.Title</option>
+                                }
+                            }
+                        </select>
+                    </label>
+                </div>
+            </div>
             @* EditRowCodePlaceholder *@
             <div class="row">
                 <div class="col">
