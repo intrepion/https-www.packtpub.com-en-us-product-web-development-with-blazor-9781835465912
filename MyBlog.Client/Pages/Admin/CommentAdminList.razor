@@ -28,13 +28,13 @@
                 }
                 else
                 {
-                    @foreach (var EntityLowercaseNamePlaceholder in TableLowercaseNamePlaceholder)
+                    @foreach (var comment in TableLowercaseNamePlaceholder)
                     {
                         <tr>
-                            <td>@EntityLowercaseNamePlaceholder.Id</td>
+                            <td>@comment.Id</td>
                             @* ListItemCodePlaceholder *@
                             <td>
-                                <NavButton Href="@("/admin/UrlNamePlaceholder-edit/" + EntityLowercaseNamePlaceholder.Id)" Name="Edit" />
+                                <NavButton Href="@("/admin/UrlNamePlaceholder-edit/" + comment.Id)" Name="Edit" />
                             </td>
                         </tr>
                     }
