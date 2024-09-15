@@ -14,13 +14,13 @@
                 </tr>
             </thead>
             <tbody>
-                @if (TableLowercaseNamePlaceholder == null)
+                @if (comments == null)
                 {
                     <tr>
                         @* LoadingCountCodePlaceholder *@
                     </tr>
                 }
-                else if (TableLowercaseNamePlaceholder.Count == 0)
+                else if (comments.Count == 0)
                 {
                     <tr>
                         @* ZeroCountCodePlaceholder *@
@@ -28,7 +28,7 @@
                 }
                 else
                 {
-                    @foreach (var comment in TableLowercaseNamePlaceholder)
+                    @foreach (var comment in comments)
                     {
                         <tr>
                             <td>@comment.Id</td>
@@ -46,10 +46,10 @@
 </section>
 
 @code {
-    List<Comment>? TableLowercaseNamePlaceholder = null;
+    List<Comment>? comments = null;
 
     protected override async Task OnInitializedAsync()
     {
-        TableLowercaseNamePlaceholder = await CommentAdminService.GetAllAsync();
+        comments = await CommentAdminService.GetAllAsync();
     }
 }
