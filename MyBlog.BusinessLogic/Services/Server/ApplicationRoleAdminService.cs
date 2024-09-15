@@ -1,9 +1,9 @@
-﻿using ApplicationNamePlaceholder.BusinessLogic.Data;
-using ApplicationNamePlaceholder.BusinessLogic.Entities;
-using ApplicationNamePlaceholder.BusinessLogic.Entities.DataTransferObjects;
+﻿using MyBlog.BusinessLogic.Data;
+using MyBlog.BusinessLogic.Entities;
+using MyBlog.BusinessLogic.Entities.DataTransferObjects;
 using Microsoft.EntityFrameworkCore;
 
-namespace ApplicationNamePlaceholder.BusinessLogic.Services.Server;
+namespace MyBlog.BusinessLogic.Services.Server;
 
 public class ApplicationRoleAdminService(ApplicationDbContext applicationDbContext) : IApplicationRoleAdminService
 {
