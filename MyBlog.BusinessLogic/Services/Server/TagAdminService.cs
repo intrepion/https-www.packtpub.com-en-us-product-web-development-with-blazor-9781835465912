@@ -8,7 +8,7 @@ public class TagAdminService(ApplicationDbContext applicationDbContext) : ITagAd
 {
     private readonly ApplicationDbContext _applicationDbContext = applicationDbContext;
 
-    public async Task<Tag?> AddAsync(string userName, Tag EntityLowercaseNamePlaceholder)
+    public async Task<Tag?> AddAsync(string userName, Tag tag)
     {
         if (string.IsNullOrWhiteSpace(userName))
         {
@@ -22,19 +22,19 @@ public class TagAdminService(ApplicationDbContext applicationDbContext) : ITagAd
             throw new Exception("Authentication required.");
         }
 
-        // if (string.IsNullOrWhiteSpace(EntityLowercaseNamePlaceholder.PropertyNamePlaceholder))
+        // if (string.IsNullOrWhiteSpace(tag.PropertyNamePlaceholder))
         // {
         //     throw new Exception("Name required.");
         // }
 
-        EntityLowercaseNamePlaceholder.ApplicationUserUpdatedBy = user;
-        // EntityLowercaseNamePlaceholder.NormalizedPropertyNamePlaceholder = EntityLowercaseNamePlaceholder.PropertyNamePlaceholder?.ToUpper();
+        tag.ApplicationUserUpdatedBy = user;
+        // tag.NormalizedPropertyNamePlaceholder = tag.PropertyNamePlaceholder?.ToUpper();
 
-        _applicationDbContext.Tags.Add(EntityLowercaseNamePlaceholder);
+        _applicationDbContext.Tags.Add(tag);
 
         await _applicationDbContext.SaveChangesAsync();
 
-        return EntityLowercaseNamePlaceholder;
+        return tag;
     }
 
     public async Task<bool> DeleteAsync(string userName, Guid id)
@@ -68,7 +68,7 @@ public class TagAdminService(ApplicationDbContext applicationDbContext) : ITagAd
         return true;
     }
 
-    public async Task<Tag?> EditAsync(string userName, Guid id, Tag EntityLowercaseNamePlaceholder)
+    public async Task<Tag?> EditAsync(string userName, Guid id, Tag tag)
     {
         if (string.IsNullOrWhiteSpace(userName))
         {
@@ -89,14 +89,14 @@ public class TagAdminService(ApplicationDbContext applicationDbContext) : ITagAd
             throw new Exception("Application role not found.");
         }
 
-        // if (string.IsNullOrWhiteSpace(EntityLowercaseNamePlaceholder.PropertyNamePlaceholder))
+        // if (string.IsNullOrWhiteSpace(tag.PropertyNamePlaceholder))
         // {
         //     throw new Exception("PropertyNamePlaceholder required.");
         // }
 
         dbTag.ApplicationUserUpdatedBy = user;
-        // dbTag.PropertyNamePlaceholder = EntityLowercaseNamePlaceholder.PropertyNamePlaceholder;
-        // dbTag.NormalizedPropertyNamePlaceholder = EntityLowercaseNamePlaceholder.PropertyNamePlaceholder?.ToUpper();
+        // dbTag.PropertyNamePlaceholder = tag.PropertyNamePlaceholder;
+        // dbTag.NormalizedPropertyNamePlaceholder = tag.PropertyNamePlaceholder?.ToUpper();
 
         await _applicationDbContext.SaveChangesAsync();
 
