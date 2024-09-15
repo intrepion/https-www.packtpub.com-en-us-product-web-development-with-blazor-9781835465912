@@ -17,6 +17,14 @@
     }
     <article>
         <EditForm class="container" Model="category" OnSubmit="HandleSubmit">
+            <div class="row">
+                <div class="col">
+                    <label>
+                        Name:
+                        <InputText @bind-Value="category.Name" />
+                    </label>
+                </div>
+            </div>
             @* EditRowCodePlaceholder *@
             <div class="row">
                 <div class="col">
