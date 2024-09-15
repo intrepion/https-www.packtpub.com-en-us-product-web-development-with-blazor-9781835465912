@@ -6,12 +6,12 @@ namespace ApplicationNamePlaceholder.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class CommentAdminController(ICommentAdminService EntityLowercaseNamePlaceholderAdminService) : ControllerBase
+public class CommentAdminController(ICommentAdminService commentAdminService) : ControllerBase
 {
-    private readonly ICommentAdminService _EntityLowercaseNamePlaceholderAdminService = EntityLowercaseNamePlaceholderAdminService;
+    private readonly ICommentAdminService _commentAdminService = commentAdminService;
 
     [HttpPost]
-    public async Task<ActionResult<Comment?>> Add(Comment EntityLowercaseNamePlaceholder)
+    public async Task<ActionResult<Comment?>> Add(Comment comment)
     {
         var userName = User.Identity?.Name;
 
@@ -20,7 +20,7 @@ public class CommentAdminController(ICommentAdminService EntityLowercaseNamePlac
             return Ok(null);
         }
 
-        var addedComment = await _EntityLowercaseNamePlaceholderAdminService.AddAsync(userName, EntityLowercaseNamePlaceholder);
+        var addedComment = await _commentAdminService.AddAsync(userName, comment);
 
         return Ok(addedComment);
     }
@@ -35,13 +35,13 @@ public class CommentAdminController(ICommentAdminService EntityLowercaseNamePlac
             return Ok(null);
         }
 
-        var result = await _EntityLowercaseNamePlaceholderAdminService.DeleteAsync(userName, id);
+        var result = await _commentAdminService.DeleteAsync(userName, id);
 
         return Ok(result);
     }
 
     [HttpPut("{id}")]
-    public async Task<ActionResult<Comment?>> Edit(Guid id, Comment EntityLowercaseNamePlaceholder)
+    public async Task<ActionResult<Comment?>> Edit(Guid id, Comment comment)
     {
         var userName = User.Identity?.Name;
 
@@ -50,7 +50,7 @@ public class CommentAdminController(ICommentAdminService EntityLowercaseNamePlac
             return Ok(null);
         }
 
-        var updatedComment = await _EntityLowercaseNamePlaceholderAdminService.EditAsync(userName, id, EntityLowercaseNamePlaceholder);
+        var updatedComment = await _commentAdminService.EditAsync(userName, id, comment);
 
         return Ok(updatedComment);
     }
@@ -65,7 +65,7 @@ public class CommentAdminController(ICommentAdminService EntityLowercaseNamePlac
             return Ok(null);
         }
 
-        var comments = await _EntityLowercaseNamePlaceholderAdminService.GetAllAsync();
+        var comments = await _commentAdminService.GetAllAsync();
 
         return Ok(comments);
     }
@@ -80,8 +80,8 @@ public class CommentAdminController(ICommentAdminService EntityLowercaseNamePlac
             return Ok(null);
         }
 
-        var EntityLowercaseNamePlaceholder = await _EntityLowercaseNamePlaceholderAdminService.GetByIdAsync(id);
+        var comment = await _commentAdminService.GetByIdAsync(id);
 
-        return Ok(EntityLowercaseNamePlaceholder);
+        return Ok(comment);
     }
 }
