@@ -6,12 +6,12 @@ namespace ApplicationNamePlaceholder.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class TagAdminController(ITagAdminService EntityLowercaseNamePlaceholderAdminService) : ControllerBase
+public class TagAdminController(ITagAdminService tagAdminService) : ControllerBase
 {
-    private readonly ITagAdminService _EntityLowercaseNamePlaceholderAdminService = EntityLowercaseNamePlaceholderAdminService;
+    private readonly ITagAdminService _tagAdminService = tagAdminService;
 
     [HttpPost]
-    public async Task<ActionResult<Tag?>> Add(Tag EntityLowercaseNamePlaceholder)
+    public async Task<ActionResult<Tag?>> Add(Tag tag)
     {
         var userName = User.Identity?.Name;
 
@@ -20,7 +20,7 @@ public class TagAdminController(ITagAdminService EntityLowercaseNamePlaceholderA
             return Ok(null);
         }
 
-        var addedTag = await _EntityLowercaseNamePlaceholderAdminService.AddAsync(userName, EntityLowercaseNamePlaceholder);
+        var addedTag = await _tagAdminService.AddAsync(userName, tag);
 
         return Ok(addedTag);
     }
@@ -35,13 +35,13 @@ public class TagAdminController(ITagAdminService EntityLowercaseNamePlaceholderA
             return Ok(null);
         }
 
-        var result = await _EntityLowercaseNamePlaceholderAdminService.DeleteAsync(userName, id);
+        var result = await _tagAdminService.DeleteAsync(userName, id);
 
         return Ok(result);
     }
 
     [HttpPut("{id}")]
-    public async Task<ActionResult<Tag?>> Edit(Guid id, Tag EntityLowercaseNamePlaceholder)
+    public async Task<ActionResult<Tag?>> Edit(Guid id, Tag tag)
     {
         var userName = User.Identity?.Name;
 
@@ -50,7 +50,7 @@ public class TagAdminController(ITagAdminService EntityLowercaseNamePlaceholderA
             return Ok(null);
         }
 
-        var updatedTag = await _EntityLowercaseNamePlaceholderAdminService.EditAsync(userName, id, EntityLowercaseNamePlaceholder);
+        var updatedTag = await _tagAdminService.EditAsync(userName, id, tag);
 
         return Ok(updatedTag);
     }
@@ -65,7 +65,7 @@ public class TagAdminController(ITagAdminService EntityLowercaseNamePlaceholderA
             return Ok(null);
         }
 
-        var tags = await _EntityLowercaseNamePlaceholderAdminService.GetAllAsync();
+        var tags = await _tagAdminService.GetAllAsync();
 
         return Ok(tags);
     }
@@ -80,8 +80,8 @@ public class TagAdminController(ITagAdminService EntityLowercaseNamePlaceholderA
             return Ok(null);
         }
 
-        var EntityLowercaseNamePlaceholder = await _EntityLowercaseNamePlaceholderAdminService.GetByIdAsync(id);
+        var tag = await _tagAdminService.GetByIdAsync(id);
 
-        return Ok(EntityLowercaseNamePlaceholder);
+        return Ok(tag);
     }
 }
