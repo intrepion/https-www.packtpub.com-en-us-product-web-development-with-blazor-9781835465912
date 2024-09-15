@@ -7,9 +7,9 @@ public class CategoryClientAdminService(HttpClient httpClient) : ICategoryAdminS
 {
     private readonly HttpClient _httpClient = httpClient;
 
-    public async Task<Category?> AddAsync(string userName, Category EntityLowercaseNamePlaceholder)
+    public async Task<Category?> AddAsync(string userName, Category category)
     {
-        var result = await _httpClient.PostAsJsonAsync("/api/CategoryAdmin", EntityLowercaseNamePlaceholder);
+        var result = await _httpClient.PostAsJsonAsync("/api/CategoryAdmin", category);
 
         return await result.Content.ReadFromJsonAsync<Category>();
     }
@@ -21,9 +21,9 @@ public class CategoryClientAdminService(HttpClient httpClient) : ICategoryAdminS
         return await result.Content.ReadFromJsonAsync<bool>();
     }
 
-    public async Task<Category?> EditAsync(string userName, Guid id, Category EntityLowercaseNamePlaceholder)
+    public async Task<Category?> EditAsync(string userName, Guid id, Category category)
     {
-        var result = await _httpClient.PutAsJsonAsync($"/api/CategoryAdmin/{id}", EntityLowercaseNamePlaceholder);
+        var result = await _httpClient.PutAsJsonAsync($"/api/CategoryAdmin/{id}", category);
 
         return await result.Content.ReadFromJsonAsync<Category>();
     }
