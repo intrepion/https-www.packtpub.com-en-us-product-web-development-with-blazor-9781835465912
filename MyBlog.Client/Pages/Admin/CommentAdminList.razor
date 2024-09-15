@@ -1,4 +1,4 @@
-@page "/admin/UrlNamePlaceholder-list"
+@page "/admin/comment-list"
 @inject ICommentAdminService CommentAdminService
 @attribute [StreamRendering]
 
@@ -34,14 +34,14 @@
                             <td>@comment.Id</td>
                             @* ListItemCodePlaceholder *@
                             <td>
-                                <NavButton Href="@("/admin/UrlNamePlaceholder-edit/" + comment.Id)" Name="Edit" />
+                                <NavButton Href="@("/admin/comment-edit/" + comment.Id)" Name="Edit" />
                             </td>
                         </tr>
                     }
                 }
             </tbody>
         </table>
-        <NavButton Href="/admin/UrlNamePlaceholder-edit" Name="Create" />
+        <NavButton Href="/admin/comment-edit" Name="Create" />
     </article>
 </section>
 
