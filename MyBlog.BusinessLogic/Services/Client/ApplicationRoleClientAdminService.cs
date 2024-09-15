@@ -1,7 +1,7 @@
 ﻿using System.Net.Http.Json;
-using ApplicationNamePlaceholder.BusinessLogic.Entities.DataTransferObjects;
+using MyBlog.BusinessLogic.Entities.DataTransferObjects;
 
-namespace ApplicationNamePlaceholder.BusinessLogic.Services.Client;
+namespace MyBlog.BusinessLogic.Services.Client;
 
 public class ApplicationRoleClientAdminService(HttpClient httpClient) : IApplicationRoleAdminService
 {
