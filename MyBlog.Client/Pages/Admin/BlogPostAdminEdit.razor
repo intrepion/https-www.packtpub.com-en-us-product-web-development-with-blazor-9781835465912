@@ -40,6 +40,27 @@
                     </label>
                 </div>
             </div>
+            <div class="row">
+                <div class="col">
+                    <label>
+                        Category:
+                        <select @onchange="CategoryOnChange">
+                            <option>Select category...</option>
+                            @foreach (var category in categoryList)
+                            {
+                                if (blogPost.Category == null ? false : blogPost.Category.Id.Equals(category.Id))
+                                {
+                                    <option value="@category.Id" selected>@category.Name</option>
+                                }
+                                else
+                                {
+                                    <option value="@category.Id">@category.Name</option>
+                                }
+                            }
+                        </select>
+                    </label>
+                </div>
+            </div>
             @* EditRowCodePlaceholder *@
             <div class="row">
                 <div class="col">
