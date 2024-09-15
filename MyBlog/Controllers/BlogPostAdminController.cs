@@ -6,12 +6,12 @@ namespace ApplicationNamePlaceholder.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class EntityNamePlaceholderAdminController(IEntityNamePlaceholderAdminService EntityLowercaseNamePlaceholderAdminService) : ControllerBase
+public class BlogPostAdminController(IBlogPostAdminService EntityLowercaseNamePlaceholderAdminService) : ControllerBase
 {
-    private readonly IEntityNamePlaceholderAdminService _EntityLowercaseNamePlaceholderAdminService = EntityLowercaseNamePlaceholderAdminService;
+    private readonly IBlogPostAdminService _EntityLowercaseNamePlaceholderAdminService = EntityLowercaseNamePlaceholderAdminService;
 
     [HttpPost]
-    public async Task<ActionResult<EntityNamePlaceholder?>> Add(EntityNamePlaceholder EntityLowercaseNamePlaceholder)
+    public async Task<ActionResult<BlogPost?>> Add(BlogPost EntityLowercaseNamePlaceholder)
     {
         var userName = User.Identity?.Name;
 
@@ -20,13 +20,13 @@ public class EntityNamePlaceholderAdminController(IEntityNamePlaceholderAdminSer
             return Ok(null);
         }
 
-        var addedEntityNamePlaceholder = await _EntityLowercaseNamePlaceholderAdminService.AddAsync(userName, EntityLowercaseNamePlaceholder);
+        var addedBlogPost = await _EntityLowercaseNamePlaceholderAdminService.AddAsync(userName, EntityLowercaseNamePlaceholder);
 
-        return Ok(addedEntityNamePlaceholder);
+        return Ok(addedBlogPost);
     }
 
     [HttpDelete("{id}")]
-    public async Task<ActionResult<EntityNamePlaceholder?>> Delete(Guid id)
+    public async Task<ActionResult<BlogPost?>> Delete(Guid id)
     {
         var userName = User.Identity?.Name;
 
@@ -41,7 +41,7 @@ public class EntityNamePlaceholderAdminController(IEntityNamePlaceholderAdminSer
     }
 
     [HttpPut("{id}")]
-    public async Task<ActionResult<EntityNamePlaceholder?>> Edit(Guid id, EntityNamePlaceholder EntityLowercaseNamePlaceholder)
+    public async Task<ActionResult<BlogPost?>> Edit(Guid id, BlogPost EntityLowercaseNamePlaceholder)
     {
         var userName = User.Identity?.Name;
 
@@ -50,13 +50,13 @@ public class EntityNamePlaceholderAdminController(IEntityNamePlaceholderAdminSer
             return Ok(null);
         }
 
-        var updatedEntityNamePlaceholder = await _EntityLowercaseNamePlaceholderAdminService.EditAsync(userName, id, EntityLowercaseNamePlaceholder);
+        var updatedBlogPost = await _EntityLowercaseNamePlaceholderAdminService.EditAsync(userName, id, EntityLowercaseNamePlaceholder);
 
-        return Ok(updatedEntityNamePlaceholder);
+        return Ok(updatedBlogPost);
     }
 
     [HttpGet]
-    public async Task<ActionResult<EntityNamePlaceholder>?> GetAll()
+    public async Task<ActionResult<BlogPost>?> GetAll()
     {
         var userName = User.Identity?.Name;
 
@@ -71,7 +71,7 @@ public class EntityNamePlaceholderAdminController(IEntityNamePlaceholderAdminSer
     }
 
     [HttpGet("{id}")]
-    public async Task<ActionResult<EntityNamePlaceholder?>> GetById(Guid id)
+    public async Task<ActionResult<BlogPost?>> GetById(Guid id)
     {
         var userName = User.Identity?.Name;
 
