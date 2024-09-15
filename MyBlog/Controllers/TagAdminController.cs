@@ -65,9 +65,9 @@ public class TagAdminController(ITagAdminService EntityLowercaseNamePlaceholderA
             return Ok(null);
         }
 
-        var TableLowercaseNamePlaceholder = await _EntityLowercaseNamePlaceholderAdminService.GetAllAsync();
+        var tags = await _EntityLowercaseNamePlaceholderAdminService.GetAllAsync();
 
-        return Ok(TableLowercaseNamePlaceholder);
+        return Ok(tags);
     }
 
     [HttpGet("{id}")]
