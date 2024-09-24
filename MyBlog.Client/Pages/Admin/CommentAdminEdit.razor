@@ -116,6 +116,11 @@
 
         await base.OnInitializedAsync();
 
+        var blogPostListResult = await BlogPostAdminService.GetAllAsync(userName);
+        if (blogPostListResult != null)
+        {
+            blogPostList = blogPostListResult;
+        }
         @* OnInitializedCodePlaceholder *@
         @* var toDoListListResult = await ToDoListAdminService.GetAllAsync(userName);
         if (toDoListListResult != null)
