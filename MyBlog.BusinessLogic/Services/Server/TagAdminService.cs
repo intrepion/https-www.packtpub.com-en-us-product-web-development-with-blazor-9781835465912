@@ -102,6 +102,7 @@ public class TagAdminService(ApplicationDbContext applicationDbContext) : ITagAd
         databaseTag.ApplicationUserUpdatedBy = user;
 
         databaseTag.Name = tagAdminDto.Name;
+        databaseTag.NormalizedName = tagAdminDto.Name.ToUpperInvariant();
         // EditDatabasePropertyCodePlaceholder
         // databaseTag.Title = tagAdminDto.Title;
         // databaseTag.NormalizedTitle = tagAdminDto.Title.ToUpperInvariant();
