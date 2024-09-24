@@ -21,6 +21,30 @@
   <article>
     <EditForm class="container" Model="commentAdminEditModel" OnSubmit="HandleSubmit">
 
+      <div class="row">
+        <div class="col">
+          <label>
+            Blog Post:
+            <select @onchange="BlogPostOnChange">
+              <option>Select blog post...</option>
+                @if (blogPostList != null)
+                {
+                  @foreach (var blogPost in blogPostList)
+                  {
+                    if (commentAdminEditModel.BlogPost != null && commentAdminEditModel.BlogPost.Id.Equals(blogPost.Id))
+                    {
+                      <option value="@blogPost.Id" selected>@blogPost.Title</option>
+                    }
+                    else
+                    {
+                      <option value="@blogPost.Id">@blogPost.Title</option>
+                    }
+                  }
+                }
+              </select>
+          </label>
+        </div>
+      </div>
       @* EditRowCodePlaceholder *@
       @* <div class="row">
                 <div class="col">
