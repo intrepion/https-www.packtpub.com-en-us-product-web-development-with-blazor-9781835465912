@@ -51,6 +51,7 @@ public class BlogPostAdminEditModel
             Category = blogPostAdminEditModel.Category,
             PublishDate = blogPostAdminEditModel.PublishDate,
             Text = blogPostAdminEditModel.Text,
+            Title = blogPostAdminEditModel.Title,
             // ModelToDtoPropertyPlaceholder
             // Title = blogPostAdminEditModel.Title,
             // ToDoList = blogPostAdminEditModel.ToDoList,
