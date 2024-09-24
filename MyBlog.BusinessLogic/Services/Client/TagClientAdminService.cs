@@ -4,15 +4,15 @@ using ApplicationNamePlaceholder.BusinessLogic.Entities.Dtos;
 
 namespace ApplicationNamePlaceholder.BusinessLogic.Services.Client;
 
-public class EntityNamePlaceholderClientAdminService(HttpClient httpClient) : IEntityNamePlaceholderAdminService
+public class TagClientAdminService(HttpClient httpClient) : ITagAdminService
 {
     private readonly HttpClient _httpClient = httpClient;
 
-    public async Task<EntityNamePlaceholderAdminDto?> AddAsync(EntityNamePlaceholderAdminDto tagAdminDto)
+    public async Task<TagAdminDto?> AddAsync(TagAdminDto tagAdminDto)
     {
         var result = await _httpClient.PostAsJsonAsync("/api/admin/tagAdmin", tagAdminDto);
 
-        return await result.Content.ReadFromJsonAsync<EntityNamePlaceholderAdminDto>();
+        return await result.Content.ReadFromJsonAsync<TagAdminDto>();
     }
 
     public async Task<bool> DeleteAsync(string userName, Guid id)
@@ -22,23 +22,23 @@ public class EntityNamePlaceholderClientAdminService(HttpClient httpClient) : IE
         return await result.Content.ReadFromJsonAsync<bool>();
     }
 
-    public async Task<EntityNamePlaceholderAdminDto?> EditAsync(EntityNamePlaceholderAdminDto tagAdminDto)
+    public async Task<TagAdminDto?> EditAsync(TagAdminDto tagAdminDto)
     {
         var result = await _httpClient.PutAsJsonAsync($"/api/admin/tagAdmin/{tagAdminDto.Id}", tagAdminDto);
 
-        return await result.Content.ReadFromJsonAsync<EntityNamePlaceholderAdminDto>();
+        return await result.Content.ReadFromJsonAsync<TagAdminDto>();
     }
 
-    public async Task<List<EntityNamePlaceholder>?> GetAllAsync(string userName)
+    public async Task<List<Tag>?> GetAllAsync(string userName)
     {
-        var result = await _httpClient.GetFromJsonAsync<List<EntityNamePlaceholder>>($"/api/admin/tagAdmin?userName={userName}");
+        var result = await _httpClient.GetFromJsonAsync<List<Tag>>($"/api/admin/tagAdmin?userName={userName}");
 
         return result;
     }
 
-    public async Task<EntityNamePlaceholderAdminDto?> GetByIdAsync(string userName, Guid id)
+    public async Task<TagAdminDto?> GetByIdAsync(string userName, Guid id)
     {
-        var result = await _httpClient.GetFromJsonAsync<EntityNamePlaceholderAdminDto>($"/api/admin/tagAdmin/{id}?userName={userName}");
+        var result = await _httpClient.GetFromJsonAsync<TagAdminDto>($"/api/admin/tagAdmin/{id}?userName={userName}");
 
         return result;
     }
