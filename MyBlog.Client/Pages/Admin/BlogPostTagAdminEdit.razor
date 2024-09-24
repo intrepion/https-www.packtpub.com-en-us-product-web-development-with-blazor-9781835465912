@@ -253,6 +253,17 @@
         blogPostTagAdminEditModel.BlogPost = blogPostList?.Where(x => x.Id.ToString().Equals(id)).FirstOrDefault();
     }
 
+    void TagOnChange(ChangeEventArgs args)
+    {
+        if (args.Value == null)
+        {
+            return;
+        }
+
+        var id = (string)args.Value;
+        blogPostTagAdminEditModel.Tag = tagList?.Where(x => x.Id.ToString().Equals(id)).FirstOrDefault();
+    }
+
     @* OnChangeCodePlaceholder *@
     @* void ToDoListOnChange(ChangeEventArgs args)
     {
