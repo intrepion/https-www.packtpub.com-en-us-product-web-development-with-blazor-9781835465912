@@ -147,6 +147,11 @@
         {
             blogPostList = blogPostListResult;
         }
+        var tagListResult = await TagAdminService.GetAllAsync(userName);
+        if (tagListResult != null)
+        {
+            tagList = tagListResult;
+        }
         @* OnInitializedCodePlaceholder *@
         @* var toDoListListResult = await ToDoListAdminService.GetAllAsync(userName);
         if (toDoListListResult != null)
