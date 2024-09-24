@@ -1,6 +1,6 @@
 ﻿namespace ApplicationNamePlaceholder.BusinessLogic.Entities.Dtos;
 
-public class EntityNamePlaceholderAdminDto
+public class CategoryAdminDto
 {
     public string ApplicationUserName { get; set; } = string.Empty;
     public Guid Id { get; set; }
@@ -9,14 +9,14 @@ public class EntityNamePlaceholderAdminDto
     // public string Title { get; set; } = string.Empty;
     // public ToDoList? ToDoList { get; set; }
 
-    public static EntityNamePlaceholderAdminDto FromEntityNamePlaceholder(EntityNamePlaceholder? category)
+    public static CategoryAdminDto FromCategory(Category? category)
     {
         if (category == null)
         {
-            return new EntityNamePlaceholderAdminDto();
+            return new CategoryAdminDto();
         }
 
-        return new EntityNamePlaceholderAdminDto
+        return new CategoryAdminDto
         {
             Id = category.Id,
 
@@ -26,9 +26,9 @@ public class EntityNamePlaceholderAdminDto
         };
     }
 
-    public static EntityNamePlaceholder ToEntityNamePlaceholder(ApplicationUser applicationUser, EntityNamePlaceholderAdminDto categoryAdminDto)
+    public static Category ToCategory(ApplicationUser applicationUser, CategoryAdminDto categoryAdminDto)
     {
-        return new EntityNamePlaceholder
+        return new Category
         {
             ApplicationUserUpdatedBy = applicationUser,
             Id = categoryAdminDto.Id,
