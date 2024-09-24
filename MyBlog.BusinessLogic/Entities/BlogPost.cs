@@ -6,5 +6,6 @@ public class BlogPost
     public Guid Id { get; set; }
 
     public ApplicationUser? Author { get; set; }
+    public List<BlogPostTag>? BlogPostTags { get; set; } = [];
     // ActualPropertyPlaceholder
 }
