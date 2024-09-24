@@ -35,6 +35,7 @@ public class CommentAdminDto
             ApplicationUserUpdatedBy = applicationUser,
             Id = commentAdminDto.Id,
 
+            BlogPost = commentAdminDto.BlogPost,
             // DtoToEntityPropertyPlaceholder
             // Title = commentAdminDto.Title,
             // ToDoList = commentAdminDto.ToDoList,
