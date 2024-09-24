@@ -40,6 +40,7 @@ public class BlogPostTagAdminEditModel
         {
             Id = blogPostTagAdminEditModel.Id,
 
+            BlogPost = blogPostTagAdminEditModel.BlogPost,
             // ModelToDtoPropertyPlaceholder
             // Title = blogPostTagAdminEditModel.Title,
             // ToDoList = blogPostTagAdminEditModel.ToDoList,
