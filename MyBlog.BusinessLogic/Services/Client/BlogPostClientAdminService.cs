@@ -4,15 +4,15 @@ using ApplicationNamePlaceholder.BusinessLogic.Entities.Dtos;
 
 namespace ApplicationNamePlaceholder.BusinessLogic.Services.Client;
 
-public class EntityNamePlaceholderClientAdminService(HttpClient httpClient) : IEntityNamePlaceholderAdminService
+public class BlogPostClientAdminService(HttpClient httpClient) : IBlogPostAdminService
 {
     private readonly HttpClient _httpClient = httpClient;
 
-    public async Task<EntityNamePlaceholderAdminDto?> AddAsync(EntityNamePlaceholderAdminDto blogPostAdminDto)
+    public async Task<BlogPostAdminDto?> AddAsync(BlogPostAdminDto blogPostAdminDto)
     {
         var result = await _httpClient.PostAsJsonAsync("/api/admin/blogPostAdmin", blogPostAdminDto);
 
-        return await result.Content.ReadFromJsonAsync<EntityNamePlaceholderAdminDto>();
+        return await result.Content.ReadFromJsonAsync<BlogPostAdminDto>();
     }
 
     public async Task<bool> DeleteAsync(string userName, Guid id)
@@ -22,23 +22,23 @@ public class EntityNamePlaceholderClientAdminService(HttpClient httpClient) : IE
         return await result.Content.ReadFromJsonAsync<bool>();
     }
 
-    public async Task<EntityNamePlaceholderAdminDto?> EditAsync(EntityNamePlaceholderAdminDto blogPostAdminDto)
+    public async Task<BlogPostAdminDto?> EditAsync(BlogPostAdminDto blogPostAdminDto)
     {
         var result = await _httpClient.PutAsJsonAsync($"/api/admin/blogPostAdmin/{blogPostAdminDto.Id}", blogPostAdminDto);
 
-        return await result.Content.ReadFromJsonAsync<EntityNamePlaceholderAdminDto>();
+        return await result.Content.ReadFromJsonAsync<BlogPostAdminDto>();
     }
 
-    public async Task<List<EntityNamePlaceholder>?> GetAllAsync(string userName)
+    public async Task<List<BlogPost>?> GetAllAsync(string userName)
     {
-        var result = await _httpClient.GetFromJsonAsync<List<EntityNamePlaceholder>>($"/api/admin/blogPostAdmin?userName={userName}");
+        var result = await _httpClient.GetFromJsonAsync<List<BlogPost>>($"/api/admin/blogPostAdmin?userName={userName}");
 
         return result;
     }
 
-    public async Task<EntityNamePlaceholderAdminDto?> GetByIdAsync(string userName, Guid id)
+    public async Task<BlogPostAdminDto?> GetByIdAsync(string userName, Guid id)
     {
-        var result = await _httpClient.GetFromJsonAsync<EntityNamePlaceholderAdminDto>($"/api/admin/blogPostAdmin/{id}?userName={userName}");
+        var result = await _httpClient.GetFromJsonAsync<BlogPostAdminDto>($"/api/admin/blogPostAdmin/{id}?userName={userName}");
 
         return result;
     }
