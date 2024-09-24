@@ -21,6 +21,7 @@ public class TagAdminDto
         {
             Id = tag.Id,
 
+            Name = tag.Name,
             // EntityToDtoPropertyPlaceholder
             // Title = tag.Title,
             // ToDoList = tag.ToDoList,
