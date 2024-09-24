@@ -26,6 +26,7 @@ public class CommentAdminDto
             BlogPost = comment.BlogPost,
             Commenter = comment.Commenter,
             Date = comment.Date,
+            Text = comment.Text,
             // EntityToDtoPropertyPlaceholder
             // Title = comment.Title,
             // ToDoList = comment.ToDoList,
