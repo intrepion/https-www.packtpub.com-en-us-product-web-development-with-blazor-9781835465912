@@ -8,6 +8,7 @@ public class CommentAdminEditModel
 
     public BlogPost? BlogPost { get; set; }
     public ApplicationUser? Commenter { get; set; }
+    public DateTime Date { get; set; }
     // JustModelPropertyPlaceholder
     // public string Title { get; set; } = string.Empty;
     // public ToDoList? ToDoList { get; set; }
