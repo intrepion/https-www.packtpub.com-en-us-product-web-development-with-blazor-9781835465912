@@ -1,7 +1,7 @@
-﻿using ApplicationNamePlaceholder.BusinessLogic.Entities;
+﻿using MyBlog.BusinessLogic.Entities;
 using Microsoft.AspNetCore.Identity;
 
-namespace ApplicationNamePlaceholder.Components.Account;
+namespace MyBlog.Components.Account;
 
 internal sealed class IdentityUserAccessor(UserManager<ApplicationUser> userManager, IdentityRedirectManager redirectManager)
 {
