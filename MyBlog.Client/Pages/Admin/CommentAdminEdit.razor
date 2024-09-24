@@ -46,6 +46,30 @@
           </label>
         </div>
       </div>
+      <div class="row">
+        <div class="col">
+          <label>
+            Commenter:
+            <select @onchange="CommenterOnChange">
+              <option>Select commenter...</option>
+                @if (commenterList != null)
+                {
+                  @foreach (var commenter in commenterList)
+                  {
+                    if (commentAdminEditModel.Commenter != null && commentAdminEditModel.Commenter.Id.Equals(commenter.Id))
+                    {
+                      <option value="@commenter.Id" selected>@commenter.UserName</option>
+                    }
+                    else
+                    {
+                      <option value="@commenter.Id">@commenter.UserName</option>
+                    }
+                  }
+                }
+              </select>
+          </label>
+        </div>
+      </div>
       @* EditRowCodePlaceholder *@
       @* <div class="row">
                 <div class="col">
