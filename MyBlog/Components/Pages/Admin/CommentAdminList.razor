@@ -1,4 +1,4 @@
-@page "/admin/UrlNamePlaceholder-list"
+@page "/admin/comment-list"
 @rendermode InteractiveServer
 @inject AuthenticationStateProvider GetAuthenticationStateAsync
 @inject ICommentAdminService CommentAdminService
@@ -42,14 +42,14 @@
                             @* <td>@comment.Title</td>
                             <td>@comment.ToDoList?.Title</td> *@
                             <td>
-                                <a href="@("/admin/UrlNamePlaceholder-edit/" + comment.Id)">Edit</a>
+                                <a href="@("/admin/comment-edit/" + comment.Id)">Edit</a>
                             </td>
                         </tr>
                     }
                 }
             </tbody>
         </table>
-        <a href="/admin/UrlNamePlaceholder-edit">Create</a>
+        <a href="/admin/comment-edit">Create</a>
     </article>
 </section>
 
