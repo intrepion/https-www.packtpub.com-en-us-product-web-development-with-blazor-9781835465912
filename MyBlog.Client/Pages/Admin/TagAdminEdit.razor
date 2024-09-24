@@ -3,7 +3,7 @@
 @rendermode InteractiveAuto
 @inject AuthenticationStateProvider GetAuthenticationStateAsync
 @inject NavigationManager NavigationManager
-@inject IEntityNamePlaceholderAdminService EntityNamePlaceholderAdminService
+@inject ITagAdminService TagAdminService
 
 @* InjectionCodePlaceholder *@
 @* @inject IToDoListAdminService ToDoListAdminService *@
@@ -73,7 +73,7 @@
 @code {
     [Parameter]
     public Guid Id { get; set; }
-    EntityNamePlaceholderAdminEditModel tagAdminEditModel { get; set; } = new EntityNamePlaceholderAdminEditModel();
+    TagAdminEditModel tagAdminEditModel { get; set; } = new TagAdminEditModel();
 
     @* ListDeclarationCodePlaceholder *@
     @* List<ToDoList>? toDoListList { get; set; } *@
@@ -113,15 +113,15 @@
             return;
         }
 
-        var databaseEntityNamePlaceholderAdminDto = await EntityNamePlaceholderAdminService.GetByIdAsync(userName, Id);
+        var databaseTagAdminDto = await TagAdminService.GetByIdAsync(userName, Id);
 
-        if (databaseEntityNamePlaceholderAdminDto == null)
+        if (databaseTagAdminDto == null)
         {
-            tagAdminEditModel = new EntityNamePlaceholderAdminEditModel();
+            tagAdminEditModel = new TagAdminEditModel();
         }
         else
         {
-            tagAdminEditModel = EntityNamePlaceholderAdminEditModel.FromEntityNamePlaceholderAdminDto(databaseEntityNamePlaceholderAdminDto);
+            tagAdminEditModel = TagAdminEditModel.FromTagAdminDto(databaseTagAdminDto);
         }
     }
 
@@ -140,23 +140,23 @@
             return;
         } *@
 
-        var tagAdminDto = EntityNamePlaceholderAdminEditModel.ToEntityNamePlaceholderAdminDto(tagAdminEditModel);
+        var tagAdminDto = TagAdminEditModel.ToTagAdminDto(tagAdminEditModel);
         tagAdminDto.ApplicationUserName = userName;
 
         if (Id.Equals(Guid.Empty))
         {
-            var newEntityNamePlaceholderAdminDto = await EntityNamePlaceholderAdminService.AddAsync(tagAdminDto);
+            var newTagAdminDto = await TagAdminService.AddAsync(tagAdminDto);
 
-            if (newEntityNamePlaceholderAdminDto == null)
+            if (newTagAdminDto == null)
             {
                 return;
             }
 
-            NavigationManager.NavigateTo($"/admin/UrlNamePlaceholder-edit/{newEntityNamePlaceholderAdminDto.Id}");
+            NavigationManager.NavigateTo($"/admin/UrlNamePlaceholder-edit/{newTagAdminDto.Id}");
         }
         else
         {
-            await EntityNamePlaceholderAdminService.EditAsync(tagAdminDto);
+            await TagAdminService.EditAsync(tagAdminDto);
         }
     }
 
@@ -175,7 +175,7 @@
             return;
         }
 
-        await EntityNamePlaceholderAdminService.DeleteAsync(userName, Id);
+        await TagAdminService.DeleteAsync(userName, Id);
         NavigationManager.NavigateTo($"/admin/UrlNamePlaceholder-list");
     }
 
