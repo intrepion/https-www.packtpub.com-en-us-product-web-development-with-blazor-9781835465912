@@ -1,4 +1,4 @@
-﻿namespace ApplicationNamePlaceholder.BusinessLogic.Entities.Dtos;
+﻿namespace MyBlog.BusinessLogic.Entities.Dtos;
 
 public class CategoryAdminDto
 {
