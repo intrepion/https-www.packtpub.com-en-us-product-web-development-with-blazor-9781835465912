@@ -35,6 +35,7 @@ public class TagAdminDto
             ApplicationUserUpdatedBy = applicationUser,
             Id = tagAdminDto.Id,
 
+            Name = tagAdminDto.Name,
             // DtoToEntityPropertyPlaceholder
             // Title = tagAdminDto.Title,
             // ToDoList = tagAdminDto.ToDoList,
