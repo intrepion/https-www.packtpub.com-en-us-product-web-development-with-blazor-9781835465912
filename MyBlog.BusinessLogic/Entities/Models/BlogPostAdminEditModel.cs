@@ -6,6 +6,7 @@ public class BlogPostAdminEditModel
 {
     public Guid Id { get; set; }
 
+    public ApplicationUser? Author { get; set; }
     // JustModelPropertyPlaceholder
     // public string Title { get; set; } = string.Empty;
     // public ToDoList? ToDoList { get; set; }
