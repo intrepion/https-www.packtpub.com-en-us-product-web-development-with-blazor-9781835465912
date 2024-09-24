@@ -1,9 +1,9 @@
-﻿using ApplicationNamePlaceholder.BusinessLogic.Data;
-using ApplicationNamePlaceholder.BusinessLogic.Entities;
-using ApplicationNamePlaceholder.BusinessLogic.Entities.Dtos;
+﻿using MyBlog.BusinessLogic.Data;
+using MyBlog.BusinessLogic.Entities;
+using MyBlog.BusinessLogic.Entities.Dtos;
 using Microsoft.EntityFrameworkCore;
 
-namespace ApplicationNamePlaceholder.BusinessLogic.Services.Server;
+namespace MyBlog.BusinessLogic.Services.Server;
 
 public class BlogPostTagAdminService(ApplicationDbContext applicationDbContext) : IBlogPostTagAdminService
 {
