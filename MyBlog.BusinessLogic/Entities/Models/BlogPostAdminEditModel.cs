@@ -10,6 +10,7 @@ public class BlogPostAdminEditModel
     public Category? Category { get; set; }
     public DateTime PublishDate { get; set; }
     public string Text { get; set; } = string.Empty;
+    public string Title { get; set; } = string.Empty;
     // JustModelPropertyPlaceholder
     // public string Title { get; set; } = string.Empty;
     // public ToDoList? ToDoList { get; set; }
