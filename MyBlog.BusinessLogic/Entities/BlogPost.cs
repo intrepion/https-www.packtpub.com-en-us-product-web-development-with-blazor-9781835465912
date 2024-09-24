@@ -7,5 +7,6 @@ public class BlogPost
 
     public ApplicationUser? Author { get; set; }
     public List<BlogPostTag>? BlogPostTags { get; set; } = [];
+    public Category? Category { get; set; }
     // ActualPropertyPlaceholder
 }
