@@ -10,6 +10,7 @@ public class BlogPostAdminDto
     public Category? Category { get; set; }
     public List<Comment>? Comments { get; set; } = [];
     public DateTime PublishDate { get; set; }
+    public string Text { get; set; } = string.Empty;
     // DtoPropertyPlaceholder
     // public string Title { get; set; } = string.Empty;
     // public ToDoList? ToDoList { get; set; }
