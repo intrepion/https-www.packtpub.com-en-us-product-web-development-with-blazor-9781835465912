@@ -24,6 +24,7 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
         new ApplicationUserTokenEntityTypeConfiguration().Configure(builder.Entity<ApplicationUserToken>());
 
         new BlogPostEntityTypeConfiguration().Configure(builder.Entity<BlogPost>());
+        new BlogPostTagEntityTypeConfiguration().Configure(builder.Entity<BlogPostTag>());
         // EntityTypeCfgCodePlaceholder
     }
 }
