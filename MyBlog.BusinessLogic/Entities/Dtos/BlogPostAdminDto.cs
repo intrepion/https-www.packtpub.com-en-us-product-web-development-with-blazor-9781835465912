@@ -30,6 +30,7 @@ public class BlogPostAdminDto
             Category = blogPost.Category,
             PublishDate = blogPost.PublishDate,
             Text = blogPost.Text,
+            Title = blogPost.Title,
             // EntityToDtoPropertyPlaceholder
             // Title = blogPost.Title,
             // ToDoList = blogPost.ToDoList,
