@@ -39,6 +39,7 @@ public class CategoryAdminEditModel
         {
             Id = categoryAdminEditModel.Id,
 
+            Name = categoryAdminEditModel.Name,
             // ModelToDtoPropertyPlaceholder
             // Title = categoryAdminEditModel.Title,
             // ToDoList = categoryAdminEditModel.ToDoList,
