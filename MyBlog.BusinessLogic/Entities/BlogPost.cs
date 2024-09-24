@@ -11,5 +11,6 @@ public class BlogPost
     public List<Comment>? Comments { get; set; } = [];
     public DateTime PublishDate { get; set; }
     public string Text { get; set; } = string.Empty;
+    public string Title { get; set; } = string.Empty;
     // ActualPropertyPlaceholder
 }
