@@ -10,37 +10,37 @@ public class EntityNamePlaceholderAdminEditModel
     // public string Title { get; set; } = string.Empty;
     // public ToDoList? ToDoList { get; set; }
 
-    public static EntityNamePlaceholderAdminEditModel FromEntityNamePlaceholderAdminDto(EntityNamePlaceholderAdminDto EntityLowercaseNamePlaceholderAdminDto)
+    public static EntityNamePlaceholderAdminEditModel FromEntityNamePlaceholderAdminDto(EntityNamePlaceholderAdminDto commentAdminDto)
     {
-        if (EntityLowercaseNamePlaceholderAdminDto == null)
+        if (commentAdminDto == null)
         {
             return new EntityNamePlaceholderAdminEditModel();
         }
 
         return new EntityNamePlaceholderAdminEditModel
         {
-            Id = EntityLowercaseNamePlaceholderAdminDto.Id,
+            Id = commentAdminDto.Id,
 
             // DtoToModelPropertyPlaceholder
-            // Title = EntityLowercaseNamePlaceholderAdminDto.Title,
-            // ToDoList = EntityLowercaseNamePlaceholderAdminDto.ToDoList,
+            // Title = commentAdminDto.Title,
+            // ToDoList = commentAdminDto.ToDoList,
         };
     }
 
-    public static EntityNamePlaceholderAdminDto ToEntityNamePlaceholderAdminDto(EntityNamePlaceholderAdminEditModel EntityLowercaseNamePlaceholderAdminEditModel)
+    public static EntityNamePlaceholderAdminDto ToEntityNamePlaceholderAdminDto(EntityNamePlaceholderAdminEditModel commentAdminEditModel)
     {
-        if (EntityLowercaseNamePlaceholderAdminEditModel == null)
+        if (commentAdminEditModel == null)
         {
             return new EntityNamePlaceholderAdminDto();
         }
 
         return new EntityNamePlaceholderAdminDto
         {
-            Id = EntityLowercaseNamePlaceholderAdminEditModel.Id,
+            Id = commentAdminEditModel.Id,
 
             // ModelToDtoPropertyPlaceholder
-            // Title = EntityLowercaseNamePlaceholderAdminEditModel.Title,
-            // ToDoList = EntityLowercaseNamePlaceholderAdminEditModel.ToDoList,
+            // Title = commentAdminEditModel.Title,
+            // ToDoList = commentAdminEditModel.ToDoList,
         };
     }
 }
