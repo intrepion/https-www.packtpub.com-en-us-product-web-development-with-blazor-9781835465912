@@ -42,6 +42,7 @@ public class BlogPostAdminDto
 
             Author = blogPostAdminDto.Author,
             Category = blogPostAdminDto.Category,
+            PublishDate = blogPostAdminDto.PublishDate,
             // DtoToEntityPropertyPlaceholder
             // Title = blogPostAdminDto.Title,
             // ToDoList = blogPostAdminDto.ToDoList,
