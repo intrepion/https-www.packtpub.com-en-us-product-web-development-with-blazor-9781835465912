@@ -1,6 +1,6 @@
 ﻿namespace ApplicationNamePlaceholder.BusinessLogic.Entities.Dtos;
 
-public class EntityNamePlaceholderAdminDto
+public class BlogPostAdminDto
 {
     public string ApplicationUserName { get; set; } = string.Empty;
     public Guid Id { get; set; }
@@ -9,14 +9,14 @@ public class EntityNamePlaceholderAdminDto
     // public string Title { get; set; } = string.Empty;
     // public ToDoList? ToDoList { get; set; }
 
-    public static EntityNamePlaceholderAdminDto FromEntityNamePlaceholder(EntityNamePlaceholder? blogPost)
+    public static BlogPostAdminDto FromBlogPost(BlogPost? blogPost)
     {
         if (blogPost == null)
         {
-            return new EntityNamePlaceholderAdminDto();
+            return new BlogPostAdminDto();
         }
 
-        return new EntityNamePlaceholderAdminDto
+        return new BlogPostAdminDto
         {
             Id = blogPost.Id,
 
@@ -26,9 +26,9 @@ public class EntityNamePlaceholderAdminDto
         };
     }
 
-    public static EntityNamePlaceholder ToEntityNamePlaceholder(ApplicationUser applicationUser, EntityNamePlaceholderAdminDto blogPostAdminDto)
+    public static BlogPost ToBlogPost(ApplicationUser applicationUser, BlogPostAdminDto blogPostAdminDto)
     {
-        return new EntityNamePlaceholder
+        return new BlogPost
         {
             ApplicationUserUpdatedBy = applicationUser,
             Id = blogPostAdminDto.Id,
