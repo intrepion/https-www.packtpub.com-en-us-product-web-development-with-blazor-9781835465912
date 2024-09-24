@@ -23,6 +23,7 @@ public class BlogPostTagAdminDto
             Id = blogPostTag.Id,
 
             BlogPost = blogPostTag.BlogPost,
+            Tag = blogPostTag.Tag,
             // EntityToDtoPropertyPlaceholder
             // Title = blogPostTag.Title,
             // ToDoList = blogPostTag.ToDoList,
