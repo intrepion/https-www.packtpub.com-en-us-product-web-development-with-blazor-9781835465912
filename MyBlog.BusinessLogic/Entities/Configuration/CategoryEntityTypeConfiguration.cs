@@ -7,12 +7,12 @@ public class CategoryEntityTypeConfiguration : IEntityTypeConfiguration<Category
 {
     public void Configure(EntityTypeBuilder<Category> builder)
     {
-        builder.ToTable("TableNamePlaceholder", x => x.IsTemporal());
+        builder.ToTable("Categories", x => x.IsTemporal());
 
         // builder.Property(x => x.PropertyNamePlaceholder);
 
         builder.HasOne(x => x.ApplicationUserUpdatedBy)
-            .WithMany(x => x.UpdatedTableNamePlaceholder)
+            .WithMany(x => x.UpdatedCategories)
             .OnDelete(DeleteBehavior.Restrict);
     }
 }
