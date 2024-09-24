@@ -147,6 +147,11 @@
         {
             authorList = authorListResult;
         }
+        var categoryListResult = await CategoryAdminService.GetAllAsync(userName);
+        if (categoryListResult != null)
+        {
+            categoryList = categoryListResult;
+        }
         @* OnInitializedCodePlaceholder *@
         @* var toDoListListResult = await ToDoListAdminService.GetAllAsync(userName);
         if (toDoListListResult != null)
