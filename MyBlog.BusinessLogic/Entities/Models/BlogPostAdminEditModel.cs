@@ -22,6 +22,7 @@ public class BlogPostAdminEditModel
         {
             Id = blogPostAdminDto.Id,
 
+            Author = blogPostAdminDto.Author,
             // DtoToModelPropertyPlaceholder
             // Title = blogPostAdminDto.Title,
             // ToDoList = blogPostAdminDto.ToDoList,
