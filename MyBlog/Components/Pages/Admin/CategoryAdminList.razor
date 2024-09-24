@@ -1,4 +1,4 @@
-@page "/admin/UrlNamePlaceholder-list"
+@page "/admin/category-list"
 @rendermode InteractiveServer
 @inject AuthenticationStateProvider GetAuthenticationStateAsync
 @inject ICategoryAdminService CategoryAdminService
@@ -42,14 +42,14 @@
                             @* <td>@category.Title</td>
                             <td>@category.ToDoList?.Title</td> *@
                             <td>
-                                <a href="@("/admin/UrlNamePlaceholder-edit/" + category.Id)">Edit</a>
+                                <a href="@("/admin/category-edit/" + category.Id)">Edit</a>
                             </td>
                         </tr>
                     }
                 }
             </tbody>
         </table>
-        <a href="/admin/UrlNamePlaceholder-edit">Create</a>
+        <a href="/admin/category-edit">Create</a>
     </article>
 </section>
 
