@@ -6,6 +6,7 @@ public class CategoryAdminEditModel
 {
     public Guid Id { get; set; }
 
+    public string Name { get; set; } = string.Empty;
     // JustModelPropertyPlaceholder
     // public string Title { get; set; } = string.Empty;
     // public ToDoList? ToDoList { get; set; }
