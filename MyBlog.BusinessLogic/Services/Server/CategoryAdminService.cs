@@ -100,6 +100,7 @@ public class CategoryAdminService(ApplicationDbContext applicationDbContext) : I
 
         databaseCategory.ApplicationUserUpdatedBy = user;
 
+        databaseCategory.Name = categoryAdminDto.Name;
         // EditDatabasePropertyCodePlaceholder
         // databaseCategory.Title = categoryAdminDto.Title;
         // databaseCategory.NormalizedTitle = categoryAdminDto.Title.ToUpperInvariant();
