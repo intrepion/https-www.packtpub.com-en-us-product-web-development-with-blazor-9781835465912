@@ -35,6 +35,7 @@ public class BlogPostAdminDto
             ApplicationUserUpdatedBy = applicationUser,
             Id = blogPostAdminDto.Id,
 
+            Author = blogPostAdminDto.Author,
             // DtoToEntityPropertyPlaceholder
             // Title = blogPostAdminDto.Title,
             // ToDoList = blogPostAdminDto.ToDoList,
