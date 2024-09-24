@@ -33,7 +33,7 @@ public class BlogPostTagAdminService(ApplicationDbContext applicationDbContext) 
 
         // AddDatabasePropertyCodePlaceholder
 
-        var result = await _applicationDbContext.TableNamePlaceholder.AddAsync(blogPostTag);
+        var result = await _applicationDbContext.BlogPostTags.AddAsync(blogPostTag);
         var databaseBlogPostTagAdminDto = BlogPostTagAdminDto.FromBlogPostTag(result.Entity);
         await _applicationDbContext.SaveChangesAsync();
 
@@ -54,7 +54,7 @@ public class BlogPostTagAdminService(ApplicationDbContext applicationDbContext) 
             throw new Exception("Authentication required.");
         }
 
-        var databaseBlogPostTag = await _applicationDbContext.TableNamePlaceholder.FindAsync(id);
+        var databaseBlogPostTag = await _applicationDbContext.BlogPostTags.FindAsync(id);
 
         if (databaseBlogPostTag == null)
         {
@@ -85,7 +85,7 @@ public class BlogPostTagAdminService(ApplicationDbContext applicationDbContext) 
             throw new Exception("Authentication required.");
         }
 
-        var databaseBlogPostTag = await _applicationDbContext.TableNamePlaceholder.FindAsync(blogPostTagAdminDto.Id);
+        var databaseBlogPostTag = await _applicationDbContext.BlogPostTags.FindAsync(blogPostTagAdminDto.Id);
 
         if (databaseBlogPostTag == null)
         {
@@ -124,7 +124,7 @@ public class BlogPostTagAdminService(ApplicationDbContext applicationDbContext) 
             throw new Exception("Authentication required.");
         }
 
-        return await _applicationDbContext.TableNamePlaceholder.ToListAsync();
+        return await _applicationDbContext.BlogPostTags.ToListAsync();
     }
 
     public async Task<BlogPostTagAdminDto?> GetByIdAsync(string userName, Guid id)
@@ -141,7 +141,7 @@ public class BlogPostTagAdminService(ApplicationDbContext applicationDbContext) 
             throw new Exception("Authentication required.");
         }
 
-        var result = await _applicationDbContext.TableNamePlaceholder.FindAsync(id);
+        var result = await _applicationDbContext.BlogPostTags.FindAsync(id);
 
         if (result == null)
         {
