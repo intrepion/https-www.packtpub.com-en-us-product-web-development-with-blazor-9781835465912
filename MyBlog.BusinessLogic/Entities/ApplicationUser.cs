@@ -17,5 +17,6 @@ public class ApplicationUser : IdentityUser<Guid>
     public ICollection<BlogPost> UpdatedBlogPosts { get; set; } = [];
     public ICollection<BlogPostTag> UpdatedBlogPostTags { get; set; } = [];
     public ICollection<Category> UpdatedCategories { get; set; } = [];
+    public ICollection<EntityNamePlaceholder> UpdatedTableNamePlaceholder { get; set; } = [];
     // AppUserUpdatedCodePlaceholder
 }
