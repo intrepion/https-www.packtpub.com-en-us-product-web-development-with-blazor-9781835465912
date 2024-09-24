@@ -21,6 +21,7 @@ public class CategoryAdminDto
         {
             Id = category.Id,
 
+            Name = category.Name,
             // EntityToDtoPropertyPlaceholder
             // Title = category.Title,
             // ToDoList = category.ToDoList,
