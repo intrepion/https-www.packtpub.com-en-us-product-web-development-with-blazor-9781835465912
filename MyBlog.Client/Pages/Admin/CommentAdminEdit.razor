@@ -3,7 +3,7 @@
 @rendermode InteractiveAuto
 @inject AuthenticationStateProvider GetAuthenticationStateAsync
 @inject NavigationManager NavigationManager
-@inject IEntityNamePlaceholderAdminService EntityNamePlaceholderAdminService
+@inject ICommentAdminService CommentAdminService
 
 @* InjectionCodePlaceholder *@
 @* @inject IToDoListAdminService ToDoListAdminService *@
@@ -73,7 +73,7 @@
 @code {
     [Parameter]
     public Guid Id { get; set; }
-    EntityNamePlaceholderAdminEditModel commentAdminEditModel { get; set; } = new EntityNamePlaceholderAdminEditModel();
+    CommentAdminEditModel commentAdminEditModel { get; set; } = new CommentAdminEditModel();
 
     @* ListDeclarationCodePlaceholder *@
     @* List<ToDoList>? toDoListList { get; set; } *@
@@ -113,15 +113,15 @@
             return;
         }
 
-        var databaseEntityNamePlaceholderAdminDto = await EntityNamePlaceholderAdminService.GetByIdAsync(userName, Id);
+        var databaseCommentAdminDto = await CommentAdminService.GetByIdAsync(userName, Id);
 
-        if (databaseEntityNamePlaceholderAdminDto == null)
+        if (databaseCommentAdminDto == null)
         {
-            commentAdminEditModel = new EntityNamePlaceholderAdminEditModel();
+            commentAdminEditModel = new CommentAdminEditModel();
         }
         else
         {
-            commentAdminEditModel = EntityNamePlaceholderAdminEditModel.FromEntityNamePlaceholderAdminDto(databaseEntityNamePlaceholderAdminDto);
+            commentAdminEditModel = CommentAdminEditModel.FromCommentAdminDto(databaseCommentAdminDto);
         }
     }
 
@@ -140,23 +140,23 @@
             return;
         } *@
 
-        var commentAdminDto = EntityNamePlaceholderAdminEditModel.ToEntityNamePlaceholderAdminDto(commentAdminEditModel);
+        var commentAdminDto = CommentAdminEditModel.ToCommentAdminDto(commentAdminEditModel);
         commentAdminDto.ApplicationUserName = userName;
 
         if (Id.Equals(Guid.Empty))
         {
-            var newEntityNamePlaceholderAdminDto = await EntityNamePlaceholderAdminService.AddAsync(commentAdminDto);
+            var newCommentAdminDto = await CommentAdminService.AddAsync(commentAdminDto);
 
-            if (newEntityNamePlaceholderAdminDto == null)
+            if (newCommentAdminDto == null)
             {
                 return;
             }
 
-            NavigationManager.NavigateTo($"/admin/UrlNamePlaceholder-edit/{newEntityNamePlaceholderAdminDto.Id}");
+            NavigationManager.NavigateTo($"/admin/UrlNamePlaceholder-edit/{newCommentAdminDto.Id}");
         }
         else
         {
-            await EntityNamePlaceholderAdminService.EditAsync(commentAdminDto);
+            await CommentAdminService.EditAsync(commentAdminDto);
         }
     }
 
@@ -175,7 +175,7 @@
             return;
         }
 
-        await EntityNamePlaceholderAdminService.DeleteAsync(userName, Id);
+        await CommentAdminService.DeleteAsync(userName, Id);
         NavigationManager.NavigateTo($"/admin/UrlNamePlaceholder-list");
     }
 
