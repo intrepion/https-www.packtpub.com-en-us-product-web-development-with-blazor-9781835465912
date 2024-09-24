@@ -20,6 +20,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyBlog.UnitTests", "MyBlog.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyBlog.ConsoleProject", "MyBlog.ConsoleProject\MyBlog.ConsoleProject.csproj", "{21EB0FE5-B03D-4872-90E0-CD906846C216}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyBlog.AcceptanceTests", "MyBlog.AcceptanceTests\MyBlog.AcceptanceTests.csproj", "{F303CE79-4712-492B-9236-4067AE166A75}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -138,6 +140,18 @@ Global
 		{21EB0FE5-B03D-4872-90E0-CD906846C216}.Release|x64.Build.0 = Release|Any CPU
 		{21EB0FE5-B03D-4872-90E0-CD906846C216}.Release|x86.ActiveCfg = Release|Any CPU
 		{21EB0FE5-B03D-4872-90E0-CD906846C216}.Release|x86.Build.0 = Release|Any CPU
+		{F303CE79-4712-492B-9236-4067AE166A75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F303CE79-4712-492B-9236-4067AE166A75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F303CE79-4712-492B-9236-4067AE166A75}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{F303CE79-4712-492B-9236-4067AE166A75}.Debug|x64.Build.0 = Debug|Any CPU
+		{F303CE79-4712-492B-9236-4067AE166A75}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F303CE79-4712-492B-9236-4067AE166A75}.Debug|x86.Build.0 = Debug|Any CPU
+		{F303CE79-4712-492B-9236-4067AE166A75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F303CE79-4712-492B-9236-4067AE166A75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F303CE79-4712-492B-9236-4067AE166A75}.Release|x64.ActiveCfg = Release|Any CPU
+		{F303CE79-4712-492B-9236-4067AE166A75}.Release|x64.Build.0 = Release|Any CPU
+		{F303CE79-4712-492B-9236-4067AE166A75}.Release|x86.ActiveCfg = Release|Any CPU
+		{F303CE79-4712-492B-9236-4067AE166A75}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
