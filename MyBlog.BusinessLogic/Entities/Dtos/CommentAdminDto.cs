@@ -38,6 +38,7 @@ public class CommentAdminDto
             Id = commentAdminDto.Id,
 
             BlogPost = commentAdminDto.BlogPost,
+            Commenter = commentAdminDto.Commenter,
             // DtoToEntityPropertyPlaceholder
             // Title = commentAdminDto.Title,
             // ToDoList = commentAdminDto.ToDoList,
