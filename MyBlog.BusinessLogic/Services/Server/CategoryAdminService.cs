@@ -33,7 +33,7 @@ public class CategoryAdminService(ApplicationDbContext applicationDbContext) : I
 
         // AddDatabasePropertyCodePlaceholder
 
-        var result = await _applicationDbContext.TableNamePlaceholder.AddAsync(category);
+        var result = await _applicationDbContext.Categories.AddAsync(category);
         var databaseCategoryAdminDto = CategoryAdminDto.FromCategory(result.Entity);
         await _applicationDbContext.SaveChangesAsync();
 
@@ -54,7 +54,7 @@ public class CategoryAdminService(ApplicationDbContext applicationDbContext) : I
             throw new Exception("Authentication required.");
         }
 
-        var databaseCategory = await _applicationDbContext.TableNamePlaceholder.FindAsync(id);
+        var databaseCategory = await _applicationDbContext.Categories.FindAsync(id);
 
         if (databaseCategory == null)
         {
@@ -85,7 +85,7 @@ public class CategoryAdminService(ApplicationDbContext applicationDbContext) : I
             throw new Exception("Authentication required.");
         }
 
-        var databaseCategory = await _applicationDbContext.TableNamePlaceholder.FindAsync(categoryAdminDto.Id);
+        var databaseCategory = await _applicationDbContext.Categories.FindAsync(categoryAdminDto.Id);
 
         if (databaseCategory == null)
         {
@@ -124,7 +124,7 @@ public class CategoryAdminService(ApplicationDbContext applicationDbContext) : I
             throw new Exception("Authentication required.");
         }
 
-        return await _applicationDbContext.TableNamePlaceholder.ToListAsync();
+        return await _applicationDbContext.Categories.ToListAsync();
     }
 
     public async Task<CategoryAdminDto?> GetByIdAsync(string userName, Guid id)
@@ -141,7 +141,7 @@ public class CategoryAdminService(ApplicationDbContext applicationDbContext) : I
             throw new Exception("Authentication required.");
         }
 
-        var result = await _applicationDbContext.TableNamePlaceholder.FindAsync(id);
+        var result = await _applicationDbContext.Categories.FindAsync(id);
 
         if (result == null)
         {
