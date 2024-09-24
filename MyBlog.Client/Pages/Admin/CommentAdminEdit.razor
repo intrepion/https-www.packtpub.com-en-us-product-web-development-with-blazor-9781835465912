@@ -253,6 +253,17 @@
         commentAdminEditModel.BlogPost = blogPostList?.Where(x => x.Id.ToString().Equals(id)).FirstOrDefault();
     }
 
+    void CommenterOnChange(ChangeEventArgs args)
+    {
+        if (args.Value == null)
+        {
+            return;
+        }
+
+        var id = (string)args.Value;
+        commentAdminEditModel.Commenter = commenterList?.Where(x => x.Id.ToString().Equals(id)).FirstOrDefault();
+    }
+
     @* OnChangeCodePlaceholder *@
     @* void ToDoListOnChange(ChangeEventArgs args)
     {
