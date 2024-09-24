@@ -5,6 +5,7 @@ public class CategoryAdminDto
     public string ApplicationUserName { get; set; } = string.Empty;
     public Guid Id { get; set; }
 
+    public List<BlogPost>? BlogPosts { get; set; } = [];
     // DtoPropertyPlaceholder
     // public string Title { get; set; } = string.Empty;
     // public ToDoList? ToDoList { get; set; }
