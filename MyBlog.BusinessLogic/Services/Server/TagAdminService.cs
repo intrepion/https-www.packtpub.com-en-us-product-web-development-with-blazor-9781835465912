@@ -33,7 +33,7 @@ public class TagAdminService(ApplicationDbContext applicationDbContext) : ITagAd
 
         // AddDatabasePropertyCodePlaceholder
 
-        var result = await _applicationDbContext.TableNamePlaceholder.AddAsync(tag);
+        var result = await _applicationDbContext.Tags.AddAsync(tag);
         var databaseTagAdminDto = TagAdminDto.FromTag(result.Entity);
         await _applicationDbContext.SaveChangesAsync();
 
@@ -54,7 +54,7 @@ public class TagAdminService(ApplicationDbContext applicationDbContext) : ITagAd
             throw new Exception("Authentication required.");
         }
 
-        var databaseTag = await _applicationDbContext.TableNamePlaceholder.FindAsync(id);
+        var databaseTag = await _applicationDbContext.Tags.FindAsync(id);
 
         if (databaseTag == null)
         {
@@ -85,7 +85,7 @@ public class TagAdminService(ApplicationDbContext applicationDbContext) : ITagAd
             throw new Exception("Authentication required.");
         }
 
-        var databaseTag = await _applicationDbContext.TableNamePlaceholder.FindAsync(tagAdminDto.Id);
+        var databaseTag = await _applicationDbContext.Tags.FindAsync(tagAdminDto.Id);
 
         if (databaseTag == null)
         {
@@ -124,7 +124,7 @@ public class TagAdminService(ApplicationDbContext applicationDbContext) : ITagAd
             throw new Exception("Authentication required.");
         }
 
-        return await _applicationDbContext.TableNamePlaceholder.ToListAsync();
+        return await _applicationDbContext.Tags.ToListAsync();
     }
 
     public async Task<TagAdminDto?> GetByIdAsync(string userName, Guid id)
@@ -141,7 +141,7 @@ public class TagAdminService(ApplicationDbContext applicationDbContext) : ITagAd
             throw new Exception("Authentication required.");
         }
 
-        var result = await _applicationDbContext.TableNamePlaceholder.FindAsync(id);
+        var result = await _applicationDbContext.Tags.FindAsync(id);
 
         if (result == null)
         {
