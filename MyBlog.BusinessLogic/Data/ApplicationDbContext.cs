@@ -10,6 +10,7 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
     public DbSet<BlogPost> BlogPosts { get; set; }
     public DbSet<BlogPostTag> BlogPostTags { get; set; }
     public DbSet<Category> Categories { get; set; }
+    public DbSet<Comment> Comments { get; set; }
     // DbSetCodePlaceholder
 
     protected override void OnModelCreating(ModelBuilder builder)
