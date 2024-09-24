@@ -31,6 +31,7 @@ public class BlogPostAdminService(ApplicationDbContext applicationDbContext) : I
 
         var blogPost = BlogPostAdminDto.ToBlogPost(user, blogPostAdminDto);
 
+        blogPost.NormalizedTitle = blogPostAdminDto.Title.ToUpperInvariant();
         // AddDatabasePropertyCodePlaceholder
 
         var result = await _applicationDbContext.BlogPosts.AddAsync(blogPost);
