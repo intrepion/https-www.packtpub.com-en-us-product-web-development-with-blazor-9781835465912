@@ -1,4 +1,7 @@
 ﻿using System.Text.Json.Serialization;
+using Microsoft.AspNetCore.Components.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using MyBlog.BusinessLogic.Data;
 using MyBlog.BusinessLogic.Entities;
 using MyBlog.BusinessLogic.Services;
@@ -6,9 +9,6 @@ using MyBlog.BusinessLogic.Services.Server;
 using MyBlog.Client.Pages;
 using MyBlog.Components;
 using MyBlog.Components.Account;
-using Microsoft.AspNetCore.Components.Authorization;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 

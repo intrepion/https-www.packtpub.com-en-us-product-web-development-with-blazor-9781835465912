@@ -1,7 +1,7 @@
-﻿using MyBlog.BusinessLogic.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using MyBlog.BusinessLogic.Data;
 using MyBlog.BusinessLogic.Entities;
 using MyBlog.BusinessLogic.Entities.Dtos;
-using Microsoft.EntityFrameworkCore;
 
 namespace MyBlog.BusinessLogic.Services.Server;
 

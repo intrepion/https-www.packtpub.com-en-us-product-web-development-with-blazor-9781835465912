@@ -1,6 +1,6 @@
-﻿using MyBlog.BusinessLogic.Entities.Dtos;
+﻿using Microsoft.AspNetCore.Mvc;
+using MyBlog.BusinessLogic.Entities.Dtos;
 using MyBlog.BusinessLogic.Services;
-using Microsoft.AspNetCore.Mvc;
 
 namespace MyBlog.Controllers;
 
