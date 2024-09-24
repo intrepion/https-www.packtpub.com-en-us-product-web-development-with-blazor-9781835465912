@@ -8,6 +8,7 @@ public class BlogPostAdminDto
     public ApplicationUser? Author { get; set; }
     public List<BlogPostTag>? BlogPostTags { get; set; } = [];
     public Category? Category { get; set; }
+    public List<Comment>? Comments { get; set; } = [];
     // DtoPropertyPlaceholder
     // public string Title { get; set; } = string.Empty;
     // public ToDoList? ToDoList { get; set; }
