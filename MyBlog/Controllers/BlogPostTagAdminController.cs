@@ -6,12 +6,12 @@ namespace ApplicationNamePlaceholder.Controllers;
 
 [Route("api/admin/[controller]")]
 [ApiController]
-public class EntityNamePlaceholderController(IEntityNamePlaceholderAdminService blogPostTagAdminService) : ControllerBase
+public class BlogPostTagController(IBlogPostTagAdminService blogPostTagAdminService) : ControllerBase
 {
-    private readonly IEntityNamePlaceholderAdminService _blogPostTagAdminService = blogPostTagAdminService;
+    private readonly IBlogPostTagAdminService _blogPostTagAdminService = blogPostTagAdminService;
 
     [HttpPost]
-    public async Task<ActionResult<EntityNamePlaceholderAdminDto?>> Add(EntityNamePlaceholderAdminDto blogPostTagAdminDto)
+    public async Task<ActionResult<BlogPostTagAdminDto?>> Add(BlogPostTagAdminDto blogPostTagAdminDto)
     {
         var userIdentityName = User.Identity?.Name;
 
@@ -25,9 +25,9 @@ public class EntityNamePlaceholderController(IEntityNamePlaceholderAdminService 
             return Ok(null);
         }
 
-        var databaseEntityNamePlaceholderAdminDto = await _blogPostTagAdminService.AddAsync(blogPostTagAdminDto);
+        var databaseBlogPostTagAdminDto = await _blogPostTagAdminService.AddAsync(blogPostTagAdminDto);
 
-        return Ok(databaseEntityNamePlaceholderAdminDto);
+        return Ok(databaseBlogPostTagAdminDto);
     }
 
     [HttpDelete("{id}")]
@@ -51,7 +51,7 @@ public class EntityNamePlaceholderController(IEntityNamePlaceholderAdminService 
     }
 
     [HttpPut]
-    public async Task<ActionResult<EntityNamePlaceholderAdminDto?>> Edit(EntityNamePlaceholderAdminDto blogPostTagAdminDto)
+    public async Task<ActionResult<BlogPostTagAdminDto?>> Edit(BlogPostTagAdminDto blogPostTagAdminDto)
     {
         var userIdentityName = User.Identity?.Name;
 
@@ -65,13 +65,13 @@ public class EntityNamePlaceholderController(IEntityNamePlaceholderAdminService 
             return Ok(null);
         }
 
-        var databaseEntityNamePlaceholder = await _blogPostTagAdminService.EditAsync(blogPostTagAdminDto);
+        var databaseBlogPostTag = await _blogPostTagAdminService.EditAsync(blogPostTagAdminDto);
 
-        return Ok(databaseEntityNamePlaceholder);
+        return Ok(databaseBlogPostTag);
     }
 
     [HttpGet]
-    public async Task<ActionResult<EntityNamePlaceholderAdminDto>?> GetAll(string userName)
+    public async Task<ActionResult<BlogPostTagAdminDto>?> GetAll(string userName)
     {
         var userIdentityName = User.Identity?.Name;
 
@@ -91,7 +91,7 @@ public class EntityNamePlaceholderController(IEntityNamePlaceholderAdminService 
     }
 
     [HttpGet("{id}")]
-    public async Task<ActionResult<EntityNamePlaceholderAdminDto?>> GetById(string userName, Guid id)
+    public async Task<ActionResult<BlogPostTagAdminDto?>> GetById(string userName, Guid id)
     {
         var userIdentityName = User.Identity?.Name;
 
