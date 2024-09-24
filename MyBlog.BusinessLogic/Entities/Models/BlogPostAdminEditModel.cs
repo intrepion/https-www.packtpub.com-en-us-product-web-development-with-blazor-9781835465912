@@ -8,6 +8,7 @@ public class BlogPostAdminEditModel
 
     public ApplicationUser? Author { get; set; }
     public Category? Category { get; set; }
+    public DateTime PublishDate { get; set; }
     // JustModelPropertyPlaceholder
     // public string Title { get; set; } = string.Empty;
     // public ToDoList? ToDoList { get; set; }
