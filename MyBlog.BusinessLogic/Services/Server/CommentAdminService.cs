@@ -33,7 +33,7 @@ public class CommentAdminService(ApplicationDbContext applicationDbContext) : IC
 
         // AddDatabasePropertyCodePlaceholder
 
-        var result = await _applicationDbContext.TableNamePlaceholder.AddAsync(comment);
+        var result = await _applicationDbContext.Comments.AddAsync(comment);
         var databaseCommentAdminDto = CommentAdminDto.FromComment(result.Entity);
         await _applicationDbContext.SaveChangesAsync();
 
@@ -54,7 +54,7 @@ public class CommentAdminService(ApplicationDbContext applicationDbContext) : IC
             throw new Exception("Authentication required.");
         }
 
-        var databaseComment = await _applicationDbContext.TableNamePlaceholder.FindAsync(id);
+        var databaseComment = await _applicationDbContext.Comments.FindAsync(id);
 
         if (databaseComment == null)
         {
@@ -85,7 +85,7 @@ public class CommentAdminService(ApplicationDbContext applicationDbContext) : IC
             throw new Exception("Authentication required.");
         }
 
-        var databaseComment = await _applicationDbContext.TableNamePlaceholder.FindAsync(commentAdminDto.Id);
+        var databaseComment = await _applicationDbContext.Comments.FindAsync(commentAdminDto.Id);
 
         if (databaseComment == null)
         {
@@ -124,7 +124,7 @@ public class CommentAdminService(ApplicationDbContext applicationDbContext) : IC
             throw new Exception("Authentication required.");
         }
 
-        return await _applicationDbContext.TableNamePlaceholder.ToListAsync();
+        return await _applicationDbContext.Comments.ToListAsync();
     }
 
     public async Task<CommentAdminDto?> GetByIdAsync(string userName, Guid id)
@@ -141,7 +141,7 @@ public class CommentAdminService(ApplicationDbContext applicationDbContext) : IC
             throw new Exception("Authentication required.");
         }
 
-        var result = await _applicationDbContext.TableNamePlaceholder.FindAsync(id);
+        var result = await _applicationDbContext.Comments.FindAsync(id);
 
         if (result == null)
         {
