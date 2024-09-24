@@ -7,5 +7,6 @@ public class Tag
 
     public List<BlogPostTag>? BlogPostTags { get; set; } = [];
     public string Name { get; set; } = string.Empty;
+    public string NormalizedName { get; set; } = string.Empty;
     // ActualPropertyPlaceholder
 }
