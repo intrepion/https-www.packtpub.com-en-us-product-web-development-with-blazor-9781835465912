@@ -35,6 +35,7 @@ public class CategoryAdminDto
             ApplicationUserUpdatedBy = applicationUser,
             Id = categoryAdminDto.Id,
 
+            Name = categoryAdminDto.Name,
             // DtoToEntityPropertyPlaceholder
             // Title = categoryAdminDto.Title,
             // ToDoList = categoryAdminDto.ToDoList,
