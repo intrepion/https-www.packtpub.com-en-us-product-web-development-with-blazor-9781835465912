@@ -147,6 +147,11 @@
         {
             blogPostList = blogPostListResult;
         }
+        var commenterListResult = await ApplicationUserAdminService.GetAllAsync(userName);
+        if (commenterListResult != null)
+        {
+            commenterList = commenterListResult;
+        }
         @* OnInitializedCodePlaceholder *@
         @* var toDoListListResult = await ToDoListAdminService.GetAllAsync(userName);
         if (toDoListListResult != null)
