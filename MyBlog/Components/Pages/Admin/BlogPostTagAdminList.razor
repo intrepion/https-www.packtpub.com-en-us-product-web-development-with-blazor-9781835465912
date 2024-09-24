@@ -1,4 +1,4 @@
-@page "/admin/UrlNamePlaceholder-list"
+@page "/admin/blog-post-tag-list"
 @rendermode InteractiveServer
 @inject AuthenticationStateProvider GetAuthenticationStateAsync
 @inject IBlogPostTagAdminService BlogPostTagAdminService
@@ -42,14 +42,14 @@
                             @* <td>@blogPostTag.Title</td>
                             <td>@blogPostTag.ToDoList?.Title</td> *@
                             <td>
-                                <a href="@("/admin/UrlNamePlaceholder-edit/" + blogPostTag.Id)">Edit</a>
+                                <a href="@("/admin/blog-post-tag-edit/" + blogPostTag.Id)">Edit</a>
                             </td>
                         </tr>
                     }
                 }
             </tbody>
         </table>
-        <a href="/admin/UrlNamePlaceholder-edit">Create</a>
+        <a href="/admin/blog-post-tag-edit">Create</a>
     </article>
 </section>
 
