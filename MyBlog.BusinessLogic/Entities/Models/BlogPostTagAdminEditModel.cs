@@ -7,6 +7,7 @@ public class BlogPostTagAdminEditModel
     public Guid Id { get; set; }
 
     public BlogPost? BlogPost { get; set; }
+    public Tag? Tag { get; set; }
     // JustModelPropertyPlaceholder
     // public string Title { get; set; } = string.Empty;
     // public ToDoList? ToDoList { get; set; }
