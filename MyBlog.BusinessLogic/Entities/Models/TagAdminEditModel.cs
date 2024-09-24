@@ -39,6 +39,7 @@ public class TagAdminEditModel
         {
             Id = tagAdminEditModel.Id,
 
+            Name = tagAdminEditModel.Name,
             // ModelToDtoPropertyPlaceholder
             // Title = tagAdminEditModel.Title,
             // ToDoList = tagAdminEditModel.ToDoList,
