@@ -2,7 +2,7 @@
 
 namespace ApplicationNamePlaceholder.BusinessLogic.Entities.Models;
 
-public class EntityNamePlaceholderAdminEditModel
+public class BlogPostTagAdminEditModel
 {
     public Guid Id { get; set; }
 
@@ -10,14 +10,14 @@ public class EntityNamePlaceholderAdminEditModel
     // public string Title { get; set; } = string.Empty;
     // public ToDoList? ToDoList { get; set; }
 
-    public static EntityNamePlaceholderAdminEditModel FromEntityNamePlaceholderAdminDto(EntityNamePlaceholderAdminDto blogPostTagAdminDto)
+    public static BlogPostTagAdminEditModel FromBlogPostTagAdminDto(BlogPostTagAdminDto blogPostTagAdminDto)
     {
         if (blogPostTagAdminDto == null)
         {
-            return new EntityNamePlaceholderAdminEditModel();
+            return new BlogPostTagAdminEditModel();
         }
 
-        return new EntityNamePlaceholderAdminEditModel
+        return new BlogPostTagAdminEditModel
         {
             Id = blogPostTagAdminDto.Id,
 
@@ -27,14 +27,14 @@ public class EntityNamePlaceholderAdminEditModel
         };
     }
 
-    public static EntityNamePlaceholderAdminDto ToEntityNamePlaceholderAdminDto(EntityNamePlaceholderAdminEditModel blogPostTagAdminEditModel)
+    public static BlogPostTagAdminDto ToBlogPostTagAdminDto(BlogPostTagAdminEditModel blogPostTagAdminEditModel)
     {
         if (blogPostTagAdminEditModel == null)
         {
-            return new EntityNamePlaceholderAdminDto();
+            return new BlogPostTagAdminDto();
         }
 
-        return new EntityNamePlaceholderAdminDto
+        return new BlogPostTagAdminDto
         {
             Id = blogPostTagAdminEditModel.Id,
 
