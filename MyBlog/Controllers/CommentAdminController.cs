@@ -6,12 +6,12 @@ namespace ApplicationNamePlaceholder.Controllers;
 
 [Route("api/admin/[controller]")]
 [ApiController]
-public class EntityNamePlaceholderController(IEntityNamePlaceholderAdminService EntityLowercaseNamePlaceholderAdminService) : ControllerBase
+public class EntityNamePlaceholderController(IEntityNamePlaceholderAdminService commentAdminService) : ControllerBase
 {
-    private readonly IEntityNamePlaceholderAdminService _EntityLowercaseNamePlaceholderAdminService = EntityLowercaseNamePlaceholderAdminService;
+    private readonly IEntityNamePlaceholderAdminService _commentAdminService = commentAdminService;
 
     [HttpPost]
-    public async Task<ActionResult<EntityNamePlaceholderAdminDto?>> Add(EntityNamePlaceholderAdminDto EntityLowercaseNamePlaceholderAdminDto)
+    public async Task<ActionResult<EntityNamePlaceholderAdminDto?>> Add(EntityNamePlaceholderAdminDto commentAdminDto)
     {
         var userIdentityName = User.Identity?.Name;
 
@@ -20,12 +20,12 @@ public class EntityNamePlaceholderController(IEntityNamePlaceholderAdminService 
             return Ok(null);
         }
 
-        if (string.Equals(EntityLowercaseNamePlaceholderAdminDto.ApplicationUserName, userIdentityName, StringComparison.InvariantCultureIgnoreCase))
+        if (string.Equals(commentAdminDto.ApplicationUserName, userIdentityName, StringComparison.InvariantCultureIgnoreCase))
         {
             return Ok(null);
         }
 
-        var databaseEntityNamePlaceholderAdminDto = await _EntityLowercaseNamePlaceholderAdminService.AddAsync(EntityLowercaseNamePlaceholderAdminDto);
+        var databaseEntityNamePlaceholderAdminDto = await _commentAdminService.AddAsync(commentAdminDto);
 
         return Ok(databaseEntityNamePlaceholderAdminDto);
     }
@@ -45,13 +45,13 @@ public class EntityNamePlaceholderController(IEntityNamePlaceholderAdminService 
             return Ok(null);
         }
 
-        var result = await _EntityLowercaseNamePlaceholderAdminService.DeleteAsync(userIdentityName, id);
+        var result = await _commentAdminService.DeleteAsync(userIdentityName, id);
 
         return Ok(result);
     }
 
     [HttpPut]
-    public async Task<ActionResult<EntityNamePlaceholderAdminDto?>> Edit(EntityNamePlaceholderAdminDto EntityLowercaseNamePlaceholderAdminDto)
+    public async Task<ActionResult<EntityNamePlaceholderAdminDto?>> Edit(EntityNamePlaceholderAdminDto commentAdminDto)
     {
         var userIdentityName = User.Identity?.Name;
 
@@ -60,12 +60,12 @@ public class EntityNamePlaceholderController(IEntityNamePlaceholderAdminService 
             return Ok(null);
         }
 
-        if (string.Equals(EntityLowercaseNamePlaceholderAdminDto.ApplicationUserName, userIdentityName, StringComparison.InvariantCultureIgnoreCase))
+        if (string.Equals(commentAdminDto.ApplicationUserName, userIdentityName, StringComparison.InvariantCultureIgnoreCase))
         {
             return Ok(null);
         }
 
-        var databaseEntityNamePlaceholder = await _EntityLowercaseNamePlaceholderAdminService.EditAsync(EntityLowercaseNamePlaceholderAdminDto);
+        var databaseEntityNamePlaceholder = await _commentAdminService.EditAsync(commentAdminDto);
 
         return Ok(databaseEntityNamePlaceholder);
     }
@@ -85,9 +85,9 @@ public class EntityNamePlaceholderController(IEntityNamePlaceholderAdminService 
             return Ok(null);
         }
 
-        var EntityLowercaseNamePlaceholderAdminDtos = await _EntityLowercaseNamePlaceholderAdminService.GetAllAsync(userIdentityName);
+        var commentAdminDtos = await _commentAdminService.GetAllAsync(userIdentityName);
 
-        return Ok(EntityLowercaseNamePlaceholderAdminDtos);
+        return Ok(commentAdminDtos);
     }
 
     [HttpGet("{id}")]
@@ -105,8 +105,8 @@ public class EntityNamePlaceholderController(IEntityNamePlaceholderAdminService 
             return Ok(null);
         }
 
-        var EntityLowercaseNamePlaceholderAdminDto = await _EntityLowercaseNamePlaceholderAdminService.GetByIdAsync(userIdentityName, id);
+        var commentAdminDto = await _commentAdminService.GetByIdAsync(userIdentityName, id);
 
-        return Ok(EntityLowercaseNamePlaceholderAdminDto);
+        return Ok(commentAdminDto);
     }
 }
