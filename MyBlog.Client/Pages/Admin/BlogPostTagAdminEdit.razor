@@ -46,6 +46,30 @@
           </label>
         </div>
       </div>
+      <div class="row">
+        <div class="col">
+          <label>
+            Tag:
+            <select @onchange="TagOnChange">
+              <option>Select tag...</option>
+                @if (tagList != null)
+                {
+                  @foreach (var tag in tagList)
+                  {
+                    if (blogPostTagAdminEditModel.Tag != null && blogPostTagAdminEditModel.Tag.Id.Equals(tag.Id))
+                    {
+                      <option value="@tag.Id" selected>@tag.Name</option>
+                    }
+                    else
+                    {
+                      <option value="@tag.Id">@tag.Name</option>
+                    }
+                  }
+                }
+              </select>
+          </label>
+        </div>
+      </div>
       @* EditRowCodePlaceholder *@
       @* <div class="row">
                 <div class="col">
