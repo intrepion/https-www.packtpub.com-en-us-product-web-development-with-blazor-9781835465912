@@ -21,6 +21,7 @@ public class BlogPostTagAdminDto
         {
             Id = blogPostTag.Id,
 
+            BlogPost = blogPostTag.BlogPost,
             // EntityToDtoPropertyPlaceholder
             // Title = blogPostTag.Title,
             // ToDoList = blogPostTag.ToDoList,
