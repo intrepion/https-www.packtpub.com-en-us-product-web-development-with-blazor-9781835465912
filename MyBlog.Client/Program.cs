@@ -18,6 +18,7 @@ builder.Services.AddScoped<IApplicationRoleAdminService, ApplicationRoleClientAd
 builder.Services.AddScoped<IApplicationUserAdminService, ApplicationUserClientAdminService>();
 
 builder.Services.AddScoped<IBlogPostAdminService, BlogPostClientAdminService>();
+builder.Services.AddScoped<IBlogPostTagAdminService, BlogPostTagClientAdminService>();
 // RegisterClientServiceCodePlaceholder
 
 await builder.Build().RunAsync();
