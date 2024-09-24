@@ -3,11 +3,11 @@ using ApplicationNamePlaceholder.BusinessLogic.Entities.Dtos;
 
 namespace ApplicationNamePlaceholder.BusinessLogic.Services;
 
-public interface IEntityNamePlaceholderAdminService
+public interface IBlogPostTagAdminService
 {
-    Task<EntityNamePlaceholderAdminDto?> AddAsync(EntityNamePlaceholderAdminDto blogPostTag);
+    Task<BlogPostTagAdminDto?> AddAsync(BlogPostTagAdminDto blogPostTag);
     Task<bool> DeleteAsync(string userName, Guid id);
-    Task<EntityNamePlaceholderAdminDto?> EditAsync(EntityNamePlaceholderAdminDto blogPostTag);
-    Task<List<EntityNamePlaceholder>?> GetAllAsync(string userName);
-    Task<EntityNamePlaceholderAdminDto?> GetByIdAsync(string userName, Guid id);
+    Task<BlogPostTagAdminDto?> EditAsync(BlogPostTagAdminDto blogPostTag);
+    Task<List<BlogPostTag>?> GetAllAsync(string userName);
+    Task<BlogPostTagAdminDto?> GetByIdAsync(string userName, Guid id);
 }
