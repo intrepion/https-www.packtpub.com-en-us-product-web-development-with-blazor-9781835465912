@@ -10,37 +10,37 @@ public class EntityNamePlaceholderAdminEditModel
     // public string Title { get; set; } = string.Empty;
     // public ToDoList? ToDoList { get; set; }
 
-    public static EntityNamePlaceholderAdminEditModel FromEntityNamePlaceholderAdminDto(EntityNamePlaceholderAdminDto EntityLowercaseNamePlaceholderAdminDto)
+    public static EntityNamePlaceholderAdminEditModel FromEntityNamePlaceholderAdminDto(EntityNamePlaceholderAdminDto blogPostTagAdminDto)
     {
-        if (EntityLowercaseNamePlaceholderAdminDto == null)
+        if (blogPostTagAdminDto == null)
         {
             return new EntityNamePlaceholderAdminEditModel();
         }
 
         return new EntityNamePlaceholderAdminEditModel
         {
-            Id = EntityLowercaseNamePlaceholderAdminDto.Id,
+            Id = blogPostTagAdminDto.Id,
 
             // DtoToModelPropertyPlaceholder
-            // Title = EntityLowercaseNamePlaceholderAdminDto.Title,
-            // ToDoList = EntityLowercaseNamePlaceholderAdminDto.ToDoList,
+            // Title = blogPostTagAdminDto.Title,
+            // ToDoList = blogPostTagAdminDto.ToDoList,
         };
     }
 
-    public static EntityNamePlaceholderAdminDto ToEntityNamePlaceholderAdminDto(EntityNamePlaceholderAdminEditModel EntityLowercaseNamePlaceholderAdminEditModel)
+    public static EntityNamePlaceholderAdminDto ToEntityNamePlaceholderAdminDto(EntityNamePlaceholderAdminEditModel blogPostTagAdminEditModel)
     {
-        if (EntityLowercaseNamePlaceholderAdminEditModel == null)
+        if (blogPostTagAdminEditModel == null)
         {
             return new EntityNamePlaceholderAdminDto();
         }
 
         return new EntityNamePlaceholderAdminDto
         {
-            Id = EntityLowercaseNamePlaceholderAdminEditModel.Id,
+            Id = blogPostTagAdminEditModel.Id,
 
             // ModelToDtoPropertyPlaceholder
-            // Title = EntityLowercaseNamePlaceholderAdminEditModel.Title,
-            // ToDoList = EntityLowercaseNamePlaceholderAdminEditModel.ToDoList,
+            // Title = blogPostTagAdminEditModel.Title,
+            // ToDoList = blogPostTagAdminEditModel.ToDoList,
         };
     }
 }
