@@ -31,6 +31,7 @@ public class TagAdminService(ApplicationDbContext applicationDbContext) : ITagAd
 
         var tag = TagAdminDto.ToTag(user, tagAdminDto);
 
+        tag.NormalizedName = tagAdminDto.Name.ToUpperInvariant();
         // AddDatabasePropertyCodePlaceholder
 
         var result = await _applicationDbContext.Tags.AddAsync(tag);
