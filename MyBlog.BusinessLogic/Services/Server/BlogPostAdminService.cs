@@ -101,6 +101,7 @@ public class BlogPostAdminService(ApplicationDbContext applicationDbContext) : I
         databaseBlogPost.ApplicationUserUpdatedBy = user;
 
         databaseBlogPost.Text = blogPostAdminDto.Text;
+        databaseBlogPost.Title = blogPostAdminDto.Title;
         // EditDatabasePropertyCodePlaceholder
         // databaseBlogPost.Title = blogPostAdminDto.Title;
         // databaseBlogPost.NormalizedTitle = blogPostAdminDto.Title.ToUpperInvariant();
