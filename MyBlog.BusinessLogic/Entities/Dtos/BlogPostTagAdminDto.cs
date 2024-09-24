@@ -6,6 +6,7 @@ public class BlogPostTagAdminDto
     public Guid Id { get; set; }
 
     public BlogPost? BlogPost { get; set; }
+    public Tag? Tag { get; set; }
     // DtoPropertyPlaceholder
     // public string Title { get; set; } = string.Empty;
     // public ToDoList? ToDoList { get; set; }
