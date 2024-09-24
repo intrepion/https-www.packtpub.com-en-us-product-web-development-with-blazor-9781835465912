@@ -1,7 +1,7 @@
-﻿using ApplicationNamePlaceholder.BusinessLogic.Entities;
-using ApplicationNamePlaceholder.BusinessLogic.Entities.Dtos;
+﻿using MyBlog.BusinessLogic.Entities;
+using MyBlog.BusinessLogic.Entities.Dtos;
 
-namespace ApplicationNamePlaceholder.BusinessLogic.Services;
+namespace MyBlog.BusinessLogic.Services;
 
 public interface IBlogPostAdminService
 {
