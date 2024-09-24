@@ -31,6 +31,7 @@ public class CategoryAdminService(ApplicationDbContext applicationDbContext) : I
 
         var category = CategoryAdminDto.ToCategory(user, categoryAdminDto);
 
+        category.NormalizedName = categoryAdminDto.Name.ToUpperInvariant();
         // AddDatabasePropertyCodePlaceholder
 
         var result = await _applicationDbContext.Categories.AddAsync(category);
