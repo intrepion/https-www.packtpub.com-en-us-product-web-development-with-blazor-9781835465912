@@ -24,6 +24,7 @@ public class BlogPostAdminEditModel
             Id = blogPostAdminDto.Id,
 
             Author = blogPostAdminDto.Author,
+            Category = blogPostAdminDto.Category,
             // DtoToModelPropertyPlaceholder
             // Title = blogPostAdminDto.Title,
             // ToDoList = blogPostAdminDto.ToDoList,
