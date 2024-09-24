@@ -103,6 +103,7 @@ public class BlogPostAdminService(ApplicationDbContext applicationDbContext) : I
 
         databaseBlogPost.Text = blogPostAdminDto.Text;
         databaseBlogPost.Title = blogPostAdminDto.Title;
+        databaseBlogPost.NormalizedTitle = blogPostAdminDto.Title.ToUpperInvariant();
         // EditDatabasePropertyCodePlaceholder
         // databaseBlogPost.Title = blogPostAdminDto.Title;
         // databaseBlogPost.NormalizedTitle = blogPostAdminDto.Title.ToUpperInvariant();
