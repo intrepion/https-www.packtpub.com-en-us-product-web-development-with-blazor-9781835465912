@@ -3,7 +3,7 @@
 @rendermode InteractiveAuto
 @inject AuthenticationStateProvider GetAuthenticationStateAsync
 @inject NavigationManager NavigationManager
-@inject IEntityNamePlaceholderAdminService EntityNamePlaceholderAdminService
+@inject IBlogPostAdminService BlogPostAdminService
 
 @* InjectionCodePlaceholder *@
 @* @inject IToDoListAdminService ToDoListAdminService *@
@@ -73,7 +73,7 @@
 @code {
     [Parameter]
     public Guid Id { get; set; }
-    EntityNamePlaceholderAdminEditModel blogPostAdminEditModel { get; set; } = new EntityNamePlaceholderAdminEditModel();
+    BlogPostAdminEditModel blogPostAdminEditModel { get; set; } = new BlogPostAdminEditModel();
 
     @* ListDeclarationCodePlaceholder *@
     @* List<ToDoList>? toDoListList { get; set; } *@
@@ -113,15 +113,15 @@
             return;
         }
 
-        var databaseEntityNamePlaceholderAdminDto = await EntityNamePlaceholderAdminService.GetByIdAsync(userName, Id);
+        var databaseBlogPostAdminDto = await BlogPostAdminService.GetByIdAsync(userName, Id);
 
-        if (databaseEntityNamePlaceholderAdminDto == null)
+        if (databaseBlogPostAdminDto == null)
         {
-            blogPostAdminEditModel = new EntityNamePlaceholderAdminEditModel();
+            blogPostAdminEditModel = new BlogPostAdminEditModel();
         }
         else
         {
-            blogPostAdminEditModel = EntityNamePlaceholderAdminEditModel.FromEntityNamePlaceholderAdminDto(databaseEntityNamePlaceholderAdminDto);
+            blogPostAdminEditModel = BlogPostAdminEditModel.FromBlogPostAdminDto(databaseBlogPostAdminDto);
         }
     }
 
@@ -140,23 +140,23 @@
             return;
         } *@
 
-        var blogPostAdminDto = EntityNamePlaceholderAdminEditModel.ToEntityNamePlaceholderAdminDto(blogPostAdminEditModel);
+        var blogPostAdminDto = BlogPostAdminEditModel.ToBlogPostAdminDto(blogPostAdminEditModel);
         blogPostAdminDto.ApplicationUserName = userName;
 
         if (Id.Equals(Guid.Empty))
         {
-            var newEntityNamePlaceholderAdminDto = await EntityNamePlaceholderAdminService.AddAsync(blogPostAdminDto);
+            var newBlogPostAdminDto = await BlogPostAdminService.AddAsync(blogPostAdminDto);
 
-            if (newEntityNamePlaceholderAdminDto == null)
+            if (newBlogPostAdminDto == null)
             {
                 return;
             }
 
-            NavigationManager.NavigateTo($"/admin/UrlNamePlaceholder-edit/{newEntityNamePlaceholderAdminDto.Id}");
+            NavigationManager.NavigateTo($"/admin/UrlNamePlaceholder-edit/{newBlogPostAdminDto.Id}");
         }
         else
         {
-            await EntityNamePlaceholderAdminService.EditAsync(blogPostAdminDto);
+            await BlogPostAdminService.EditAsync(blogPostAdminDto);
         }
     }
 
@@ -175,7 +175,7 @@
             return;
         }
 
-        await EntityNamePlaceholderAdminService.DeleteAsync(userName, Id);
+        await BlogPostAdminService.DeleteAsync(userName, Id);
         NavigationManager.NavigateTo($"/admin/UrlNamePlaceholder-list");
     }
 
