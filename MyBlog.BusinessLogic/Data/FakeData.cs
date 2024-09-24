@@ -1,7 +1,7 @@
 ﻿using Bogus;
-using ApplicationNamePlaceholder.BusinessLogic.Entities;
+using MyBlog.BusinessLogic.Entities;
 
-namespace ApplicationNamePlaceholder.BusinessLogic.Data;
+namespace MyBlog.BusinessLogic.Data;
 
 public static class FakeData
 {
