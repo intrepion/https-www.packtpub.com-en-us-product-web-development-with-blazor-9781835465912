@@ -18,7 +18,7 @@
     <h1>Edit HumanNamePlaceholder</h1>
   }
   <article>
-    <EditForm class="container" Model="EntityLowercaseNamePlaceholderAdminEditModel" OnSubmit="HandleSubmit">
+    <EditForm class="container" Model="commentAdminEditModel" OnSubmit="HandleSubmit">
 
       @* EditRowCodePlaceholder *@
       @* <div class="row">
@@ -31,7 +31,7 @@
                             {
                                 @foreach (var toDoList in toDoListList)
                                 {
-                                    if (EntityLowercaseNamePlaceholderAdminEditModel.ToDoList != null && EntityLowercaseNamePlaceholderAdminEditModel.ToDoList.Id.Equals(toDoList.Id))
+                                    if (commentAdminEditModel.ToDoList != null && commentAdminEditModel.ToDoList.Id.Equals(toDoList.Id))
                                     {
                                         <option value="@toDoList.Id" selected>@toDoList.Title</option>
                                     }
@@ -49,7 +49,7 @@
                 <div class="col">
                     <label>
                         Title:
-                        <InputText @bind-Value="EntityLowercaseNamePlaceholderAdminEditModel.Title" />
+                        <InputText @bind-Value="commentAdminEditModel.Title" />
                     </label>
                 </div>
             </div> *@
@@ -73,7 +73,7 @@
 @code {
     [Parameter]
     public Guid Id { get; set; }
-    EntityNamePlaceholderAdminEditModel EntityLowercaseNamePlaceholderAdminEditModel { get; set; } = new EntityNamePlaceholderAdminEditModel();
+    EntityNamePlaceholderAdminEditModel commentAdminEditModel { get; set; } = new EntityNamePlaceholderAdminEditModel();
 
     @* ListDeclarationCodePlaceholder *@
     @* List<ToDoList>? toDoListList { get; set; } *@
@@ -117,11 +117,11 @@
 
         if (databaseEntityNamePlaceholderAdminDto == null)
         {
-            EntityLowercaseNamePlaceholderAdminEditModel = new EntityNamePlaceholderAdminEditModel();
+            commentAdminEditModel = new EntityNamePlaceholderAdminEditModel();
         }
         else
         {
-            EntityLowercaseNamePlaceholderAdminEditModel = EntityNamePlaceholderAdminEditModel.FromEntityNamePlaceholderAdminDto(databaseEntityNamePlaceholderAdminDto);
+            commentAdminEditModel = EntityNamePlaceholderAdminEditModel.FromEntityNamePlaceholderAdminDto(databaseEntityNamePlaceholderAdminDto);
         }
     }
 
@@ -135,17 +135,17 @@
             return;
         }
 
-        @* if (string.IsNullOrWhiteSpace(EntityLowercaseNamePlaceholderAdminEditModel.Name))
+        @* if (string.IsNullOrWhiteSpace(commentAdminEditModel.Name))
         {
             return;
         } *@
 
-        var EntityLowercaseNamePlaceholderAdminDto = EntityNamePlaceholderAdminEditModel.ToEntityNamePlaceholderAdminDto(EntityLowercaseNamePlaceholderAdminEditModel);
-        EntityLowercaseNamePlaceholderAdminDto.ApplicationUserName = userName;
+        var commentAdminDto = EntityNamePlaceholderAdminEditModel.ToEntityNamePlaceholderAdminDto(commentAdminEditModel);
+        commentAdminDto.ApplicationUserName = userName;
 
         if (Id.Equals(Guid.Empty))
         {
-            var newEntityNamePlaceholderAdminDto = await EntityNamePlaceholderAdminService.AddAsync(EntityLowercaseNamePlaceholderAdminDto);
+            var newEntityNamePlaceholderAdminDto = await EntityNamePlaceholderAdminService.AddAsync(commentAdminDto);
 
             if (newEntityNamePlaceholderAdminDto == null)
             {
@@ -156,7 +156,7 @@
         }
         else
         {
-            await EntityNamePlaceholderAdminService.EditAsync(EntityLowercaseNamePlaceholderAdminDto);
+            await EntityNamePlaceholderAdminService.EditAsync(commentAdminDto);
         }
     }
 
@@ -189,6 +189,6 @@
         }
 
         var id = (string)args.Value;
-        EntityLowercaseNamePlaceholderAdminEditModel.ToDoList = toDoListList?.Where(x => x.Id.ToString().Equals(id)).FirstOrDefault();
+        commentAdminEditModel.ToDoList = toDoListList?.Where(x => x.Id.ToString().Equals(id)).FirstOrDefault();
     } *@
 }
