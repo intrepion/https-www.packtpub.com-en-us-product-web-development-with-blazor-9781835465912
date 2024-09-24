@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ApplicationNamePlaceholder.BusinessLogic.Services.Server;
 
-public class EntityNamePlaceholderAdminService(ApplicationDbContext applicationDbContext) : IEntityNamePlaceholderAdminService
+public class BlogPostTagAdminService(ApplicationDbContext applicationDbContext) : IBlogPostTagAdminService
 {
     private readonly ApplicationDbContext _applicationDbContext = applicationDbContext;
 
-    public async Task<EntityNamePlaceholderAdminDto?> AddAsync(EntityNamePlaceholderAdminDto blogPostTagAdminDto)
+    public async Task<BlogPostTagAdminDto?> AddAsync(BlogPostTagAdminDto blogPostTagAdminDto)
     {
         if (string.IsNullOrWhiteSpace(blogPostTagAdminDto.ApplicationUserName))
         {
@@ -29,15 +29,15 @@ public class EntityNamePlaceholderAdminService(ApplicationDbContext applicationD
         //     throw new Exception("Title required.");
         // }
 
-        var blogPostTag = EntityNamePlaceholderAdminDto.ToEntityNamePlaceholder(user, blogPostTagAdminDto);
+        var blogPostTag = BlogPostTagAdminDto.ToBlogPostTag(user, blogPostTagAdminDto);
 
         // AddDatabasePropertyCodePlaceholder
 
         var result = await _applicationDbContext.TableNamePlaceholder.AddAsync(blogPostTag);
-        var databaseEntityNamePlaceholderAdminDto = EntityNamePlaceholderAdminDto.FromEntityNamePlaceholder(result.Entity);
+        var databaseBlogPostTagAdminDto = BlogPostTagAdminDto.FromBlogPostTag(result.Entity);
         await _applicationDbContext.SaveChangesAsync();
 
-        return databaseEntityNamePlaceholderAdminDto;
+        return databaseBlogPostTagAdminDto;
     }
 
     public async Task<bool> DeleteAsync(string userName, Guid id)
@@ -54,24 +54,24 @@ public class EntityNamePlaceholderAdminService(ApplicationDbContext applicationD
             throw new Exception("Authentication required.");
         }
 
-        var databaseEntityNamePlaceholder = await _applicationDbContext.TableNamePlaceholder.FindAsync(id);
+        var databaseBlogPostTag = await _applicationDbContext.TableNamePlaceholder.FindAsync(id);
 
-        if (databaseEntityNamePlaceholder == null)
+        if (databaseBlogPostTag == null)
         {
             return false;
         }
 
-        databaseEntityNamePlaceholder.ApplicationUserUpdatedBy = user;
+        databaseBlogPostTag.ApplicationUserUpdatedBy = user;
         await _applicationDbContext.SaveChangesAsync();
 
-        _applicationDbContext.Remove(databaseEntityNamePlaceholder);
+        _applicationDbContext.Remove(databaseBlogPostTag);
 
         await _applicationDbContext.SaveChangesAsync();
 
         return true;
     }
 
-    public async Task<EntityNamePlaceholderAdminDto?> EditAsync(EntityNamePlaceholderAdminDto blogPostTagAdminDto)
+    public async Task<BlogPostTagAdminDto?> EditAsync(BlogPostTagAdminDto blogPostTagAdminDto)
     {
         if (string.IsNullOrWhiteSpace(blogPostTagAdminDto.ApplicationUserName))
         {
@@ -85,9 +85,9 @@ public class EntityNamePlaceholderAdminService(ApplicationDbContext applicationD
             throw new Exception("Authentication required.");
         }
 
-        var databaseEntityNamePlaceholder = await _applicationDbContext.TableNamePlaceholder.FindAsync(blogPostTagAdminDto.Id);
+        var databaseBlogPostTag = await _applicationDbContext.TableNamePlaceholder.FindAsync(blogPostTagAdminDto.Id);
 
-        if (databaseEntityNamePlaceholder == null)
+        if (databaseBlogPostTag == null)
         {
             throw new Exception("HumanNamePlaceholder not found.");
         }
@@ -98,19 +98,19 @@ public class EntityNamePlaceholderAdminService(ApplicationDbContext applicationD
         //     throw new Exception("Title required.");
         // }
 
-        databaseEntityNamePlaceholder.ApplicationUserUpdatedBy = user;
+        databaseBlogPostTag.ApplicationUserUpdatedBy = user;
 
         // EditDatabasePropertyCodePlaceholder
-        // databaseEntityNamePlaceholder.Title = blogPostTagAdminDto.Title;
-        // databaseEntityNamePlaceholder.NormalizedTitle = blogPostTagAdminDto.Title.ToUpperInvariant();
-        // databaseEntityNamePlaceholder.ToDoList = blogPostTagAdminDto.ToDoList;
+        // databaseBlogPostTag.Title = blogPostTagAdminDto.Title;
+        // databaseBlogPostTag.NormalizedTitle = blogPostTagAdminDto.Title.ToUpperInvariant();
+        // databaseBlogPostTag.ToDoList = blogPostTagAdminDto.ToDoList;
 
         await _applicationDbContext.SaveChangesAsync();
 
         return blogPostTagAdminDto;
     }
 
-    public async Task<List<EntityNamePlaceholder>?> GetAllAsync(string userName)
+    public async Task<List<BlogPostTag>?> GetAllAsync(string userName)
     {
         if (string.IsNullOrWhiteSpace(userName))
         {
@@ -127,7 +127,7 @@ public class EntityNamePlaceholderAdminService(ApplicationDbContext applicationD
         return await _applicationDbContext.TableNamePlaceholder.ToListAsync();
     }
 
-    public async Task<EntityNamePlaceholderAdminDto?> GetByIdAsync(string userName, Guid id)
+    public async Task<BlogPostTagAdminDto?> GetByIdAsync(string userName, Guid id)
     {
         if (string.IsNullOrWhiteSpace(userName))
         {
@@ -148,6 +148,6 @@ public class EntityNamePlaceholderAdminService(ApplicationDbContext applicationD
             return null;
         }
 
-        return EntityNamePlaceholderAdminDto.FromEntityNamePlaceholder(result);
+        return BlogPostTagAdminDto.FromBlogPostTag(result);
     }
 }
