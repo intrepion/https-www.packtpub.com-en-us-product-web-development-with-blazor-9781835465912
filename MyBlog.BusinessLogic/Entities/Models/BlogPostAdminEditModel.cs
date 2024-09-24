@@ -10,37 +10,37 @@ public class EntityNamePlaceholderAdminEditModel
     // public string Title { get; set; } = string.Empty;
     // public ToDoList? ToDoList { get; set; }
 
-    public static EntityNamePlaceholderAdminEditModel FromEntityNamePlaceholderAdminDto(EntityNamePlaceholderAdminDto EntityLowercaseNamePlaceholderAdminDto)
+    public static EntityNamePlaceholderAdminEditModel FromEntityNamePlaceholderAdminDto(EntityNamePlaceholderAdminDto blogPostAdminDto)
     {
-        if (EntityLowercaseNamePlaceholderAdminDto == null)
+        if (blogPostAdminDto == null)
         {
             return new EntityNamePlaceholderAdminEditModel();
         }
 
         return new EntityNamePlaceholderAdminEditModel
         {
-            Id = EntityLowercaseNamePlaceholderAdminDto.Id,
+            Id = blogPostAdminDto.Id,
 
             // DtoToModelPropertyPlaceholder
-            // Title = EntityLowercaseNamePlaceholderAdminDto.Title,
-            // ToDoList = EntityLowercaseNamePlaceholderAdminDto.ToDoList,
+            // Title = blogPostAdminDto.Title,
+            // ToDoList = blogPostAdminDto.ToDoList,
         };
     }
 
-    public static EntityNamePlaceholderAdminDto ToEntityNamePlaceholderAdminDto(EntityNamePlaceholderAdminEditModel EntityLowercaseNamePlaceholderAdminEditModel)
+    public static EntityNamePlaceholderAdminDto ToEntityNamePlaceholderAdminDto(EntityNamePlaceholderAdminEditModel blogPostAdminEditModel)
     {
-        if (EntityLowercaseNamePlaceholderAdminEditModel == null)
+        if (blogPostAdminEditModel == null)
         {
             return new EntityNamePlaceholderAdminDto();
         }
 
         return new EntityNamePlaceholderAdminDto
         {
-            Id = EntityLowercaseNamePlaceholderAdminEditModel.Id,
+            Id = blogPostAdminEditModel.Id,
 
             // ModelToDtoPropertyPlaceholder
-            // Title = EntityLowercaseNamePlaceholderAdminEditModel.Title,
-            // ToDoList = EntityLowercaseNamePlaceholderAdminEditModel.ToDoList,
+            // Title = blogPostAdminEditModel.Title,
+            // ToDoList = blogPostAdminEditModel.ToDoList,
         };
     }
 }
