@@ -1,6 +1,6 @@
-﻿using ApplicationNamePlaceholder.BusinessLogic.Entities.Dtos;
+﻿using MyBlog.BusinessLogic.Entities.Dtos;
 
-namespace ApplicationNamePlaceholder.BusinessLogic.Entities.Models;
+namespace MyBlog.BusinessLogic.Entities.Models;
 
 public class CommentAdminEditModel
 {
