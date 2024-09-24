@@ -33,7 +33,7 @@ public class BlogPostAdminService(ApplicationDbContext applicationDbContext) : I
 
         // AddDatabasePropertyCodePlaceholder
 
-        var result = await _applicationDbContext.TableNamePlaceholder.AddAsync(blogPost);
+        var result = await _applicationDbContext.BlogPosts.AddAsync(blogPost);
         var databaseBlogPostAdminDto = BlogPostAdminDto.FromBlogPost(result.Entity);
         await _applicationDbContext.SaveChangesAsync();
 
@@ -54,7 +54,7 @@ public class BlogPostAdminService(ApplicationDbContext applicationDbContext) : I
             throw new Exception("Authentication required.");
         }
 
-        var databaseBlogPost = await _applicationDbContext.TableNamePlaceholder.FindAsync(id);
+        var databaseBlogPost = await _applicationDbContext.BlogPosts.FindAsync(id);
 
         if (databaseBlogPost == null)
         {
@@ -85,7 +85,7 @@ public class BlogPostAdminService(ApplicationDbContext applicationDbContext) : I
             throw new Exception("Authentication required.");
         }
 
-        var databaseBlogPost = await _applicationDbContext.TableNamePlaceholder.FindAsync(blogPostAdminDto.Id);
+        var databaseBlogPost = await _applicationDbContext.BlogPosts.FindAsync(blogPostAdminDto.Id);
 
         if (databaseBlogPost == null)
         {
@@ -124,7 +124,7 @@ public class BlogPostAdminService(ApplicationDbContext applicationDbContext) : I
             throw new Exception("Authentication required.");
         }
 
-        return await _applicationDbContext.TableNamePlaceholder.ToListAsync();
+        return await _applicationDbContext.BlogPosts.ToListAsync();
     }
 
     public async Task<BlogPostAdminDto?> GetByIdAsync(string userName, Guid id)
@@ -141,7 +141,7 @@ public class BlogPostAdminService(ApplicationDbContext applicationDbContext) : I
             throw new Exception("Authentication required.");
         }
 
-        var result = await _applicationDbContext.TableNamePlaceholder.FindAsync(id);
+        var result = await _applicationDbContext.BlogPosts.FindAsync(id);
 
         if (result == null)
         {
