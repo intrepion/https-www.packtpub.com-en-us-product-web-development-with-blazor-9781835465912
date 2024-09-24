@@ -3,7 +3,7 @@
 @rendermode InteractiveAuto
 @inject AuthenticationStateProvider GetAuthenticationStateAsync
 @inject NavigationManager NavigationManager
-@inject IEntityNamePlaceholderAdminService EntityNamePlaceholderAdminService
+@inject ICategoryAdminService CategoryAdminService
 
 @* InjectionCodePlaceholder *@
 @* @inject IToDoListAdminService ToDoListAdminService *@
@@ -73,7 +73,7 @@
 @code {
     [Parameter]
     public Guid Id { get; set; }
-    EntityNamePlaceholderAdminEditModel categoryAdminEditModel { get; set; } = new EntityNamePlaceholderAdminEditModel();
+    CategoryAdminEditModel categoryAdminEditModel { get; set; } = new CategoryAdminEditModel();
 
     @* ListDeclarationCodePlaceholder *@
     @* List<ToDoList>? toDoListList { get; set; } *@
@@ -113,15 +113,15 @@
             return;
         }
 
-        var databaseEntityNamePlaceholderAdminDto = await EntityNamePlaceholderAdminService.GetByIdAsync(userName, Id);
+        var databaseCategoryAdminDto = await CategoryAdminService.GetByIdAsync(userName, Id);
 
-        if (databaseEntityNamePlaceholderAdminDto == null)
+        if (databaseCategoryAdminDto == null)
         {
-            categoryAdminEditModel = new EntityNamePlaceholderAdminEditModel();
+            categoryAdminEditModel = new CategoryAdminEditModel();
         }
         else
         {
-            categoryAdminEditModel = EntityNamePlaceholderAdminEditModel.FromEntityNamePlaceholderAdminDto(databaseEntityNamePlaceholderAdminDto);
+            categoryAdminEditModel = CategoryAdminEditModel.FromCategoryAdminDto(databaseCategoryAdminDto);
         }
     }
 
@@ -140,23 +140,23 @@
             return;
         } *@
 
-        var categoryAdminDto = EntityNamePlaceholderAdminEditModel.ToEntityNamePlaceholderAdminDto(categoryAdminEditModel);
+        var categoryAdminDto = CategoryAdminEditModel.ToCategoryAdminDto(categoryAdminEditModel);
         categoryAdminDto.ApplicationUserName = userName;
 
         if (Id.Equals(Guid.Empty))
         {
-            var newEntityNamePlaceholderAdminDto = await EntityNamePlaceholderAdminService.AddAsync(categoryAdminDto);
+            var newCategoryAdminDto = await CategoryAdminService.AddAsync(categoryAdminDto);
 
-            if (newEntityNamePlaceholderAdminDto == null)
+            if (newCategoryAdminDto == null)
             {
                 return;
             }
 
-            NavigationManager.NavigateTo($"/admin/UrlNamePlaceholder-edit/{newEntityNamePlaceholderAdminDto.Id}");
+            NavigationManager.NavigateTo($"/admin/UrlNamePlaceholder-edit/{newCategoryAdminDto.Id}");
         }
         else
         {
-            await EntityNamePlaceholderAdminService.EditAsync(categoryAdminDto);
+            await CategoryAdminService.EditAsync(categoryAdminDto);
         }
     }
 
@@ -175,7 +175,7 @@
             return;
         }
 
-        await EntityNamePlaceholderAdminService.DeleteAsync(userName, Id);
+        await CategoryAdminService.DeleteAsync(userName, Id);
         NavigationManager.NavigateTo($"/admin/UrlNamePlaceholder-list");
     }
 
