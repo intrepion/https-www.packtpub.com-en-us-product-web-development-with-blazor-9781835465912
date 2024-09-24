@@ -40,6 +40,7 @@ public class CommentAdminEditModel
         {
             Id = commentAdminEditModel.Id,
 
+            BlogPost = commentAdminEditModel.BlogPost,
             // ModelToDtoPropertyPlaceholder
             // Title = commentAdminEditModel.Title,
             // ToDoList = commentAdminEditModel.ToDoList,
