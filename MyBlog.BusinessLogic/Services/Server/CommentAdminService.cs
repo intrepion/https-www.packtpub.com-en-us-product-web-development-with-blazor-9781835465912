@@ -100,6 +100,7 @@ public class CommentAdminService(ApplicationDbContext applicationDbContext) : IC
 
         databaseComment.ApplicationUserUpdatedBy = user;
 
+        databaseComment.Text = commentAdminDto.Text;
         // EditDatabasePropertyCodePlaceholder
         // databaseComment.Title = commentAdminDto.Title;
         // databaseComment.NormalizedTitle = commentAdminDto.Title.ToUpperInvariant();
