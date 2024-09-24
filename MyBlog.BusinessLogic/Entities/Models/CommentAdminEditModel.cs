@@ -24,6 +24,7 @@ public class CommentAdminEditModel
             Id = commentAdminDto.Id,
 
             BlogPost = commentAdminDto.BlogPost,
+            Commenter = commentAdminDto.Commenter,
             // DtoToModelPropertyPlaceholder
             // Title = commentAdminDto.Title,
             // ToDoList = commentAdminDto.ToDoList,
